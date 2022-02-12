@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "l6qwjJIt0JjdWUcF19Uvxk3cW9BA04Vw5i7BjqJn5i4U9u9N+HY2D117xALLkOLbD0BTkZlNHJiVwv0aPwODJw==",
+  "success": true,
+  "projectFilePath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}
