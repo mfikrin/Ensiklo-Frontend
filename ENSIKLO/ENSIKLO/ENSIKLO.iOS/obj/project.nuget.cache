@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/2eiAKCNNbkivN8ElqER4L3SxnsX5qbroj0+J8/pGIFTXYhalTRc8rR3807KxPoes6Xjpwtq9Moi6AVKTjxW5Q==",
+  "dgSpecHash": "9/TmMAo/JfhxS2gUKTYz8SPBaj2U/Qf9pS49Ga/qMbWiXUKcAFZfl5gjAI/zwhuKm+64Pft7GLWPIXRYYGWF3g==",
   "success": true,
   "projectFilePath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\ENSIKLO.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+    "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
   ],
   "logs": []
 }
