@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{3F860DB6-D43C-4543-9097-67B06610C699}</ProjectGuid>
+    <ProjectGuid>{64C35568-1037-4A70-9C02-4A4920ECD8E9}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ENSIKLO.UWP</RootNamespace>
@@ -144,13 +144,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12"/>
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ENSIKLO\ENSIKLO.csproj">
-      <Project>{FC0443FB-7D69-4AD8-A827-1E56BA7BE0E2}</Project>
+      <Project>{5976BD67-C620-4019-BF45-73F32B2C8380}</Project>
       <Name>ENSIKLO</Name>
     </ProjectReference>
   </ItemGroup>
