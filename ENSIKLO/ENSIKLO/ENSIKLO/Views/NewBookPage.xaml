@@ -7,11 +7,18 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
-        <StackLayout Spacing="3" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+        <StackLayout Spacing="6" Padding="15">
+            <Label Text="Title" FontSize="Medium" />
+            <Entry Text="{Binding Title , Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Description Book" FontSize="Medium" />
+            <Editor Text="{Binding Description_book, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Publisher" FontSize="Medium" />
+            <Entry Text="{Binding Publisher, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Url Cover" FontSize="Medium" />
+            <Editor Text="{Binding Url_cover, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Author" FontSize="Medium" />
+            <Entry Text="{Binding Author_names, Mode=TwoWay}" FontSize="Medium" />
+            
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>

@@ -6,7 +6,7 @@
         <Label Text="Text:" FontSize="Medium" />
         <Label Text="{Binding Title}" FontSize="Small"/>
         <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding description_book}" FontSize="Small"/>
-        <Label Text="{Binding publisher}" FontSize="Small"/>
+        <Label Text="{Binding Description_book}" FontSize="Small"/>
+        <Label Text="{Binding Publisher}" FontSize="Small"/>
     </StackLayout>
 </ContentPage>

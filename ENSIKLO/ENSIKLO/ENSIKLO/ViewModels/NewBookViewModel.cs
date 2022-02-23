@@ -35,9 +35,10 @@ namespace ENSIKLO.ViewModels
                 && !String.IsNullOrWhiteSpace(url_cover)
                 && !String.IsNullOrWhiteSpace(author_names)
                 ;
+            //return true;
         }
 
-        public string Title_book
+        public string Title
         {
             get => title;
             set => SetProperty(ref title, value);
@@ -93,7 +94,7 @@ namespace ENSIKLO.ViewModels
             Book newItem = new Book()
             {
                 Id_book="BOOOOKKK",
-                Title = Title_book,
+                Title = Title,
                 Description_book = Description_book,
                 Publisher = Publisher,
                 Url_cover = Url_cover,
