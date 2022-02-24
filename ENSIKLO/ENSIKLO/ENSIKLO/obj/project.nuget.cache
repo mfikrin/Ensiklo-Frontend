@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "6+KFJXUHLtZCQmYxiRdIV0ZakaB18S6KdEbmqnXR/Z15eytNBOo3V9FZFIPnvEjSpgwF1T3V2RCkU9mhhEjXEg==",
+  "dgSpecHash": "0H+5/ChwejcRhF4Jdi0YU1VIF7dsMTkYG8OcOHOVpXnRtvWvhH9ySVuK0a/SsxduK5yaF4EbTo5E4xdztHdqYQ==",
   "success": true,
-  "projectFilePath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj",
+  "projectFilePath": "/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/ENSIKLO.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
-    "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+    "/Users/nabelanita/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/nabelanita/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/nabelanita/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/nabelanita/.nuget/packages/xamarin.essentials/1.7.0/xamarin.essentials.1.7.0.nupkg.sha512",
+    "/Users/nabelanita/.nuget/packages/xamarin.forms/5.0.0.2196/xamarin.forms.5.0.0.2196.nupkg.sha512"
   ],
   "logs": []
 }
