@@ -34,6 +34,7 @@
         <ShellContent Title="Library" Icon="Assets/bookmarks.png" ContentTemplate="{DataTemplate local:BooksPage}" />
         <ShellContent Title="Catalog" Icon="Assets/local_mall.png" ContentTemplate="{DataTemplate local:BooksPage}" />
         <ShellContent Title="Profile" Icon="Assets/account_circle.png" ContentTemplate="{DataTemplate local:BooksPage}" />
+        <ShellContent Title="Register" Icon="Assets/account_circle.png" ContentTemplate="{DataTemplate local:RegisterPage}" />
     </TabBar>
 
     <!--
