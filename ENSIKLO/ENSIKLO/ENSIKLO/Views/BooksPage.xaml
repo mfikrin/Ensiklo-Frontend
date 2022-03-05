@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ENSIKLO.Views.BooksPage"
+             xmlns:model="clr-namespace:ENSIKLO.Models"
+             xmlns:local="clr-namespace:ENSIKLO.ViewModels"
+             x:Name="BrowseBooksPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddBookCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Books" 
+                       Margin="8,8,8,0"
+                       FontSize="Medium"
+                       TextColor="Crimson"
+                       FontAttributes="Bold"/>
+
+                <!--<Label HorizontalOptions="EndAndExpand"
+                       Text="See All" 
+                       FontAttributes="Bold"
+                       Margin="0,8,8,0" 
+                       FontSize="Medium"
+                       TextColor="DarkGray"/>-->
+            </StackLayout>
+            <RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView ItemsSource="{Binding Books}" x:Name="ItemsListView" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="6"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="8" Margin="4" x:DataType="model:Book">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                               
+                                <Image Source="{Binding Url_cover}"
+                                               Grid.Row="0"
+                                               Aspect="AspectFit" 
+                                               WidthRequest="30"
+                                               HeightRequest="150"
+                                               />
+
+                                
+                                <StackLayout Grid.Row="1">
+                                    <Label Grid.Column="1"
+                                                   VerticalOptions="Center"
+                                                   Text="{Binding Title}"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"    
+                                                   />
+
+                                    <!--deskripsi buku opsional-->
+                                    <Label Text="{Binding Description_book}"
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    VerticalOptions="Start"
+                                                    FontAttributes="Italic"
+                                                    TextColor="White"
+                                                    />
+                                   
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+
+    
+
+    <!--<RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Books}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Book">
+                        <Label Text="{Binding Title}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                        <Label Text="{Binding Description_book}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                        <Image Source="{Binding Url_cover}"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>-->
+</ContentPage>

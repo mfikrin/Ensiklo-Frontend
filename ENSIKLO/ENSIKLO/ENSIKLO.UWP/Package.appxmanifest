@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="A2C9FA9B-0E00-4160-9A46-D0C52BFF9944"
-    Publisher="CN=7BDC8382-287A-4FDB-96EE-33DC6617DCBF"
+    Name="1A774016-D344-4D38-8293-8D804D7633B2"
+    Publisher="CN=2F837310-C248-49E7-BD54-2ADAC92C3C88"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ENSIKLO.UWP</DisplayName>
-    <PublisherDisplayName>7BDC8382-287A-4FDB-96EE-33DC6617DCBF</PublisherDisplayName>
+    <PublisherDisplayName>2F837310-C248-49E7-BD54-2ADAC92C3C88</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
