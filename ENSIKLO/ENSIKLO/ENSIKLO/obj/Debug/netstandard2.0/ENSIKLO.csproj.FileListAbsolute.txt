@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Jurusan_IF\Sem_6\PPL\Project_18\ENSIKLO\ENSIKLO\ENSIKLO\bin\Debug\netstandard2.0\ENSIKLO.deps.json
 D:\Jurusan_IF\Sem_6\PPL\Project_18\ENSIKLO\ENSIKLO\ENSIKLO\bin\Debug\netstandard2.0\ENSIKLO.dll
 D:\Jurusan_IF\Sem_6\PPL\Project_18\ENSIKLO\ENSIKLO\ENSIKLO\bin\Debug\netstandard2.0\ENSIKLO.pdb
@@ -56,3 +57,37 @@ D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIK
 D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\refint\ENSIKLO.dll
 D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.pdb
 D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ref\ENSIKLO.dll
+=======
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ENSIKLO.deps.json
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ENSIKLO.dll
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ENSIKLO.pdb
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.csproj.AssemblyReference.cache
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.GeneratedMSBuildEditorConfig.editorconfig
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/App.xaml.g.cs
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/MainPage.xaml.g.cs
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.AssemblyInfoInputs.cache
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.AssemblyInfo.cs
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.csproj.CoreCompileInputs.cache
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/XamlC.stamp
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.dll
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/refint/ENSIKLO.dll
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.pdb
+D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ref/ENSIKLO.dll
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ENSIKLO.deps.json
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ENSIKLO.dll
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ref/ENSIKLO.dll
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/bin/Debug/netstandard2.0/ENSIKLO.pdb
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.csproj.AssemblyReference.cache
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/App.xaml.g.cs
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/MainPage.xaml.g.cs
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.AssemblyInfoInputs.cache
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.AssemblyInfo.cs
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.csproj.CoreCompileInputs.cache
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/XamlC.stamp
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.dll
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ref/ENSIKLO.dll
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/ENSIKLO.pdb
+/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/obj/Debug/netstandard2.0/Register.xaml.g.cs
+>>>>>>> 4-fe-melakukan-register
+D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\Register.xaml.g.cs

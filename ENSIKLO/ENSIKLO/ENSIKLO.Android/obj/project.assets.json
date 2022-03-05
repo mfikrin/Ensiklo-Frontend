@@ -3475,39 +3475,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/nabelanita/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.Android\\ENSIKLO.Android.csproj",
+      "projectUniqueName": "/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO.Android/ENSIKLO.Android.csproj",
       "projectName": "ENSIKLO.Android",
-      "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.Android\\ENSIKLO.Android.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.Android\\obj\\",
+      "projectPath": "/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO.Android/ENSIKLO.Android.csproj",
+      "packagesPath": "/Users/nabelanita/.nuget/packages/",
+      "outputPath": "/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO.Android/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/nabelanita/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "monoandroid12.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "monoandroid12.0": {
           "projectReferences": {
-            "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {
-              "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj"
+            "/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/ENSIKLO.csproj": {
+              "projectPath": "/Users/nabelanita/Documents/Kuliah/Semester 6/PPL/Ensikolopedi.id/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIKLO/ENSIKLO/ENSIKLO.csproj"
             }
           }
         }
