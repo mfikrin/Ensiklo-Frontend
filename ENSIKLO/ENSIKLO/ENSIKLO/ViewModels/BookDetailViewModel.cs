@@ -12,25 +12,25 @@ namespace ENSIKLO.ViewModels
     public class BookDetailViewModel : BaseViewModel
     {
     
-        public int id_book ;
+        private int id_book ;
 
-        public string title ;
+        private string title ;
 
-        public string author ;
-      
-        public string publisher ;
-    
-        public string year_published ;
+        private string author ;
 
-        public string description_book ;
+        private string publisher ;
 
-        public string book_content ;
-        
-        public string url_cover ;
+        private string year_published ;
 
-        public string category ;
-      
-        public string keywords ;
+        private string description_book ;
+
+        private string book_content ;
+
+        private string url_cover ;
+
+        private string category ;
+
+        private string keywords ;
 
         private readonly IBookService _bookService;
 
@@ -41,7 +41,7 @@ namespace ENSIKLO.ViewModels
             //SaveBookCommand = new Command(async () => await SaveBook());
         }
 
-        public int Id ;
+        public int Id { get; set; }
         public string Title
         {
             get => title;

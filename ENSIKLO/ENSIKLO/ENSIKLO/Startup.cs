@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using ENSIKLO.Services;
 using ENSIKLO.ViewModels;
-using ENSIKLO.Models;
 
 namespace ENSIKLO
 {

@@ -4,7 +4,7 @@
              x:Class="ENSIKLO.Views.BookDetailPage">
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Title}" FontSize="Small"/>
+        <Label Text="{Binding Title }" FontSize="Small"/>
         <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Description_book}" FontSize="Small"/>
         <Label Text="{Binding Publisher}" FontSize="Small"/>

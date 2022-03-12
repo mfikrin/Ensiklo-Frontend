@@ -25,7 +25,7 @@
                        FontSize="Medium"
                        TextColor="DarkGray"/>-->
             </StackLayout>
-            <RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                 <CollectionView 
                     ItemsSource="{Binding Books}" 
                     x:Name="ItemsListView" 
