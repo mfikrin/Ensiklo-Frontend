@@ -13,7 +13,9 @@ namespace ENSIKLO
         {
             InitializeComponent();
 
-            DependencyService.Register<DummyBookStore>();
+            Startup.ConfigureServices();
+
+            //DependencyService.Register<DummyBookStore>();
             MainPage = new AppShell();
         }
 

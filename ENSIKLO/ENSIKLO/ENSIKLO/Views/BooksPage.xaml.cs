@@ -13,17 +13,19 @@ namespace ENSIKLO.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BooksPage : ContentPage
     {
-        BookViewModel _viewModel;
+        private readonly BookViewModel _booksViewModel;
         public BooksPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new BookViewModel();
+            _booksViewModel = Startup.Resolve<BookViewModel>();
+            BindingContext = _booksViewModel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnAppearing();
+            _booksViewModel.OnAppearing();
+            _booksViewModel?.PopulateBooks();
         }
     }
 }

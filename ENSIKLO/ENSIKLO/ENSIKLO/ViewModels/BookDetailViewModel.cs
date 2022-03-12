@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ENSIKLO.Services;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -10,38 +11,47 @@ namespace ENSIKLO.ViewModels
     [QueryProperty(nameof(BookId), nameof(BookId))]
     public class BookDetailViewModel : BaseViewModel
     {
-        private string bookId;
-        private string title;
-        private int rating;
-        private string description_book;
-        private int pages;
-        private string publisher;
-        private string url_cover;
-        private string author_names;
+    
+        public int id_book ;
 
-        public string Id { get; set; }
+        public string title ;
+
+        public string author ;
+      
+        public string publisher ;
+    
+        public string year_published ;
+
+        public string description_book ;
+
+        public string book_content ;
+        
+        public string url_cover ;
+
+        public string category ;
+      
+        public string keywords ;
+
+        private readonly IBookService _bookService;
+
+        public BookDetailViewModel(IBookService bookService)
+        {
+            _bookService = bookService;
+
+            //SaveBookCommand = new Command(async () => await SaveBook());
+        }
+
+        public int Id ;
         public string Title
         {
             get => title;
             set => SetProperty(ref title, value);
         }
 
-        public int Rating
+        public string Author
         {
-            get => rating;
-            set => SetProperty(ref rating, value);
-        }
-
-        public string Description_book
-        {
-            get => description_book;
-            set => SetProperty(ref description_book, value);
-        }
-
-        public int Pages
-        {
-            get => pages;
-            set => SetProperty(ref pages, value);
+            get => author;
+            set => SetProperty(ref author, value);
         }
 
         public string Publisher
@@ -50,42 +60,72 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref publisher, value);
         }
 
+        public string Year_published
+        {
+            get => year_published;
+            set => SetProperty(ref year_published, value);
+        }
+
+        public string Description_book
+        {
+            get => description_book;
+            set => SetProperty(ref description_book, value);
+        }
+
+        public string Book_content
+        {
+            get => book_content;
+            set => SetProperty(ref book_content, value);
+        }
+
         public string Url_cover
         {
             get => url_cover;
             set => SetProperty(ref url_cover, value);
         }
 
-        public string Author_names
+        public string Category
         {
-            get => author_names;
-            set => SetProperty(ref author_names, value);
+            get => category;
+            set => SetProperty(ref category, value);
         }
 
-        public string BookId
+        public string Keywords
+        {
+            get => keywords;
+            set => SetProperty(ref keywords, value);
+        }
+
+
+        public int BookId
         {
             get
             {
-                return bookId;
+                return id_book;
             }
             set
             {
-                bookId = value;
+                id_book = value;
                 LoadBookId(value);
             }
         }
 
-        public async void LoadBookId(string bookId)
+        public async void LoadBookId(int bookId)
         {
             try
             {
-                var book = await DataStore.GetItemAsync(bookId);
-                Id = book.Id_book;
-                Title = book.Title;
-                Description_book = book.Description_book;
-                Publisher = book.Publisher;
-                Url_cover = book.Url_cover;
-                Author_names = book.Author_names;     
+                var book = await _bookService.GetItemAsync(bookId);
+                Id = book.id_book;
+                Title = book.title;
+                Author = book.author;
+                Publisher = book.publisher;
+                Year_published = book.year_published;
+                Description_book = book.description_book;
+                Book_content = book.book_content;
+                Url_cover = book.url_cover;
+                Category = book.category;
+                Keywords = book.keywords;  
+               
             }
             catch (Exception)
             {

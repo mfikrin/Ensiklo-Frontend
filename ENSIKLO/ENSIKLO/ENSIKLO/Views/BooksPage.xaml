@@ -26,7 +26,11 @@
                        TextColor="DarkGray"/>-->
             </StackLayout>
             <RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-                <CollectionView ItemsSource="{Binding Books}" x:Name="ItemsListView" SelectionMode="None">
+                <CollectionView 
+                    ItemsSource="{Binding Books}" 
+                    x:Name="ItemsListView" 
+                    SelectionMode="Single"
+                    SelectedItem="{Binding SelectedBook}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="6"/>
                     </CollectionView.ItemsLayout>
@@ -40,7 +44,7 @@
                                 </Grid.RowDefinitions>
 
                                
-                                <Image Source="{Binding Url_cover}"
+                                <Image Source="{Binding url_cover}"
                                                Grid.Row="0"
                                                Aspect="AspectFit" 
                                                WidthRequest="30"
@@ -51,13 +55,13 @@
                                 <StackLayout Grid.Row="1">
                                     <Label Grid.Column="1"
                                                    VerticalOptions="Center"
-                                                   Text="{Binding Title}"
+                                                   Text="{Binding title}"
                                                    FontAttributes="Bold"
                                                    TextColor="White"    
                                                    />
 
                                     <!--deskripsi buku opsional-->
-                                    <Label Text="{Binding Description_book}"
+                                    <Label Text="{Binding description_book}"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
                                                     VerticalOptions="Start"
@@ -66,13 +70,13 @@
                                                     />
                                    
 
-                                    <StackLayout.GestureRecognizers>
+                                    <!--<StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer 
                                             NumberOfTapsRequired="1"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
                                             CommandParameter="{Binding .}">
                                         </TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
+                                    </StackLayout.GestureRecognizers>-->
                                 </StackLayout>
 
                             </Grid>

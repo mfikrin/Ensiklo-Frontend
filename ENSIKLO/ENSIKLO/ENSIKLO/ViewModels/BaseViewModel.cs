@@ -10,7 +10,7 @@ namespace ENSIKLO.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Book> DataStore => DependencyService.Get<IDataStore<Book>>();
+        //public IDataStore<Book> DataStore => DependencyService.Get<IDataStore<Book>>();
 
         bool isBusy = false;
         public bool IsBusy

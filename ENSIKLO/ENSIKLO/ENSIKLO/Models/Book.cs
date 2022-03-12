@@ -8,28 +8,34 @@ namespace ENSIKLO.Models
     public class Book
     {
         [JsonPropertyName("id_book")]
-        public string Id_book { get; set; }
+        public int id_book { get; set; }
 
         [JsonPropertyName("title")]
-        public string Title { get; set; }
+        public string title { get; set; }
 
-        [JsonPropertyName("rating")]
-        public int Rating { get; set; }
-
-        [JsonPropertyName("description_book")]
-        public string Description_book { get; set; }
-
-        [JsonPropertyName("pages")]
-        public int Pages { get; set; }
+        [JsonPropertyName("author")]
+        public string author { get; set; }
 
         [JsonPropertyName("publisher")]
-        public string Publisher { get; set; }
+        public string publisher { get; set; }
+
+        [JsonPropertyName("year_published")]
+        public string year_published { get; set; }
+
+        [JsonPropertyName("description_book")]
+        public string description_book { get; set; }
+
+        [JsonPropertyName("book_content")]
+        public string book_content { get; set; }
 
         [JsonPropertyName("url_cover")]
-        public string Url_cover { get; set; }
+        public string url_cover { get; set; }
 
-        [JsonPropertyName("author_names")]
-        public string Author_names { get; set; }
+        [JsonPropertyName("category")]
+        public string category { get; set; }
+
+        [JsonPropertyName("keywords")]
+        public string keywords { get; set; }
 
 
     }
