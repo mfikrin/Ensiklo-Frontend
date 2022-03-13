@@ -12,7 +12,7 @@ namespace ENSIKLO.ViewModels
     public class BookDetailViewModel : BaseViewModel
     {
     
-        private int id_book ;
+        private string id_book ;
 
         private string title ;
 
@@ -97,39 +97,42 @@ namespace ENSIKLO.ViewModels
         }
 
 
-        public int BookId
+        public string BookId
         {
-            get
-            {
-                return id_book;
-            }
+            get => id_book;
             set
             {
                 id_book = value;
-                LoadBookId(value);
+                LoadBookId(id_book);
             }
         }
 
-        public async void LoadBookId(int bookId)
+        public async void LoadBookId(string bookId)
         {
             try
             {
-                var book = await _bookService.GetItemAsync(bookId);
-                Id = book.id_book;
-                Title = book.title;
-                Author = book.author;
-                Publisher = book.publisher;
-                Year_published = book.year_published;
-                Description_book = book.description_book;
-                Book_content = book.book_content;
-                Url_cover = book.url_cover;
-                Category = book.category;
-                Keywords = book.keywords;  
+                var book = await _bookService.GetItemAsync(int.Parse(bookId));
+                Debug.WriteLine("Pass in here");
+                if (bookId != null)
+                {
+                    Id = book.Id_book;
+                    Title = book.Title;
+                    Author = book.Author;
+                    Publisher = book.Publisher;
+                    Year_published = book.Year_published;
+                    Description_book = book.Description_book;
+                    Book_content = book.Book_content;
+                    Url_cover = book.Url_cover;
+                    Category = book.Category;
+                    Keywords = book.Keywords;
+                }
+                  
                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine(ex.Message);
             }
         }
 

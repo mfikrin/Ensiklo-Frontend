@@ -15,7 +15,7 @@ namespace ENSIKLO
 
             //add services
 
-            //services.AddSingleton<IDataStore<Book>, DummyBookStore>();
+            //services.AddSingleton<IBookService, DummyBookStore>();
 
             services.AddHttpClient<IBookService, APIBookService>(client =>
             {

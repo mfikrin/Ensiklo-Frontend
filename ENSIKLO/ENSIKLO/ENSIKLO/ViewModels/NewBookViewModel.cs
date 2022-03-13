@@ -127,15 +127,15 @@ namespace ENSIKLO.ViewModels
                 var book = new Book
                 {
              
-                    title = Title,
-                    author = Author,
-                    publisher = Publisher,
-                    year_published = Year_published,
-                    description_book = Description_book,
-                    book_content = Book_content,
-                    url_cover = Url_cover,
-                    category = Category,
-                    keywords = Keywords
+                    Title = Title,
+                    Author = Author,
+                    Publisher = Publisher,
+                    Year_published = Year_published,
+                    Description_book = Description_book,
+                    Book_content = Book_content,
+                    Url_cover = Url_cover,
+                    Category = Category,
+                    Keywords = Keywords
                 };
 
                 await _bookService.AddItemAsync(book);

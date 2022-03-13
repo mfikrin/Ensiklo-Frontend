@@ -43,32 +43,32 @@
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
 
-                               
-                                <Image Source="{Binding url_cover}"
+
+                                <Image Source="{Binding Url_cover}"
                                                Grid.Row="0"
                                                Aspect="AspectFit" 
                                                WidthRequest="30"
                                                HeightRequest="150"
                                                />
 
-                                
+
                                 <StackLayout Grid.Row="1">
                                     <Label Grid.Column="1"
                                                    VerticalOptions="Center"
-                                                   Text="{Binding title}"
+                                                   Text="{Binding Title}"
                                                    FontAttributes="Bold"
                                                    TextColor="White"    
                                                    />
 
                                     <!--deskripsi buku opsional-->
-                                    <Label Text="{Binding description_book}"
+                                    <Label Text="{Binding Description_book}"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
                                                     VerticalOptions="Start"
                                                     FontAttributes="Italic"
                                                     TextColor="White"
                                                     />
-                                   
+
 
                                     <!--<StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer 
@@ -89,7 +89,7 @@
         </StackLayout>
     </ContentPage.Content>
 
-    
+
 
     <!--<RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
