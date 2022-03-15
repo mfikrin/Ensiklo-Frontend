@@ -4,7 +4,7 @@
              x:Class="ENSIKLO.Register">
 
     <StackLayout>
-        <Image VerticalOptions="CenterAndExpand" Source="./Assets/logo.png" />
+        <Image VerticalOptions="CenterAndExpand" Source="logo.png" />
         <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Margin="150,0" Padding="100,35">
             <StackLayout>
                 <Entry Placeholder="Email"></Entry>  
