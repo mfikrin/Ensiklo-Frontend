@@ -91,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ENSIKLO\ENSIKLO.csproj">
-      <Project>{20127132-5838-4DA5-9683-8E8DDB266839}</Project>
+      <Project>{C74CF4C3-7C34-40D6-AAA4-15008A545C61}</Project>
       <Name>ENSIKLO</Name>
     </ProjectReference>
   </ItemGroup>
