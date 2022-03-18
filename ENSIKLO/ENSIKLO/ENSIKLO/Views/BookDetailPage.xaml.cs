@@ -16,7 +16,7 @@ namespace ENSIKLO.Views
         public BookDetailPage()
         {
             InitializeComponent();
-            BindingContext = new BookDetailViewModel();
+            BindingContext = Startup.Resolve<BookDetailViewModel>();
         }
     }
 }

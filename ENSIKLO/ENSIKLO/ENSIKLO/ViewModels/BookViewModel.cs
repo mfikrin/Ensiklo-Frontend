@@ -1,4 +1,5 @@
 ﻿using ENSIKLO.Models;
+using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -12,30 +13,59 @@ namespace ENSIKLO.ViewModels
     {
         private Book _selectedBook;
 
-        public ObservableCollection<Book> Books { get; }
+        private ObservableCollection<Book> books;
+
+        private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
-        public Command<Book> BookTapped { get; }
 
-        public BookViewModel()
+        //public Command<Book> BookTapped { get; }
+
+        public BookViewModel(IBookService bookService)
         {
             Title = "Browse";
-            Books = new ObservableCollection<Book>();
-            LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
 
-            BookTapped = new Command<Book>(OnBookSelected);
+            _bookService = bookService;
+
+            Books = new ObservableCollection<Book>();
+
+            //LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
+
+            //BookTapped = new Command<Book>(OnBookSelected);
 
             AddBookCommand = new Command(OnAddBook);
         }
 
-        async Task ExecuteLoadBooksCommand()
-        {
-            IsBusy = true;
+        //async Task ExecuteLoadBooksCommand()
+        //{
+        //    IsBusy = true;
 
+        //    try
+        //    {
+        //        Books.Clear();
+        //        var books = await _bookService.GetItemsAsync(true);
+        //        foreach (var book in books)
+        //        {
+        //            Books.Add(book);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex);
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
+
+        public async void PopulateBooks()
+        {
             try
             {
                 Books.Clear();
-                var books = await DataStore.GetItemsAsync(true);
+
+                var books = await _bookService.GetItemsAsync();
                 foreach (var book in books)
                 {
                     Books.Add(book);
@@ -43,11 +73,7 @@ namespace ENSIKLO.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -57,20 +83,30 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
+        public ObservableCollection<Book> Books
+        {
+            get => books;
+            set
+            {
+                books = value;
+                OnPropertyChanged(nameof(Books));
+            }
+        }
+
         public Book SelectedBook
         {
             get => _selectedBook;
             set
             {
-                SetProperty(ref _selectedBook, value);
-                OnBookSelected(value);
+                if (_selectedBook != value)
+                {
+                    SetProperty(ref _selectedBook, value);
+                    OnBookSelected(value);
+                }
+                
             }
         }
 
-        private async void OnAddBook(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewBookPage));
-        }
 
         async void OnBookSelected(Book book)
         {
@@ -79,6 +115,11 @@ namespace ENSIKLO.ViewModels
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
+        }
+
+        private async void OnAddBook(object obj)
+        {
+            await Shell.Current.GoToAsync(nameof(NewBookPage));
         }
     }
 }

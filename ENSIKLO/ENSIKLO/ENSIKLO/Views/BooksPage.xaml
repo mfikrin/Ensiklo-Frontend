@@ -25,8 +25,12 @@
                        FontSize="Medium"
                        TextColor="DarkGray"/>-->
             </StackLayout>
-            <RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-                <CollectionView ItemsSource="{Binding Books}" x:Name="ItemsListView" SelectionMode="None">
+            <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView 
+                    ItemsSource="{Binding Books}" 
+                    x:Name="ItemsListView" 
+                    SelectionMode="Single"
+                    SelectedItem="{Binding SelectedBook}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="6"/>
                     </CollectionView.ItemsLayout>
@@ -39,7 +43,7 @@
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
 
-                               
+
                                 <Image Source="{Binding Url_cover}"
                                                Grid.Row="0"
                                                Aspect="AspectFit" 
@@ -47,7 +51,7 @@
                                                HeightRequest="150"
                                                />
 
-                                
+
                                 <StackLayout Grid.Row="1">
                                     <Label Grid.Column="1"
                                                    VerticalOptions="Center"
@@ -64,15 +68,15 @@
                                                     FontAttributes="Italic"
                                                     TextColor="White"
                                                     />
-                                   
 
-                                    <StackLayout.GestureRecognizers>
+
+                                    <!--<StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer 
                                             NumberOfTapsRequired="1"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
                                             CommandParameter="{Binding .}">
                                         </TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
+                                    </StackLayout.GestureRecognizers>-->
                                 </StackLayout>
 
                             </Grid>
@@ -85,7 +89,7 @@
         </StackLayout>
     </ContentPage.Content>
 
-    
+
 
     <!--<RefreshView x:DataType="local:BookViewModel" Command="{Binding LoadBooksCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
