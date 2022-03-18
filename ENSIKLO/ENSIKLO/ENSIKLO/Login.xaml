@@ -10,7 +10,7 @@
                 <StackLayout>
                     <Entry Placeholder="Email"></Entry>  
                     <Entry Placeholder="Password" IsPassword="True"></Entry>  
-                    <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Sign Up" Margin="0,20"></Button>
+                    <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Sign In" Margin="0,20"></Button>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="New to Ensiklopedi.id?"></Label>
                         <Label Text="Register" TextColor="#009BF0"></Label>
