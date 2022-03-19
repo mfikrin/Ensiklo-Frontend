@@ -92,3 +92,25 @@ D:/Jurusan_IF/Sem_6/PPL/Project_18/if3250_2022_18_ensiklo_frontend/ENSIKLO/ENSIK
 >>>>>>> 4-fe-melakukan-register
 D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\Register.xaml.g.cs
 D:\Jurusan_IF\Sem_6\PPL\Project_18\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\RegisterPage.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\bin\Debug\netstandard2.0\ENSIKLO.deps.json
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\bin\Debug\netstandard2.0\ENSIKLO.dll
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\bin\Debug\netstandard2.0\ENSIKLO.pdb
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.csproj.AssemblyReference.cache
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Login.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\BookDetailPage.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\BooksPage.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\NewBookPage.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\RegisterPage.xaml.g.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.AssemblyInfoInputs.cache
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.AssemblyInfo.cs
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.csproj.CoreCompileInputs.cache
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.dll
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\refint\ENSIKLO.dll
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ENSIKLO.pdb
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\ref\ENSIKLO.dll
+C:\Users\SuperNova\source\repos\if3250_2022_18_ensiklo_frontend\ENSIKLO\ENSIKLO\ENSIKLO\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
