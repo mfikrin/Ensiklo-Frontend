@@ -10,73 +10,86 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="AliceBlue">
             <StackLayout Orientation="Horizontal">
                 <Label Text="Books" 
-                       Margin="8,8,8,0"
-                       FontSize="Medium"
-                       TextColor="Crimson"
-                       FontAttributes="Bold"/>
+                           Margin="8,8,8,0"
+                           FontSize="Medium"
+                           TextColor="Crimson"
+                           FontAttributes="Bold"/>
 
                 <!--<Label HorizontalOptions="EndAndExpand"
-                       Text="See All" 
-                       FontAttributes="Bold"
-                       Margin="0,8,8,0" 
-                       FontSize="Medium"
-                       TextColor="DarkGray"/>-->
+                           Text="See All" 
+                           FontAttributes="Bold"
+                           Margin="0,8,8,0" 
+                           FontSize="Medium"
+                           TextColor="DarkGray"/>-->
             </StackLayout>
             <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                 <CollectionView 
-                    ItemsSource="{Binding Books}" 
-                    x:Name="ItemsListView" 
-                    SelectionMode="Single"
-                    SelectedItem="{Binding SelectedBook}">
+                        ItemsSource="{Binding Books}" 
+                        x:Name="ItemsListView" 
+                        SelectionMode="Single"
+                        HeightRequest="100"
+                        SelectedItem="{Binding SelectedBook}"
+                        >
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="6"/>
+                        <GridItemsLayout Orientation="Vertical" Span="6" HorizontalItemSpacing="4"/>
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="8" Margin="4" x:DataType="model:Book">
+                            <Grid Padding="8" Margin="4" x:DataType="model:Book" BackgroundColor="White">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*" />
                                     <RowDefinition Height="3*" />
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
 
 
+                                <ImageButton Source="Assets/3-vertical-dots.png"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="10"
+                                    HeightRequest="16" 
+                                    Grid.Row="0"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=ThreeDotCommand}"		
+                                    CommandParameter="{Binding .}"
+                                  />
+                                
                                 <Image Source="{Binding Url_cover}"
-                                               Grid.Row="0"
-                                               Aspect="AspectFit" 
-                                               WidthRequest="30"
-                                               HeightRequest="150"
-                                               />
-
-
-                                <StackLayout Grid.Row="1">
-                                    <Label Grid.Column="1"
-                                                   VerticalOptions="Center"
-                                                   Text="{Binding Title}"
-                                                   FontAttributes="Bold"
-                                                   TextColor="White"    
+                                                   Grid.Row="1"
+                                                   Aspect="AspectFit" 
+                                                   WidthRequest="30"
+                                                   HeightRequest="150"
                                                    />
+
+
+                                <StackLayout Grid.Row="2">
+                                    <Label Grid.Column="1"
+                                                       VerticalOptions="Center"
+                                                       Text="{Binding Title}"
+                                                       FontAttributes="Bold"
+                                                       TextColor="Black"    
+                                                       />
 
                                     <!--deskripsi buku opsional-->
                                     <Label Text="{Binding Description_book}"
-                                                    Grid.Row="1"
-                                                    Grid.Column="1"
-                                                    VerticalOptions="Start"
-                                                    FontAttributes="Italic"
-                                                    TextColor="White"
-                                                    />
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        VerticalOptions="Start"
+                                                        FontAttributes="Italic"
+                                                        TextColor="Black"
+                                                        />
 
 
                                     <!--<StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                            NumberOfTapsRequired="1"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
-                                            CommandParameter="{Binding .}">
-                                        </TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>-->
+                                            <TapGestureRecognizer 
+                                                NumberOfTapsRequired="1"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
+                                                CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>-->
                                 </StackLayout>
 
                             </Grid>

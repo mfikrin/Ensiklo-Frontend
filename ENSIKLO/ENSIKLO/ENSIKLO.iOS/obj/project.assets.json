@@ -2,6 +2,33 @@
   "version": 3,
   "targets": {
     "Xamarin.iOS,Version=v1.0": {
+      "Acr.UserDialogs/7.2.0.562": {
+        "type": "package",
+        "dependencies": {
+          "BTProgressHUD": "1.3.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        }
+      },
+      "BTProgressHUD/1.3.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -104,6 +131,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
         }
       },
       "System.Buffers/4.5.1": {
@@ -347,9 +389,11 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Acr.UserDialogs": "7.2.0.562",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Http": "6.0.0",
+          "Rg.Plugins.Popup": "2.1.0",
           "System.Text.Json": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
@@ -363,6 +407,33 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
+      "Acr.UserDialogs/7.2.0.562": {
+        "type": "package",
+        "dependencies": {
+          "BTProgressHUD": "1.3.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        }
+      },
+      "BTProgressHUD/1.3.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -465,6 +536,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
         }
       },
       "System.Buffers/4.5.1": {
@@ -708,9 +794,11 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Acr.UserDialogs": "7.2.0.562",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Http": "6.0.0",
+          "Rg.Plugins.Popup": "2.1.0",
           "System.Text.Json": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
@@ -724,6 +812,33 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
+      "Acr.UserDialogs/7.2.0.562": {
+        "type": "package",
+        "dependencies": {
+          "BTProgressHUD": "1.3.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        }
+      },
+      "BTProgressHUD/1.3.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -826,6 +941,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
         }
       },
       "System.Buffers/4.5.1": {
@@ -1069,9 +1199,11 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Acr.UserDialogs": "7.2.0.562",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Http": "6.0.0",
+          "Rg.Plugins.Popup": "2.1.0",
           "System.Text.Json": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
@@ -1085,6 +1217,33 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
+      "Acr.UserDialogs/7.2.0.562": {
+        "type": "package",
+        "dependencies": {
+          "BTProgressHUD": "1.3.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Acr.UserDialogs.dll": {}
+        }
+      },
+      "BTProgressHUD/1.3.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/BTProgressHUD.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -1187,6 +1346,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
         }
       },
       "System.Buffers/4.5.1": {
@@ -1430,9 +1604,11 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Acr.UserDialogs": "7.2.0.562",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Http": "6.0.0",
+          "Rg.Plugins.Popup": "2.1.0",
           "System.Text.Json": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
@@ -1447,6 +1623,49 @@
     }
   },
   "libraries": {
+    "Acr.UserDialogs/7.2.0.562": {
+      "sha512": "AOx6gb2pHSjn38Li/4EAZdQYgKTas9kYXoVJxZJONMbWlrDEUynk7TnqdxhN+yZVLAQpKMqEE5Jw4stZb5m/5w==",
+      "type": "package",
+      "path": "acr.userdialogs/7.2.0.562",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "acr.userdialogs.7.2.0.562.nupkg.sha512",
+        "acr.userdialogs.nuspec",
+        "lib/monoandroid10.0/Acr.UserDialogs.dll",
+        "lib/monoandroid10.0/Acr.UserDialogs.xml",
+        "lib/netstandard2.0/Acr.UserDialogs.dll",
+        "lib/netstandard2.0/Acr.UserDialogs.xml",
+        "lib/uap10.0.19041/Acr.UserDialogs.dll",
+        "lib/uap10.0.19041/Acr.UserDialogs.pri",
+        "lib/uap10.0.19041/Acr.UserDialogs.xml",
+        "lib/uap10.0.19041/Acr.UserDialogs/Acr.UserDialogs.xr.xml",
+        "lib/xamarinios10/Acr.UserDialogs.dll",
+        "lib/xamarinios10/Acr.UserDialogs.xml",
+        "lib/xamarinmac20/Acr.UserDialogs.dll",
+        "lib/xamarinmac20/Acr.UserDialogs.xml",
+        "lib/xamarintvos10/Acr.UserDialogs.dll",
+        "lib/xamarintvos10/Acr.UserDialogs.xml",
+        "readme.txt"
+      ]
+    },
+    "BTProgressHUD/1.3.5": {
+      "sha512": "ePARDST+mV/MISU9aLqeWRv7jNM5AGbAbB2ax+x1ctSPcQEAtOyXwjahLkJD1e6YRmuE4k0WiuCpkF44GZlVAw==",
+      "type": "package",
+      "path": "btprogresshud/1.3.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NOTICE",
+        "btprogresshud.1.3.5.nupkg.sha512",
+        "btprogresshud.nuspec",
+        "icon.png",
+        "lib/xamarinios10/BTProgressHUD.dll",
+        "lib/xamarinios10/BTProgressHUD.pdb",
+        "lib/xamarinios10/BTProgressHUD.xml"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "sha512": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
       "type": "package",
@@ -1654,6 +1873,51 @@
         "microsoft.extensions.primitives.6.0.0.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Rg.Plugins.Popup/2.1.0": {
+      "sha512": "caKjkvimzpUqk4pO/WSFn3uOX43uZNW5rPWCx7eXkOlGG9Br90MTwNVS1nxhtyypB69uUe/0GQPEC3rz+kscbA==",
+      "type": "package",
+      "path": "rg.plugins.popup/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "icon.png",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.dll",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.pdb",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.xml",
+        "lib/net472/Rg.Plugins.Popup.dll",
+        "lib/net472/Rg.Plugins.Popup.pdb",
+        "lib/net472/Rg.Plugins.Popup.xml",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.dll",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.pdb",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.xml",
+        "lib/netstandard2.0/Rg.Plugins.Popup.dll",
+        "lib/netstandard2.0/Rg.Plugins.Popup.pdb",
+        "lib/netstandard2.0/Rg.Plugins.Popup.xml",
+        "lib/tizen80/Rg.Plugins.Popup.dll",
+        "lib/tizen80/Rg.Plugins.Popup.pdb",
+        "lib/tizen80/Rg.Plugins.Popup.xml",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.dll",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.pdb",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.pri",
+        "lib/uap10.0.18362/Rg.Plugins.Popup.xml",
+        "lib/xamarinios10/Rg.Plugins.Popup.dll",
+        "lib/xamarinios10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinios10/Rg.Plugins.Popup.xml",
+        "lib/xamarinmac20/Rg.Plugins.Popup.dll",
+        "lib/xamarinmac20/Rg.Plugins.Popup.pdb",
+        "lib/xamarinmac20/Rg.Plugins.Popup.xml",
+        "lib/xamarintvos10/Rg.Plugins.Popup.dll",
+        "lib/xamarintvos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarintvos10/Rg.Plugins.Popup.xml",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.dll",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.xml",
+        "readme.txt",
+        "rg.plugins.popup.2.1.0.nupkg.sha512",
+        "rg.plugins.popup.nuspec"
       ]
     },
     "System.Buffers/4.5.1": {
@@ -2203,11 +2467,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\ENSIKLO.iOS.csproj",
+      "projectUniqueName": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\ENSIKLO.iOS.csproj",
       "projectName": "ENSIKLO.iOS",
-      "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\ENSIKLO.iOS.csproj",
+      "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\ENSIKLO.iOS.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\obj\\",
+      "outputPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2228,8 +2492,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {
-              "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj"
+            "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {
+              "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj"
             }
           }
         }

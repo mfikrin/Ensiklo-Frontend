@@ -13,6 +13,7 @@ namespace ENSIKLO
             InitializeComponent();
             Routing.RegisterRoute(nameof(BookDetailPage), typeof(BookDetailPage));
             Routing.RegisterRoute(nameof(NewBookPage), typeof(NewBookPage));
+            Routing.RegisterRoute(nameof(BooksPage), typeof(BooksPage));
         }
 
     }

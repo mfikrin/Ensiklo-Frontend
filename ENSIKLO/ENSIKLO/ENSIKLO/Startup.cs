@@ -23,6 +23,7 @@ namespace ENSIKLO
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
+
             //add viewmodels
             services.AddTransient<BookViewModel>();
             services.AddTransient<NewBookViewModel>();
