@@ -1,6 +1,7 @@
 ﻿using ENSIKLO.Models;
 using ENSIKLO.Services;
 using ENSIKLO.Views;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -18,6 +19,7 @@ namespace ENSIKLO.ViewModels
         private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
+        public Command<object> ThreeDotCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
@@ -34,7 +36,24 @@ namespace ENSIKLO.ViewModels
             //BookTapped = new Command<Book>(OnBookSelected);
 
             AddBookCommand = new Command(OnAddBook);
+            ThreeDotCommand = new Command<object>(OnthreeDotClick);
         }
+
+        private async void OnthreeDotClick(object param)
+        {
+            //Book temp = new Book();
+            Book temp = param as Book;
+            Debug.WriteLine(temp.Title);
+            var nav = App.Current.MainPage.Navigation;
+            await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
+        }
+
+        //private void OnthreeDotClick(int32 param)
+        //{
+        //    Debug.WriteLine(param);
+        //}
+
+
 
         //async Task ExecuteLoadBooksCommand()
         //{

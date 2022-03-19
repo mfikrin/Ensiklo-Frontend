@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {}
+    "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {}
   },
   "projects": {
-    "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {
+    "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj",
+        "projectUniqueName": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj",
         "projectName": "ENSIKLO",
-        "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj",
+        "projectPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\ENSIKLO.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\Project_18\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\obj\\",
+        "outputPath": "D:\\Jurusan_IF\\Sem_6\\PPL\\SPLASH SCREEN TPPP\\if3250_2022_18_ensiklo_frontend\\ENSIKLO\\ENSIKLO\\ENSIKLO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Acr.UserDialogs": {
+              "target": "Package",
+              "version": "[7.2.0.562, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -61,6 +65,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             },
             "System.Text.Json": {
               "target": "Package",

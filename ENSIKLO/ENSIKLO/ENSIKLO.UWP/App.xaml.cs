@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Popup = Rg.Plugins.Popup.Popup;
 
 namespace ENSIKLO.UWP
 {
@@ -58,6 +59,10 @@ namespace ENSIKLO.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
                 global::Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental");
                 Xamarin.Forms.Forms.Init(e);
+
+                Popup.Init();
+                // Need that .NET Native has worked
+                Xamarin.Forms.Forms.Init(e, Popup.GetExtraAssemblies());
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

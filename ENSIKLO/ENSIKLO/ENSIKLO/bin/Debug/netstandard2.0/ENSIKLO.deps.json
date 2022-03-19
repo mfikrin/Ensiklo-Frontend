@@ -9,16 +9,26 @@
     ".NETStandard,Version=v2.0/": {
       "ENSIKLO/1.0.0": {
         "dependencies": {
+          "Acr.UserDialogs": "7.2.0.562",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Http": "6.0.0",
           "NETStandard.Library": "2.0.3",
+          "Rg.Plugins.Popup": "2.1.0",
           "System.Text.Json": "6.0.2",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
         },
         "runtime": {
           "ENSIKLO.dll": {}
+        }
+      },
+      "Acr.UserDialogs/7.2.0.562": {
+        "runtime": {
+          "lib/netstandard2.0/Acr.UserDialogs.dll": {
+            "assemblyVersion": "7.2.0.0",
+            "fileVersion": "7.2.0.0"
+          }
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
@@ -129,6 +139,17 @@
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2196"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
         }
       },
       "System.Buffers/4.5.1": {
@@ -264,6 +285,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Acr.UserDialogs/7.2.0.562": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AOx6gb2pHSjn38Li/4EAZdQYgKTas9kYXoVJxZJONMbWlrDEUynk7TnqdxhN+yZVLAQpKMqEE5Jw4stZb5m/5w==",
+      "path": "acr.userdialogs/7.2.0.562",
+      "hashPath": "acr.userdialogs.7.2.0.562.nupkg.sha512"
+    },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -333,6 +361,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-caKjkvimzpUqk4pO/WSFn3uOX43uZNW5rPWCx7eXkOlGG9Br90MTwNVS1nxhtyypB69uUe/0GQPEC3rz+kscbA==",
+      "path": "rg.plugins.popup/2.1.0",
+      "hashPath": "rg.plugins.popup.2.1.0.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

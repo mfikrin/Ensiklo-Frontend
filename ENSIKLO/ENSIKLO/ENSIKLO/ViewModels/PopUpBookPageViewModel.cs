@@ -1,4 +1,7 @@
-﻿using Acr.UserDialogs;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Acr.UserDialogs;
 using ENSIKLO.Models;
 using ENSIKLO.Services;
 using ENSIKLO.Views;
@@ -12,33 +15,32 @@ using Xamarin.Forms;
 namespace ENSIKLO.ViewModels
 {
     [QueryProperty(nameof(BookId), nameof(BookId))]
-    public class BookDetailViewModel : BaseViewModel
+    public class PopUpBookPageViewModel : BaseViewModel
     {
-    
-        private string id_book ;
+        private string id_book;
 
-        private string title ;
+        private string title;
 
-        private string author ;
+        private string author;
 
-        private string publisher ;
+        private string publisher;
 
-        private string year_published ;
+        private string year_published;
 
-        private string description_book ;
+        private string description_book;
 
-        private string book_content ;
+        private string book_content;
 
-        private string url_cover ;
+        private string url_cover;
 
-        private string category ;
+        private string category;
 
-        private string keywords ;
+        private string keywords;
 
         private readonly IBookService _bookService;
         public Command DeleteBookCommand { get; }
 
-        public BookDetailViewModel(IBookService bookService)
+        public PopUpBookPageViewModel(string param, IBookService bookService)
         {
             _bookService = bookService;
 
@@ -47,7 +49,7 @@ namespace ENSIKLO.ViewModels
             //DeleteBookCommand = new Command(async () => await OnDeleteBook());
         }
 
-        
+
 
         public int Id { get; set; }
         public string Title
@@ -112,7 +114,7 @@ namespace ENSIKLO.ViewModels
             {
                 id_book = value;
                 LoadBookId(id_book);
-                
+
             }
         }
 
@@ -135,8 +137,8 @@ namespace ENSIKLO.ViewModels
                     Category = book.Category;
                     Keywords = book.Keywords;
                 }
-                  
-               
+
+
             }
             catch (Exception ex)
             {
@@ -163,7 +165,7 @@ namespace ENSIKLO.ViewModels
             await _bookService.DeleteItemAsync(int.Parse(bookid));
             await Shell.Current.GoToAsync(nameof(BooksPage));
 
-            
+
 
 
 
@@ -180,3 +182,4 @@ namespace ENSIKLO.ViewModels
 
     }
 }
+
