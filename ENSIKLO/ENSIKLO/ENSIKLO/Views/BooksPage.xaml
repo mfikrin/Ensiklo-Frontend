@@ -73,8 +73,8 @@
                                                        TextColor="Black"    
                                                        />
 
-                                    <!--deskripsi buku opsional-->
-                                    <Label Text="{Binding Description_book}"
+                                    <!--ini author aja opsional-->
+                                    <Label Text="{Binding Author}"
                                                         Grid.Row="1"
                                                         Grid.Column="1"
                                                         VerticalOptions="Start"
