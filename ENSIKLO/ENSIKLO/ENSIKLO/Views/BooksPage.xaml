@@ -11,30 +11,18 @@
 
     <ContentPage.Content>
         <StackLayout BackgroundColor="AliceBlue">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Books" 
-                           Margin="8,8,8,0"
-                           FontSize="Medium"
-                           TextColor="Crimson"
-                           FontAttributes="Bold"/>
-
-                <!--<Label HorizontalOptions="EndAndExpand"
-                           Text="See All" 
-                           FontAttributes="Bold"
-                           Margin="0,8,8,0" 
-                           FontSize="Medium"
-                           TextColor="DarkGray"/>-->
-            </StackLayout>
+            
             <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                 <CollectionView 
                         ItemsSource="{Binding Books}" 
+                        Margin="10"
                         x:Name="ItemsListView" 
                         SelectionMode="Single"
                         HeightRequest="100"
                         SelectedItem="{Binding SelectedBook}"
                         >
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="6" HorizontalItemSpacing="4"/>
+                        <GridItemsLayout Orientation="Vertical" Span="6" HorizontalItemSpacing="4" VerticalItemSpacing="4"/>
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
@@ -56,7 +44,7 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=ThreeDotCommand}"		
                                     CommandParameter="{Binding .}"
                                   />
-                                
+
                                 <Image Source="{Binding Url_cover}"
                                                    Grid.Row="1"
                                                    Aspect="AspectFit" 

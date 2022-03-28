@@ -1,23 +1,25 @@
-﻿using System;
+﻿using ENSIKLO.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ENSIKLO.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ENSIKLO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public RegisterPage()
+        public LoginPage()
         {
             InitializeComponent();
-            BindingContext = Startup.Resolve<RegisterViewModel>();
+            BindingContext = Startup.Resolve<LoginViewModel>();
         }
+
 
         //protected override async void OnAppearing()
         //{
@@ -25,7 +27,7 @@ namespace ENSIKLO.Views
         //    var loggedIn = true;
         //    if (loggedIn)
         //    {
-        //        Debug.WriteLine("Sudah pernah login in register page");
+        //        Debug.WriteLine("Sudah pernah login in login page");
         //        await Shell.Current.GoToAsync("//main");
         //    }
         //}

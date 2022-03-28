@@ -2,35 +2,40 @@
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ENSIKLO.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         private readonly IBookService _bookService; // nanti ganti jadi service buat register dan login
-        public Command LoginCommand { get; }
+        public Command SignUpCommand { get; }
 
         public Command TappedCommand { get; }
 
-        public LoginViewModel(IBookService bookService)
+        public RegisterViewModel(IBookService bookService)
         {
+           
+
             _bookService = bookService;
-            LoginCommand = new Command(OnLoginClicked);
+
+            SignUpCommand = new Command(OnClickSignUp);
 
             TappedCommand = new Command(onTapped);
         }
 
-        private async void OnLoginClicked(object obj)
+        private async void OnClickSignUp(object obj)
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//main/home");
+            await Shell.Current.GoToAsync("//main/home");
         }
 
         private async void onTapped(object obj)
         {
-            await Shell.Current.GoToAsync($"//register");
+            await Shell.Current.GoToAsync($"//login");
         }
+
     }
 }

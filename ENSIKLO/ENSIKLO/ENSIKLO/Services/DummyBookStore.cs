@@ -26,6 +26,27 @@ namespace ENSIKLO.Services
                 new Book {
                    Id_book = 4,Title="judul4",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul5",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul6",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul7",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul8",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul9",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul10",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
+                new Book {
+                   Id_book = 4,Title="judul11",Description_book="deskripsi4",Publisher="PT.GRAME",
+                    Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"},
 
             };
         }

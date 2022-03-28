@@ -29,21 +29,28 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
-        <ShellContent Title="Home" Icon="Assets/house_active.png" Route="Home" ContentTemplate="{DataTemplate local:BooksPage}" />
-        <ShellContent Title="Library" Icon="Assets/bookmarks.png" ContentTemplate="{DataTemplate local:BooksPage}" />
-        <ShellContent Title="Catalog" Icon="Assets/local_mall.png" ContentTemplate="{DataTemplate local:BooksPage}" />
-        <ShellContent Title="Profile" Icon="Assets/account_circle.png" ContentTemplate="{DataTemplate local:BooksPage}" />
-        <ShellContent Title="Register" Icon="Assets/account_circle.png" ContentTemplate="{DataTemplate local:RegisterPage}" />
+    <ShellItem Route="register">
+        <ShellContent ContentTemplate="{DataTemplate local:RegisterPage}" FlyoutItemIsVisible="False" />
+    </ShellItem>
+
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" FlyoutItemIsVisible="False" />
+    </ShellItem>
+
+    <TabBar Route="main">
+        <ShellContent Title="Home" Icon="Assets/house_active.png" Route="home" ContentTemplate="{DataTemplate local:BooksPage}" />
+        <ShellContent Title="Library" Icon="Assets/bookmarks.png" ContentTemplate="{DataTemplate local:LibraryPage}" />
+        <ShellContent Title="Catalog" Icon="Assets/local_mall.png" ContentTemplate="{DataTemplate local:CatalogPage}" />
+        <ShellContent Title="Profile" Icon="Assets/account_circle.png" ContentTemplate="{DataTemplate local:ProfilePage}"/>
     </TabBar>
 
     <!--
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    <TabBar>
+    <!--<TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:BooksPage}" />
-    </TabBar>
+    </TabBar>-->
 
 
 </Shell>

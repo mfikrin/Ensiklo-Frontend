@@ -17,7 +17,7 @@
             <Label Text="Url Cover" FontSize="Medium" />
             <Editor Text="{Binding Url_cover, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <Label Text="Author" FontSize="Medium" />
-            <Entry Text="{Binding Author_names, Mode=TwoWay}" FontSize="Medium" />
+            <Entry Text="{Binding Author, Mode=TwoWay}" FontSize="Medium" />
             
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>

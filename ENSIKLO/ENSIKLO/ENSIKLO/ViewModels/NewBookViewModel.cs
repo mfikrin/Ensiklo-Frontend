@@ -44,17 +44,17 @@ namespace ENSIKLO.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(title)
-                && !String.IsNullOrWhiteSpace(author)
-                && !String.IsNullOrWhiteSpace(publisher)
-                && !String.IsNullOrWhiteSpace(year_published)
-                && !String.IsNullOrWhiteSpace(description_book)
-                && !String.IsNullOrWhiteSpace(book_content)
-                && !String.IsNullOrWhiteSpace(url_cover)
-                && !String.IsNullOrWhiteSpace(category)
-                && !String.IsNullOrWhiteSpace(keywords)
-                ;
-            //return true;
+            //return !String.IsNullOrWhiteSpace(title)
+            //    && !String.IsNullOrWhiteSpace(author)
+            //    && !String.IsNullOrWhiteSpace(publisher)
+            //    && !String.IsNullOrWhiteSpace(year_published)
+            //    && !String.IsNullOrWhiteSpace(description_book)
+            //    && !String.IsNullOrWhiteSpace(book_content)
+            //    && !String.IsNullOrWhiteSpace(url_cover)
+            //    && !String.IsNullOrWhiteSpace(category)
+            //    && !String.IsNullOrWhiteSpace(keywords)
+            //    ;
+            return true;
         }
 
         public string Title
