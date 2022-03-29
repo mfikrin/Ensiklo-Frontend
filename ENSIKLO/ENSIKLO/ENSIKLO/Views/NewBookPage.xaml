@@ -49,8 +49,8 @@
                 
                 <Grid ColumnDefinitions="200, *" Grid.Column="0">
                     <Label Text="Categories" FontSize="Medium" Grid.Column="0"/>
-                    <Editor Text="{Binding Category, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
-                    <!--<Picker x:Name="CatPicker" FontSize="Medium" Margin="0" Grid.Column="1" SelectedItem="{Binding Category}"/>-->
+                    <!--<Editor Text="{Binding Category, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>-->
+                    <Picker x:Name="CatPicker" FontSize="Medium" Margin="0" Grid.Column="1" ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Button Text="Add new category" Command="{Binding NewCatCommand}"/>

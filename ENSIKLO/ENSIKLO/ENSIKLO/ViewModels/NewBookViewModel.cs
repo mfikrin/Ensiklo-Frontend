@@ -3,6 +3,8 @@ using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -34,14 +36,30 @@ namespace ENSIKLO.ViewModels
 
         private readonly IBookService _bookService;
 
-        public NewBookViewModel(IBookService bookService)
+        private readonly ICatService _catService;
+
+        private ObservableCollection<String> categories;
+
+        public NewBookViewModel(IBookService bookService, ICatService catService)
         {
             _bookService = bookService;
+            _catService = catService;
+            Categories = new ObservableCollection<String>();
             SaveCommand = new Command(async () => await OnSave(), ValidateSave);
             CancelCommand = new Command(OnCancel);
             NewCatCommand = new Command(OnNewCat);
             PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
+        }
+
+        public ObservableCollection<String> Categories
+        {
+            get => categories;
+            set
+            {
+                categories = value;
+                OnPropertyChanged(nameof(Categories));
+            }
         }
 
         private bool ValidateSave()
@@ -126,6 +144,27 @@ namespace ENSIKLO.ViewModels
         private async void OnNewCat()
         {
             await Shell.Current.GoToAsync(nameof(NewCategoryPage));
+        }
+
+        
+
+        public async void PopulateCat()
+        {
+            try
+            {
+                Categories.Clear();
+
+                var cats = await _catService.GetCatsAsync();
+                foreach (var cat in cats)
+                {
+                    Categories.Add(cat.Cat_name);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private async Task OnSave()
