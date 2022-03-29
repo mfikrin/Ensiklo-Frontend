@@ -27,25 +27,25 @@ namespace ENSIKLO.Services
                    Id_book = 4,Title="judul4",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis4"},
                 new Book {
-                   Id_book = 4,Title="judul5",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 5,Title="judul5",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis5"},
                 new Book {
-                   Id_book = 4,Title="judul6",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 6,Title="judul6",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis6"},
                 new Book {
-                   Id_book = 4,Title="judul7",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 7,Title="judul7",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis7"},
                 new Book {
-                   Id_book = 4,Title="judul8",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 8,Title="judul8",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis8"},
                 new Book {
-                   Id_book = 4,Title="judul9",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 9,Title="judul9",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis9"},
                 new Book {
-                   Id_book = 4,Title="judul10",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 10,Title="judul10",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis10"},
                 new Book {
-                   Id_book = 4,Title="judul11",Description_book="deskripsi4",Publisher="PT.GRAME",
+                   Id_book = 11,Title="judul11",Description_book="deskripsi4",Publisher="PT.GRAME",
                     Url_cover="https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg",Author="Penulis11"},
 
             };
