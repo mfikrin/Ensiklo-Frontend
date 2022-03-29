@@ -3,12 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ENSIKLO.Views.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Logout"
-                Command="{Binding LogoutCommand}">
+        <ScrollView Orientation="Vertical">
+            <StackLayout BackgroundColor="WhiteSmoke">
+                <StackLayout BackgroundColor="WhiteSmoke" Margin="45 45 45 45">
 
-            </Button>
-        </StackLayout>
-        
+                    <Label Text="Name" TextColor="Black" FontSize="35" FontAttributes="Bold"/>
+                    <Label Text="Email" TextColor="Gray" FontSize="20" Margin="0, 0, 0, 20"/>
+
+                    <Button Text="Logout" CornerRadius="10" BorderColor="#009BF0" BackgroundColor="Transparent" TextColor="#009BF0" HorizontalOptions="Start"
+                        Command="{Binding LogoutCommand}">
+                    </Button>
+
+                    <!--untuk admin, yang bagian ini dihapus-->
+                    <Label Text="Finished books" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 35, 0, 0"/>
+                    <!--collection view buku yang udah dibaca (harusnya di library_user ntar ada tanda dia udah baca bukunya apa belum, ambil sql yang udah-->
+
+
+                </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>
