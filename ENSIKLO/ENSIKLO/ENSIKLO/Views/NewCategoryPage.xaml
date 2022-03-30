@@ -10,7 +10,7 @@
                     <Label Text="Add new category" TextColor="Black" FontSize="35" FontAttributes="Bold" Margin="0, 0, 0, 25"/>
                     <Grid ColumnDefinitions="200, *">
                         <Label Text="Category Name" TextColor="Black" FontSize="Medium" Grid.Column="0"/>
-                        <Editor Text="{Binding Author, Mode=TwoWay}" FontSize="Medium" Grid.Column="1" BackgroundColor="WhiteSmoke"/>
+                        <Editor Text="{Binding Cat_name, Mode=TwoWay}" FontSize="Medium" Grid.Column="1" BackgroundColor="WhiteSmoke"/>
                     </Grid>
 
                     <StackLayout Orientation="Horizontal" Margin="0, 30, 0, 0">

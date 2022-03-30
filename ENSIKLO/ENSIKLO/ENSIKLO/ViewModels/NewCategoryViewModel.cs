@@ -1,19 +1,33 @@
-﻿using System;
+﻿using ENSIKLO.Models;
+using ENSIKLO.Services;
+using ENSIKLO.Views;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ENSIKLO.ViewModels
 {
-    public class NewCategoryViewModel
+    public class NewCategoryViewModel : BaseViewModel
     {
-        public NewCategoryViewModel()
+
+        public int id_cat;
+
+        public string cat_name;
+
+        private readonly ICatService _catService;
+
+        public NewCategoryViewModel(ICatService catService)
         {
-            //SaveCommand = new Command(async () => await OnSave(), ValidateSave);
-            SaveCommand = new Command(OnSave);
+            SaveCommand = new Command(async () => await OnSave(), ValidateSaveCat);
+            _catService = catService;
+            //SaveCommand = new Command(OnSave);
             CancelCommand = new Command(OnCancel);
-            //PropertyChanged +=
-            //    (_, __) => SaveCommand.ChangeCanExecute();
+
+            PropertyChanged +=
+                (_, __) => SaveCommand.ChangeCanExecute();
         }
 
         private async void OnCancel()
@@ -22,13 +36,41 @@ namespace ENSIKLO.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        private async void OnSave()
+        private async Task OnSave()
         {
-            // This will pop the current page off the navigation stack
-            Console.WriteLine("tambah buku");
+            Debug.WriteLine("tambah cat");
+
+            try
+            {
+                var cat = new Category
+                {
+
+                    Cat_name = Cat_name
+                };
+
+                await _catService.AddCatAsync(cat);
+
+                await Shell.Current.GoToAsync(nameof(NewBookPage));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+
+        private bool ValidateSaveCat()
+        {
+            return !String.IsNullOrWhiteSpace(cat_name);
+            //return true;
+        }
+
+        public string Cat_name
+        {
+            get => cat_name;
+            set => SetProperty(ref cat_name, value);
+        }
     }
 }
