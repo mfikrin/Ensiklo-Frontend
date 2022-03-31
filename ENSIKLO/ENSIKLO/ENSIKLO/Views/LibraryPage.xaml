@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ENSIKLO.Views.LibraryPage"
+             xmlns:model="clr-namespace:ENSIKLO.Models"
+             xmlns:local="clr-namespace:ENSIKLO.ViewModels"
+             x:Name="BrowseBooksPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="AliceBlue">
+
+            <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView 
+                        ItemsSource="{Binding Books}" 
+                        Margin="10"
+                        x:Name="ItemsListView" 
+                        SelectionMode="Single"
+                        HeightRequest="100"
+                        SelectedItem="{Binding SelectedBook}"
+                        >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="6" HorizontalItemSpacing="4" VerticalItemSpacing="4"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="8" Margin="4" x:DataType="model:Book" BackgroundColor="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*" />
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+
+                                <ImageButton Source="Assets/3-vertical-dots.png"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="10"
+                                    HeightRequest="16" 
+                                    Grid.Row="0"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=ThreeDotCommand}"		
+                                    CommandParameter="{Binding .}"
+                                  />
+
+                                <Image Source="{Binding Url_cover}"
+                                                   Grid.Row="1"
+                                                   Aspect="AspectFit" 
+                                                   WidthRequest="30"
+                                                   HeightRequest="150"
+                                                   />
+
+
+                                <StackLayout Grid.Row="2">
+                                    <Label Grid.Column="1"
+                                                       VerticalOptions="Center"
+                                                       Text="{Binding Title}"
+                                                       FontAttributes="Bold"
+                                                       TextColor="Black"    
+                                                       />
+
+                                    <!--deskripsi buku opsional-->
+                                    <Label Text="{Binding Description_book}"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        VerticalOptions="Start"
+                                                        FontAttributes="Italic"
+                                                        TextColor="Black"
+                                                        />
+
+
+                                    <!--<StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                NumberOfTapsRequired="1"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
+                                                CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>-->
+                                </StackLayout>
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
