@@ -45,10 +45,9 @@
     </TabBar>
 
     <TabBar Route="admin">
-        <ShellContent Title="Home" Icon="Assets/house_active.png" Route="home" ContentTemplate="{DataTemplate local:BooksPage}" />
-        <ShellContent Title="Library" Icon="Assets/bookmarks.png" Route="library" ContentTemplate="{DataTemplate local:LibraryPage}" />
-        <ShellContent Title="Catalog" Icon="Assets/local_mall.png" Route="catalog" ContentTemplate="{DataTemplate local:CatalogPage}" />
-        <ShellContent Title="Profile" Icon="Assets/account_circle.png" Route="profile" ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        <ShellContent Title="Home" Icon="Assets/house_active.png" Route="homeAdmin" ContentTemplate="{DataTemplate local:AdminHomePage}" />
+        <ShellContent Title="Catalog" Icon="Assets/local_mall.png" Route="catalogAdmin" ContentTemplate="{DataTemplate local:AdminHomePage}" />
+        <ShellContent Title="Profile" Icon="Assets/account_circle.png" Route="profile" ContentTemplate="{DataTemplate local:AdminHomePage}"/>
     </TabBar>
 
 
