@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ENSIKLO.Views.NewBookPage"
@@ -25,10 +25,7 @@
                     <Label Text="Publisher" FontSize="Medium" Grid.Column="0"/>
                     <renderers:RoundedEditor Text="{Binding Publisher, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
                 </Grid>
-                <Grid Grid.Column="1">
-                    <Label Text="Year" FontSize="Medium" Grid.Column="0"/>
-                    <renderers:RoundedEditor Text="{Binding Year_published, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
-                </Grid>
+            
             </Grid>
 
             <Grid ColumnDefinitions="200, *">
@@ -57,6 +54,26 @@
                 <Label Text="Keywords" FontSize="Medium" Grid.Column="0"/>
                 <renderers:RoundedEditor Text="{Binding Keywords, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
             </Grid>
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Year" FontSize="Medium" Grid.Column="0"/>
+                <renderers:RoundedEditor Text="{Binding Year, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Month" FontSize="Medium" Grid.Column="0"/>
+                <renderers:RoundedEditor Text="{Binding Month, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Day" FontSize="Medium" Grid.Column="0"/>
+                <renderers:RoundedEditor Text="{Binding Day, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
+            </Grid>
+
+            <!--<Grid ColumnDefinitions="200, *">
+                <Label Text="Day" FontSize="Medium" Grid.Column="0"/>
+                <renderers:RoundedEditor Text="{Binding Year_published, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
+            </Grid>-->
 
             <StackLayout Orientation="Horizontal" Margin="0, 30, 0, 0">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>

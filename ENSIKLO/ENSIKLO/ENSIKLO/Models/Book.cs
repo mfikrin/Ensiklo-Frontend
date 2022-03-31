@@ -20,7 +20,7 @@ namespace ENSIKLO.Models
         public string Publisher { get; set; }
 
         [JsonPropertyName("year_published")]
-        public string Year_published { get; set; }
+        public DateTime Year_published { get; set; }
 
         [JsonPropertyName("description_book")]
         public string Description_book { get; set; }
@@ -28,11 +28,17 @@ namespace ENSIKLO.Models
         [JsonPropertyName("book_content")]
         public string Book_content { get; set; }
 
+        [JsonPropertyName("page")]
+        public int Page { get; set; }
+
         [JsonPropertyName("url_cover")]
         public string Url_cover { get; set; }
 
         [JsonPropertyName("category")]
         public string Category { get; set; }
+
+        [JsonPropertyName("added_time")]
+        public DateTime Added_time { get; set; }
 
         [JsonPropertyName("keywords")]
         public string Keywords { get; set; }
