@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout BackgroundColor="WhiteSmoke">
-                <StackLayout BackgroundColor="WhiteSmoke" Margin="45 45 45 45">
+                <StackLayout BackgroundColor="WhiteSmoke" Margin="45, 45, 45, 45">
 
                     <Label Text="Name" TextColor="Black" FontSize="35" FontAttributes="Bold"/>
                     <Label Text="Email" TextColor="Gray" FontSize="20" Margin="0, 0, 0, 20"/>
@@ -20,6 +20,7 @@
 
 
                 </StackLayout>
+            </StackLayout>
         </ScrollView>
 
     </ContentPage.Content>
