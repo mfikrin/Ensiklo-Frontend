@@ -19,14 +19,26 @@
                 <Editor Text="{Binding Author, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
             </Grid>
 
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Publisher" FontSize="Medium" Grid.Column="0"/>
+                <Editor Text="{Binding Publisher, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+            </Grid>
+
             <Grid>
-                <Grid ColumnDefinitions="200, *" Grid.Column="0">
-                    <Label Text="Publisher" FontSize="Medium" Grid.Column="0"/>
-                    <Editor Text="{Binding Publisher, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+                <Grid Grid.Column="0" ColumnDefinitions="200, *">
+                    <Label Text="Date published" FontSize="Medium" Grid.Column="0"/>
                 </Grid>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" ColumnDefinitions="50, *">
+                    <Label Text="Day" FontSize="Medium" Grid.Column="0"/>
+                    <Editor Text="{Binding Day, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+                </Grid>
+                <Grid Grid.Column="2" ColumnDefinitions="80, *">
+                    <Label Text="Month" FontSize="Medium" Grid.Column="0"/>
+                    <Editor Text="{Binding Month, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+                </Grid>
+                <Grid Grid.Column="3" ColumnDefinitions="50, *">
                     <Label Text="Year" FontSize="Medium" Grid.Column="0"/>
-                    <Editor Text="{Binding Year_published, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+                    <Editor Text="{Binding Year, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
                 </Grid>
             </Grid>
 
@@ -34,7 +46,12 @@
                 <Label Text="Book content" FontSize="Medium" Grid.Column="0"/>
                 <Editor Text="{Binding Book_content, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
             </Grid>
-            
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Total page count" FontSize="Medium" Grid.Column="0"/>
+                <Editor Text="{Binding Page, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
+            </Grid>
+
             <Grid ColumnDefinitions="200, *">
                 <Label Text="Description Book" FontSize="Medium" Grid.Column="0"/>
                 <Editor Text="{Binding Description_book, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Grid.Column="1"/>
