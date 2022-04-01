@@ -11,15 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace ENSIKLO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewBookPage : ContentPage
+    public partial class NewCategoryPage : ContentPage
     {
-        private readonly NewBookViewModel _newBooksViewModel;
-        public NewBookPage()
+        public NewCategoryPage()
         {
             InitializeComponent();
-            _newBooksViewModel = Startup.Resolve<NewBookViewModel>();
-            BindingContext = _newBooksViewModel;
-            _newBooksViewModel?.PopulateCat();
+            BindingContext = Startup.Resolve<NewCategoryViewModel>();
         }
     }
 }

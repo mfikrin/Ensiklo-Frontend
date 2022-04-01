@@ -23,7 +23,7 @@ namespace ENSIKLO.ViewModels
 
         private string publisher ;
 
-        private string year_published ;
+        private DateTime year_published ;
 
         private string description_book ;
 
@@ -68,7 +68,7 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref publisher, value);
         }
 
-        public string Year_published
+        public DateTime Year_published
         {
             get => year_published;
             set => SetProperty(ref year_published, value);

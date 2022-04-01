@@ -1,7 +1,10 @@
 ﻿using ENSIKLO.Models;
 using ENSIKLO.Services;
+using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,42 +22,70 @@ namespace ENSIKLO.ViewModels
 
         public string publisher;
 
-        public string year_published;
+        public int year;
+
+        public int month;
+
+        public int day;
+
+        public DateTime year_published;
 
         public string description_book;
 
         public string book_content;
 
+        public int page;
+
         public string url_cover;
 
         public string category;
+
+        public DateTime added_time;
 
         public string keywords;
 
         private readonly IBookService _bookService;
 
-        public NewBookViewModel(IBookService bookService)
+        private readonly ICatService _catService;
+
+        private ObservableCollection<String> categories;
+
+        public NewBookViewModel(IBookService bookService, ICatService catService)
         {
             _bookService = bookService;
+            _catService = catService;
+            Categories = new ObservableCollection<String>();
             SaveCommand = new Command(async () => await OnSave(), ValidateSave);
             CancelCommand = new Command(OnCancel);
+            NewCatCommand = new Command(OnNewCat);
             PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
 
+        public ObservableCollection<String> Categories
+        {
+            get => categories;
+            set
+            {
+                categories = value;
+                OnPropertyChanged(nameof(Categories));
+            }
+        }
+
         private bool ValidateSave()
         {
-            //return !String.IsNullOrWhiteSpace(title)
-            //    && !String.IsNullOrWhiteSpace(author)
-            //    && !String.IsNullOrWhiteSpace(publisher)
-            //    && !String.IsNullOrWhiteSpace(year_published)
-            //    && !String.IsNullOrWhiteSpace(description_book)
-            //    && !String.IsNullOrWhiteSpace(book_content)
-            //    && !String.IsNullOrWhiteSpace(url_cover)
-            //    && !String.IsNullOrWhiteSpace(category)
-            //    && !String.IsNullOrWhiteSpace(keywords)
-            //    ;
-            return true;
+            return !String.IsNullOrWhiteSpace(title)
+                && !String.IsNullOrWhiteSpace(author)
+                && !String.IsNullOrWhiteSpace(publisher)
+                && !String.IsNullOrWhiteSpace(year_published.ToString())
+                && !String.IsNullOrWhiteSpace(description_book)
+                && !String.IsNullOrWhiteSpace(book_content)
+                && !String.IsNullOrWhiteSpace(page.ToString())
+                && !String.IsNullOrWhiteSpace(url_cover)
+                && !String.IsNullOrWhiteSpace(category)
+                && !String.IsNullOrWhiteSpace(keywords)
+                ;
+            //return true;
         }
 
         public string Title
@@ -75,7 +106,24 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref publisher, value);
         }
 
-        public string Year_published
+        public int Year
+        {
+            get => year;
+            set => SetProperty(ref year, value);
+        }
+
+        public int Month
+        {
+            get => month;
+            set => SetProperty(ref month, value);
+        }
+
+        public int Day
+        {
+            get => day;
+            set => SetProperty(ref day, value);
+        }
+        public DateTime Year_published
         {
             get => year_published;
             set => SetProperty(ref year_published, value);
@@ -92,6 +140,11 @@ namespace ENSIKLO.ViewModels
             get => book_content;
             set => SetProperty(ref book_content, value);
         }
+        public int Page
+        {
+            get => page;
+            set => SetProperty(ref page, value);
+        }
 
         public string Url_cover
         {
@@ -105,6 +158,12 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref category, value);
         }
 
+        public DateTime Added_time
+        {
+            get => added_time;
+            set => SetProperty(ref added_time, value);
+        }
+
         public string Keywords
         {
             get => keywords;
@@ -113,17 +172,49 @@ namespace ENSIKLO.ViewModels
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+        public Command NewCatCommand { get; }
 
         private async void OnCancel()
         {
             // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync($"//home");
+        }
+
+        private async void OnNewCat()
+        {
+            await Shell.Current.GoToAsync(nameof(NewCategoryPage));
+        }
+
+        
+
+        public async void PopulateCat()
+        {
+            try
+            {
+                Categories.Clear();
+
+                var cats = await _catService.GetCatsAsync();
+                foreach (var cat in cats)
+                {
+                    Categories.Add(cat.Cat_name);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private async Task OnSave()
         {
             try
             {
+                //YYYY.MM,DD
+                year_published = new DateTime(Year, Month, Day);
+                Debug.WriteLine(year_published);
+                added_time = DateTime.Now;
+                Debug.WriteLine(added_time);
                 var book = new Book
                 {
              
@@ -133,8 +224,10 @@ namespace ENSIKLO.ViewModels
                     Year_published = Year_published,
                     Description_book = Description_book,
                     Book_content = Book_content,
+                    Page = Page,
                     Url_cover = Url_cover,
                     Category = Category,
+                    Added_time = Added_time,
                     Keywords = Keywords
                 };
 

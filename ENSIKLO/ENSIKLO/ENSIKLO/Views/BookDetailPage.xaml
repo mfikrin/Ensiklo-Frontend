@@ -14,5 +14,6 @@
         <Label Text="Description:" FontSize="Medium" TextColor="Black"/>
         <Label Text="{Binding Description_book}" FontSize="Small" TextColor="Black"/>
         <Label Text="{Binding Publisher}" FontSize="Small" TextColor="Black"/>
+        <Label Text="{Binding Year_published}" FontSize="Small" TextColor="Black"/>
     </StackLayout>
 </ContentPage>
