@@ -44,14 +44,14 @@ namespace ENSIKLO.ViewModels
             TappedCommand = new Command(onTapped);
         }
 
-        private async void OnthreeDotClick(object param)
-        {
-            //Book temp = new Book();
-            Book temp = param as Book;
-            Debug.WriteLine(temp.Title);
-            var nav = App.Current.MainPage.Navigation;
-            await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
-        }
+        //private async void OnthreeDotClick(object param)
+        //{
+        //    //Book temp = new Book();
+        //    Book temp = param as Book;
+        //    Debug.WriteLine(temp.Title);
+        //    var nav = App.Current.MainPage.Navigation;
+        //    await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
+        //}
 
         //private void OnthreeDotClick(int32 param)
         //{

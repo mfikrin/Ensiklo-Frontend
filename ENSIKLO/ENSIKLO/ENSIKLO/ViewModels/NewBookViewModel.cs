@@ -210,6 +210,7 @@ namespace ENSIKLO.ViewModels
         {
             try
             {
+                //YYYY.MM,DD
                 year_published = new DateTime(Year, Month, Day);
                 Debug.WriteLine(year_published);
                 added_time = DateTime.Now;
