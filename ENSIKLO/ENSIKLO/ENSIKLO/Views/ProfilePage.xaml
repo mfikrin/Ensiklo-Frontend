@@ -7,8 +7,8 @@
             <StackLayout BackgroundColor="WhiteSmoke">
                 <StackLayout BackgroundColor="WhiteSmoke" Margin="45, 45, 45, 45">
 
-                    <Label Text="Name" TextColor="Black" FontSize="35" FontAttributes="Bold"/>
-                    <Label Text="Email" TextColor="Gray" FontSize="20" Margin="0, 0, 0, 20"/>
+                    <Label Text="{Binding Name}" TextColor="Black" FontSize="35" FontAttributes="Bold"/>
+                    <Label Text="{Binding Email}" TextColor="Gray" FontSize="20" Margin="0, 0, 0, 20"/>
 
                     <Button Text="Logout" CornerRadius="10" BorderColor="#009BF0" BackgroundColor="Transparent" TextColor="#009BF0" HorizontalOptions="Start"
                         Command="{Binding LogoutCommand}">

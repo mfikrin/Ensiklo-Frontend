@@ -19,6 +19,8 @@ namespace ENSIKLO
             MainPage = new AppShell();
         }
 
+        public int userID { get; set; }
+
         protected override void OnStart()
         {
         }

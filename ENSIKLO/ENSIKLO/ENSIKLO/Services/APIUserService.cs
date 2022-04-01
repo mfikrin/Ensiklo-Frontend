@@ -34,10 +34,23 @@ namespace ENSIKLO.Services
             throw new NotImplementedException();
         }
 
-        public Task<User> GetUserAsync(int id)
+        public async Task<User> GetUserAsync(int id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync($"User/{id}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+            //Debug.WriteLine(responseAsString);
+
+            var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
+
+            //Debug.WriteLine(removeSqrBracket);
+
+            //responseAsString = @"{""id_book"":1,""title"":""test judul"",""author"":""siapa"",""publisher"":""Gra"",""year_published"":""2001"",""description_book"":""bagus bgt lho"",""book_content"":""https://www.google.com"",""url_cover"":""https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"",""category"":""science"",""keywords"":""science, nature""}";
+            return JsonSerializer.Deserialize<User>(removeSqrBracket);
         }
+
 
         public Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false)
         {
@@ -47,6 +60,24 @@ namespace ENSIKLO.Services
         public Task<bool> UpdateUserAsync(User item)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<int> GetUserID(string email)
+        {
+            var response = await _httpClient.GetAsync($"User/id/{email}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+            //Debug.WriteLine(responseAsString);
+
+            var removeSqrBracket = responseAsString.Substring(12);
+            var remove2char = removeSqrBracket.Substring(0, removeSqrBracket.Length - 2);
+
+            //Debug.WriteLine(remove2char);
+
+            //removesqrbracket {"id_user":3}
+            return int.Parse(remove2char);
         }
     }
 }

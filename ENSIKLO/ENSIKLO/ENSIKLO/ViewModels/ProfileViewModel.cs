@@ -2,6 +2,7 @@
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
@@ -9,23 +10,41 @@ namespace ENSIKLO.ViewModels
 {
     public class ProfileViewModel : BaseViewModel
     {
-        private readonly IBookService _bookService; // nanti ganti jadi service buat register dan login
+        private readonly IUserService _userService; // nanti ganti jadi service buat register dan login
         public Command LogoutCommand { get; }
+        public string email;
+        public string userName;
 
-        public ProfileViewModel(IBookService bookService)
+        public ProfileViewModel(IUserService userService)
         {
-
-
-            _bookService = bookService;
-
+            _userService = userService;
             LogoutCommand = new Command(OnClickLogout);
-
-            
         }
 
         private async void OnClickLogout(object obj)
         {
+            ((App)App.Current).userID = -1;
             await Shell.Current.GoToAsync($"//login");
+        }
+
+        public async void GetData()
+        {
+            var user = await _userService.GetUserAsync(((App)App.Current).userID);
+            email = user.Email;
+            userName = user.Username;
+            Debug.WriteLine(email);
+            Debug.WriteLine(userName);
+            
+        }
+
+        public string Email
+        {
+            get { return email; }
+        }
+
+        public string Name
+        {
+            get { return userName; }
         }
     }
 }

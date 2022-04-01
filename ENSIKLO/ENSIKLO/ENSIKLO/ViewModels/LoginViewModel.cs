@@ -2,6 +2,7 @@
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
@@ -9,14 +10,22 @@ namespace ENSIKLO.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private readonly IBookService _bookService; // nanti ganti jadi service buat register dan login
+        private readonly IUserService _userService; // nanti ganti jadi service buat register dan login
         public Command LoginCommand { get; }
 
         public Command TappedCommand { get; }
 
-        public LoginViewModel(IBookService bookService)
+        public string email;
+
+        public string Email
         {
-            _bookService = bookService;
+            get => email;
+            set => SetProperty(ref email, value);
+        }
+
+        public LoginViewModel(IUserService userService)
+        {
+            _userService = userService;
             LoginCommand = new Command<string>(OnLoginClicked);
 
             TappedCommand = new Command(onTapped);
@@ -41,6 +50,9 @@ namespace ENSIKLO.ViewModels
             await Shell.Current.GoToAsync("//admin/homeAdmin");
             //await Shell.Current.GoToAsync($"//main/home");
             //await Shell.Current.GoToAsync($"//admin/homeAdmin");
+
+            //Debug.WriteLine(await _userService.GetUserID(email));
+            ((App)App.Current).userID = await _userService.GetUserID(email);
 
         }
 
