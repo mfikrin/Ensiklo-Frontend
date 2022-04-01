@@ -1,7 +1,9 @@
 ﻿using ENSIKLO.Models;
 using ENSIKLO.Services;
+using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,28 +46,46 @@ namespace ENSIKLO.ViewModels
 
         private readonly IBookService _bookService;
 
-        public NewBookViewModel(IBookService bookService)
+        private readonly ICatService _catService;
+
+        private ObservableCollection<String> categories;
+
+        public NewBookViewModel(IBookService bookService, ICatService catService)
         {
             _bookService = bookService;
+            _catService = catService;
+            Categories = new ObservableCollection<String>();
             SaveCommand = new Command(async () => await OnSave(), ValidateSave);
             CancelCommand = new Command(OnCancel);
+            NewCatCommand = new Command(OnNewCat);
             PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
 
+        public ObservableCollection<String> Categories
+        {
+            get => categories;
+            set
+            {
+                categories = value;
+                OnPropertyChanged(nameof(Categories));
+            }
+        }
+
         private bool ValidateSave()
         {
-            //return !String.IsNullOrWhiteSpace(title)
-            //    && !String.IsNullOrWhiteSpace(author)
-            //    && !String.IsNullOrWhiteSpace(publisher)
-            //    && !String.IsNullOrWhiteSpace(year_published)
-            //    && !String.IsNullOrWhiteSpace(description_book)
-            //    && !String.IsNullOrWhiteSpace(book_content)
-            //    && !String.IsNullOrWhiteSpace(url_cover)
-            //    && !String.IsNullOrWhiteSpace(category)
-            //    && !String.IsNullOrWhiteSpace(keywords)
-            //    ;
-            return true;
+            return !String.IsNullOrWhiteSpace(title)
+                && !String.IsNullOrWhiteSpace(author)
+                && !String.IsNullOrWhiteSpace(publisher)
+                && !String.IsNullOrWhiteSpace(year_published.ToString())
+                && !String.IsNullOrWhiteSpace(description_book)
+                && !String.IsNullOrWhiteSpace(book_content)
+                && !String.IsNullOrWhiteSpace(page.ToString())
+                && !String.IsNullOrWhiteSpace(url_cover)
+                && !String.IsNullOrWhiteSpace(category)
+                && !String.IsNullOrWhiteSpace(keywords)
+                ;
+            //return true;
         }
 
         public string Title
@@ -120,7 +140,6 @@ namespace ENSIKLO.ViewModels
             get => book_content;
             set => SetProperty(ref book_content, value);
         }
-
         public int Page
         {
             get => page;
@@ -153,11 +172,38 @@ namespace ENSIKLO.ViewModels
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+        public Command NewCatCommand { get; }
 
         private async void OnCancel()
         {
             // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync($"//home");
+        }
+
+        private async void OnNewCat()
+        {
+            await Shell.Current.GoToAsync(nameof(NewCategoryPage));
+        }
+
+        
+
+        public async void PopulateCat()
+        {
+            try
+            {
+                Categories.Clear();
+
+                var cats = await _catService.GetCatsAsync();
+                foreach (var cat in cats)
+                {
+                    Categories.Add(cat.Cat_name);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private async Task OnSave()
