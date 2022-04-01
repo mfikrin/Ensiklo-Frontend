@@ -28,6 +28,9 @@ namespace ENSIKLO
             services.AddTransient<BookViewModel>();
             services.AddTransient<NewBookViewModel>();
             services.AddTransient<BookDetailViewModel>();
+            services.AddTransient<RegisterViewModel>();
+            services.AddTransient<LoginViewModel>();
+            services.AddTransient<ProfileViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }

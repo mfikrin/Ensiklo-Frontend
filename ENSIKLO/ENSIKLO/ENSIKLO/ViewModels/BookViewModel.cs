@@ -19,7 +19,9 @@ namespace ENSIKLO.ViewModels
         private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
-        public Command<object> ThreeDotCommand { get; }
+        //public Command<object> ThreeDotCommand { get; }
+
+        public Command TappedCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
@@ -36,17 +38,20 @@ namespace ENSIKLO.ViewModels
             //BookTapped = new Command<Book>(OnBookSelected);
 
             AddBookCommand = new Command(OnAddBook);
-            ThreeDotCommand = new Command<object>(OnthreeDotClick);
+            
+            //ThreeDotCommand = new Command<object>(OnthreeDotClick);
+
+            TappedCommand = new Command(onTapped);
         }
 
-        private async void OnthreeDotClick(object param)
-        {
-            //Book temp = new Book();
-            Book temp = param as Book;
-            Debug.WriteLine(temp.Title);
-            var nav = App.Current.MainPage.Navigation;
-            await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
-        }
+        //private async void OnthreeDotClick(object param)
+        //{
+        //    //Book temp = new Book();
+        //    Book temp = param as Book;
+        //    Debug.WriteLine(temp.Title);
+        //    var nav = App.Current.MainPage.Navigation;
+        //    await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
+        //}
 
         //private void OnthreeDotClick(int32 param)
         //{
@@ -139,6 +144,11 @@ namespace ENSIKLO.ViewModels
         private async void OnAddBook(object obj)
         {
             await Shell.Current.GoToAsync(nameof(NewBookPage));
+        }
+
+        private async void onTapped(object obj)
+        {
+            await Shell.Current.GoToAsync("//catalog");
         }
     }
 }
