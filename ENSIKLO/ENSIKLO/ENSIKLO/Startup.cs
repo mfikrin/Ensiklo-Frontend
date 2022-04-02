@@ -29,6 +29,12 @@ namespace ENSIKLO
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
+            services.AddHttpClient<IUserService, APIUserService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:49067/api/");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
 
             //add viewmodels
             services.AddTransient<BookViewModel>();
@@ -38,6 +44,7 @@ namespace ENSIKLO
             services.AddTransient<LoginViewModel>();
             services.AddTransient<ProfileViewModel>();
             services.AddTransient<NewCategoryViewModel>();
+            services.AddTransient<AdminPageViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }

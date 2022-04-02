@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace ENSIKLO.Services
 {
-    internal interface IUserService
+    public interface IUserService
     {
-        Task<bool> AddItemAsync(User item);
-        Task<bool> UpdateItemAsync(User item);
-        Task<bool> DeleteItemAsync(int id);
-        Task<Book> GetItemAsync(int id);
-        Task<IEnumerable<Book>> GetItemsAsync(bool forceRefresh = false);
+        Task<bool> AddUserAsync(User item);
+        Task<bool> UpdateUserAsync(User item);
+        Task<bool> DeleteUserAsync(int id);
+        Task<User> GetUserAsync(int id);
+        Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false);
+        Task<int> GetUserID(string email);
+
     }
 }
