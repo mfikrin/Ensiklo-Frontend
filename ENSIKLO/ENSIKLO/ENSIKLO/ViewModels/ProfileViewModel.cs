@@ -2,6 +2,7 @@
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
@@ -34,17 +35,30 @@ namespace ENSIKLO.ViewModels
             userName = user.Username;
             Debug.WriteLine(email);
             Debug.WriteLine(userName);
-            
+            Email = email;
+            Name = userName;
         }
 
         public string Email
         {
-            get { return email; }
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged(nameof(Email));
+            }
         }
-
+        
         public string Name
         {
-            get { return userName; }
+            get => userName;
+            set
+            {
+                userName = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
+
+
     }
 }
