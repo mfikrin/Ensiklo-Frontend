@@ -13,7 +13,5 @@ namespace ENSIKLO.Services
         Task<bool> DeleteUserAsync(int id);
         Task<User> GetUserAsync(int id);
         Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false);
-        Task<int> GetUserID(string email);
-
     }
 }
