@@ -38,7 +38,7 @@ namespace ENSIKLO.ViewModels
 
 
 
-            await Shell.Current.GoToAsync($"//admin/homeAdmin");
+            await Shell.Current.GoToAsync("//admin/homeAdmin");
             //await Shell.Current.GoToAsync($"//main/home");
             //await Shell.Current.GoToAsync($"//admin/homeAdmin");
 
@@ -46,7 +46,7 @@ namespace ENSIKLO.ViewModels
 
         private async void onTapped(object obj)
         {
-            await Shell.Current.GoToAsync($"//register");
+            await Shell.Current.GoToAsync("//register");
         }
     }
 }
