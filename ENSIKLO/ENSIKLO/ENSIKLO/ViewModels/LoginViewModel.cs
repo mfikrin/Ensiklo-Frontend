@@ -38,8 +38,8 @@ namespace ENSIKLO.ViewModels
 
 
 
-            await Shell.Current.GoToAsync("//admin/homeAdmin");
-            //await Shell.Current.GoToAsync($"//main/home");
+            //await Shell.Current.GoToAsync("//admin/homeAdmin");
+            await Shell.Current.GoToAsync($"//main/home");
             //await Shell.Current.GoToAsync($"//admin/homeAdmin");
 
         }

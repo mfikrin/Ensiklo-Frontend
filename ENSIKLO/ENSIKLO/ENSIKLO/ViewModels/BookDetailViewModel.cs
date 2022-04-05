@@ -36,13 +36,16 @@ namespace ENSIKLO.ViewModels
         private string keywords ;
 
         private readonly IBookService _bookService;
+        private readonly ILibraryService _libraryService;
         public Command DeleteBookCommand { get; }
-
-        public BookDetailViewModel(IBookService bookService)
+        public Command AddToLibraryCommand { get; set; }
+        public BookDetailViewModel(IBookService bookService, ILibraryService libraryService)
         {
             _bookService = bookService;
+            _libraryService = libraryService;
 
             DeleteBookCommand = new Command(async bookid => await OnDeleteBook(bookid: BookId));
+            AddToLibraryCommand  = new Command(async (userId, bookId) => await AddToLibrary(userId: userId, bookId: bookId
 
             //DeleteBookCommand = new Command(async () => await OnDeleteBook());
         }
@@ -166,6 +169,16 @@ namespace ENSIKLO.ViewModels
             
 
 
+
+        }
+
+        private async Task AddToLibrary(string userId, string bookId)
+        {
+            Debug.WriteLine("Add book to library");
+            Debug.WriteLine(bookId);
+
+            await _libraryService.AddToLibraryAsync(int.Parse(userId), int.Parse(bookId));
+            await Shell.Current.GoToAsync(nameof(BooksPage));
 
         }
 
