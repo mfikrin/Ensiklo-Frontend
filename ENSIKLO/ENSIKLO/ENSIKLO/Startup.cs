@@ -15,25 +15,26 @@ namespace ENSIKLO
 
             //add services
 
-            //services.AddSingleton<IBookService, DummyBookStore>();
+            services.AddSingleton<IBookService, DummyBookStore>();
+            services.AddSingleton<IUserService, DummyUser>();
 
-            services.AddHttpClient<IBookService, APIBookService>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
+            //services.AddHttpClient<IBookService, APIBookService>(client =>
+            //{
+            //    client.BaseAddress = new Uri("http://localhost:49067/api/");
+            //    client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //});
 
-            services.AddHttpClient<ICatService, APICatService>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
+            //services.AddHttpClient<ICatService, APICatService>(client =>
+            //{
+            //    client.BaseAddress = new Uri("http://localhost:49067/api/");
+            //    client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //});
 
-            services.AddHttpClient<IUserService, APIUserService>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
+            //services.AddHttpClient<IUserService, APIUserService>(client =>
+            //{
+            //    client.BaseAddress = new Uri("http://localhost:49067/api/");
+            //    client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //});
 
 
             //add viewmodels

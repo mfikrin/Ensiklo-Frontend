@@ -5,7 +5,6 @@
              Shell.PresentationMode="ModalAnimated"
              Title="New Book"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:renderers="clr-namespace:ENSIKLO.Renderers"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout Spacing="6" Padding="15" Margin="45, 90, 45, 45" >

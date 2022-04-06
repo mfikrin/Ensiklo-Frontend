@@ -12,7 +12,8 @@ namespace ENSIKLO.ViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
-        private readonly IUserService _userService;
+        
+
         public Command SignUpCommand { get; }
 
         public Command TappedCommand { get; }
@@ -23,10 +24,10 @@ namespace ENSIKLO.ViewModels
         public string password;
         public string confirmation_password;
         public string role;
-
+        public IUserService UserServiceRegister { get; }
         public RegisterViewModel(IUserService userService)
         {
-            _userService = userService;
+            UserServiceRegister = userService;
 
             //SignUpCommand = new Command(OnClickSignUp);
 
@@ -68,6 +69,8 @@ namespace ENSIKLO.ViewModels
             get => role;
             set => SetProperty(ref role, value);
         }
+
+        
 
         private async Task OnClickSignUp()
         {

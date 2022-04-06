@@ -9,14 +9,16 @@ namespace ENSIKLO.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private readonly IBookService _bookService; // nanti ganti jadi service buat register dan login
+        
         public Command LoginCommand { get; }
 
         public Command TappedCommand { get; }
 
-        public LoginViewModel(IBookService bookService)
+        public IUserService UserServiceLogin { get; }
+
+        public LoginViewModel(IUserService userService)
         {
-            _bookService = bookService;
+            UserServiceLogin = userService;
             LoginCommand = new Command<string>(OnLoginClicked);
 
             TappedCommand = new Command(onTapped);
