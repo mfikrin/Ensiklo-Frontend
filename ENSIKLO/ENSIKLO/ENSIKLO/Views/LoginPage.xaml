@@ -12,7 +12,6 @@
                 <Entry Placeholder="Password" IsPassword="True"></Entry>
                 <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Sign In" Margin="0,20"
                         Command="{Binding LoginCommand}">
-                    <!--CommandParameter="{Binding Role}" TAMBAHIN INI DI BUTTON --> 
                 </Button>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Don't Have an account?"></Label>
