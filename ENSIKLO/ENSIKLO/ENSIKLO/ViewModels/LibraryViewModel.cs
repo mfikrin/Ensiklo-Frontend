@@ -44,7 +44,7 @@ namespace ENSIKLO.ViewModels
             {
                 Books.Clear();
 
-                var books = await _bookService.GetItemsAsync();
+                var books = await _libraryService.GetLibraryItemsAsync(1);
                 foreach (var book in books)
                 {
                     Books.Add(book);
