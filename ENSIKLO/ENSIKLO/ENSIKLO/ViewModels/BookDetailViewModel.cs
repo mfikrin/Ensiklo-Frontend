@@ -45,7 +45,7 @@ namespace ENSIKLO.ViewModels
             _libraryService = libraryService;
 
             DeleteBookCommand = new Command(async bookid => await OnDeleteBook(bookid: BookId));
-            AddToLibraryCommand  = new Command(async (userId, bookId) => await AddToLibrary(userId: userId, bookId: bookId
+            // AddToLibraryCommand = new Command(async (userId, bookId) => await AddToLibrary(userId: userId, bookId: bookId);
 
             //DeleteBookCommand = new Command(async () => await OnDeleteBook());
         }
