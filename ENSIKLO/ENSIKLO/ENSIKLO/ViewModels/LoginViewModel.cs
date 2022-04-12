@@ -26,6 +26,9 @@ namespace ENSIKLO.ViewModels
             LoginCommand = new Command(async () => await OnLoginClicked(), ValidateLogin);
 
             TappedCommand = new Command(onTapped);
+
+            PropertyChanged +=
+            (_, __) => LoginCommand.ChangeCanExecute();
         }
 
 
@@ -102,7 +105,9 @@ namespace ENSIKLO.ViewModels
         }
         private bool ValidateLogin()
         {
-            return true;
+            return !String.IsNullOrWhiteSpace(email)
+               && !String.IsNullOrWhiteSpace(password)
+               ;
         }
     }
 }
