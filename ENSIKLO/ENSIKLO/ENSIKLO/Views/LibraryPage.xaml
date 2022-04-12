@@ -4,13 +4,13 @@
              x:Class="ENSIKLO.Views.LibraryPage"
              xmlns:model="clr-namespace:ENSIKLO.Models"
              xmlns:local="clr-namespace:ENSIKLO.ViewModels"
-             x:Name="BrowseBooksPage">
+             x:Name="BrowseLibraryPage">
 
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
 
             <StackLayout BackgroundColor="WhiteSmoke">
-                <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <RefreshView x:DataType="local:LibraryViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                     <CollectionView 
                             ItemsSource="{Binding Books}" 
                             x:Name="ItemsListView" 
@@ -78,7 +78,7 @@
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer 
                                                     NumberOfTapsRequired="1"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LibraryViewModel}}, Path=BookTapped}"		
                                                     CommandParameter="{Binding .}">
                                                 </TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>

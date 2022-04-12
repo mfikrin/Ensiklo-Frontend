@@ -19,8 +19,6 @@ namespace ENSIKLO.ViewModels
 
         private readonly ILibraryService _libraryService;
         public Command LoadBooksCommand { get; }
-        public Command AddBookCommand { get; }
-        //public Command<object> ThreeDotCommand { get; }
 
         public Command TappedCommand { get; }
 
