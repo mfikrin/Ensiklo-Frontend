@@ -14,7 +14,9 @@ namespace ENSIKLO.ViewModels
     {
         private Book _selectedBook;
 
-        private ObservableCollection<Book> books;
+        private ObservableCollection<Book> booksTop;
+        private ObservableCollection<Book> booksBottom;
+
 
         private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
@@ -31,15 +33,8 @@ namespace ENSIKLO.ViewModels
 
             _bookService = bookService;
 
-            Books = new ObservableCollection<Book>();
-
-            //LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
-
-            //BookTapped = new Command<Book>(OnBookSelected);
-
-            AddBookCommand = new Command(OnAddBook);
-
-            //ThreeDotCommand = new Command<object>(OnthreeDotClick);
+            BooksTop = new ObservableCollection<Book>();
+            BooksBottom = new ObservableCollection<Book>();
 
             TappedCommand = new Command(onTapped);
         }
@@ -89,12 +84,20 @@ namespace ENSIKLO.ViewModels
 
             try
             {
-                Books.Clear();
+                BooksTop.Clear();
+                BooksBottom.Clear();
 
-                var books = await _bookService.GetItemsAsync();
-                foreach (var book in books)
+
+                var booksTopTemp = await _bookService.GetUserTopGenreBook(1,5);
+                foreach (var book in booksTopTemp)
                 {
-                    Books.Add(book);
+                    BooksTop.Add(book);
+                }
+
+                var booksBottomTemp = await _bookService.GetMostPopularBook(5);
+                foreach (var book in booksBottomTemp)
+                {
+                    BooksBottom.Add(book);
                 }
             }
             catch (Exception ex)
@@ -113,13 +116,23 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
-        public ObservableCollection<Book> Books
+        public ObservableCollection<Book> BooksTop
         {
-            get => books;
+            get => booksTop;
             set
             {
-                books = value;
-                OnPropertyChanged(nameof(Books));
+                booksTop = value;
+                OnPropertyChanged(nameof(BooksTop));
+            }
+        }
+
+        public ObservableCollection<Book> BooksBottom
+        {
+            get => booksBottom;
+            set
+            {
+                booksBottom = value;
+                OnPropertyChanged(nameof(BooksBottom));
             }
         }
 
@@ -145,11 +158,6 @@ namespace ENSIKLO.ViewModels
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
-        }
-
-        private async void OnAddBook(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewBookPage));
         }
 
         private async void onTapped(object obj)

@@ -75,6 +75,16 @@ namespace ENSIKLO.Services
             return await Task.FromResult(books);
         }
 
+        public Task<IEnumerable<Book>> GetMostPopularBook(int limit, bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Book>> GetUserTopGenreBook(int id_user, int limit, bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> UpdateItemAsync(Book item)
         {
             var oldItem = books.Where((Book arg) => arg.Id_book == item.Id_book).FirstOrDefault();

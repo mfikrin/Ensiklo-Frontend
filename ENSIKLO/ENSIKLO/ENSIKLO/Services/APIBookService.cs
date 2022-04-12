@@ -65,6 +65,28 @@ namespace ENSIKLO.Services
             return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
         }
 
+        public async Task<IEnumerable<Book>> GetMostPopularBook(int limit,bool forceRefresh = false)
+        {
+            var response = await _httpClient.GetAsync($"Book/MostPopular/{limit}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+        }
+
+        public async Task<IEnumerable<Book>> GetUserTopGenreBook(int id_user, int limit, bool forceRefresh = false)
+        {
+            var response = await _httpClient.GetAsync($"Book/TopGenre/{id_user}/{limit}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+        }
+
         public async Task<bool> UpdateItemAsync(Book item)
         {
             var response = await _httpClient.PutAsync($"Book?id={item.Id_book}",
