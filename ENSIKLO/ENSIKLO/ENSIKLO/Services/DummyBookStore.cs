@@ -80,7 +80,7 @@ namespace ENSIKLO.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Book>> GetUserTopGenreBook(int id_user, int limit, bool forceRefresh = false)
+        public Task<IEnumerable<Book>> GetUserTopGenreBook(Int64 id_user, int limit, bool forceRefresh = false)
         {
             throw new NotImplementedException();
         }

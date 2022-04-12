@@ -19,6 +19,7 @@ namespace ENSIKLO.ViewModels
 
 
         private readonly IBookService _bookService;
+        private readonly IUserService _userService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
         //public Command<object> ThreeDotCommand { get; }
@@ -27,33 +28,17 @@ namespace ENSIKLO.ViewModels
 
         //public Command<Book> BookTapped { get; }
 
-        public CatalogViewModel(IBookService bookService)
+        public CatalogViewModel(IBookService bookService, IUserService userService)
         {
             Title = "Catalog";
 
             _bookService = bookService;
-
+            _userService = userService;
             BooksTop = new ObservableCollection<Book>();
             BooksBottom = new ObservableCollection<Book>();
 
             TappedCommand = new Command(onTapped);
         }
-
-        //private async void OnthreeDotClick(object param)
-        //{
-        //    //Book temp = new Book();
-        //    Book temp = param as Book;
-        //    Debug.WriteLine(temp.Title);
-        //    var nav = App.Current.MainPage.Navigation;
-        //    await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
-        //}
-
-        //private void OnthreeDotClick(int32 param)
-        //{
-        //    Debug.WriteLine(param);
-        //}
-
-
 
         //async Task ExecuteLoadBooksCommand()
         //{
@@ -87,8 +72,13 @@ namespace ENSIKLO.ViewModels
                 BooksTop.Clear();
                 BooksBottom.Clear();
 
+                User curr_user = await _userService.GetCurrentUser();
 
-                var booksTopTemp = await _bookService.GetUserTopGenreBook(1,5);
+                var id = curr_user.Id;
+                Debug.WriteLine("ID USER");
+                Debug.WriteLine(id);
+
+                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,5);
                 foreach (var book in booksTopTemp)
                 {
                     BooksTop.Add(book);

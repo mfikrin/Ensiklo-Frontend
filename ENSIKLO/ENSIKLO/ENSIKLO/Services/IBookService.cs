@@ -12,7 +12,7 @@ namespace ENSIKLO.Services
         Task<bool> DeleteItemAsync(int id);
         Task<Book> GetItemAsync(int id);
         Task<IEnumerable<Book>> GetItemsAsync(bool forceRefresh = false);
-        Task<IEnumerable<Book>> GetUserTopGenreBook(int id_user, int limit, bool forceRefresh = false);
+        Task<IEnumerable<Book>> GetUserTopGenreBook(Int64 id_user, int limit, bool forceRefresh = false);
         Task<IEnumerable<Book>> GetMostPopularBook(int limit, bool forceRefresh = false);
 
     }
