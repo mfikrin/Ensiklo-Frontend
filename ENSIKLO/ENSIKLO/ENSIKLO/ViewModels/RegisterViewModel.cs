@@ -21,6 +21,7 @@ namespace ENSIKLO.ViewModels
         public string username;
         public string email;
         public string password;
+        public string confirmation_password;
         public string role;
 
         public RegisterViewModel(IUserService userService)
@@ -56,6 +57,12 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref password, value);
         }
 
+        public string ConfirmationPassword
+        {
+            get => confirmation_password;
+            set => SetProperty(ref confirmation_password, value);
+        }
+
         public string Role
         {
             get => role;
@@ -64,38 +71,42 @@ namespace ENSIKLO.ViewModels
 
         private async Task OnClickSignUp()
         {
-            try
+            
+            if (ismatchPassword())
             {
-
-                //role = "user";
-                var user = new User
+                try
                 {
-                    Username = username,
-                    Email = email,
-                    Password = password,
-                    Role = role
+                    role = "user"; // yg bisa register dari hal register cuma role user
+                    var user = new User
+                    {
+                        Username = username,
+                        Email = email,
+                        Password = password,
+                        Role = role
 
-                };
+                    };
 
-                await _userService.AddUserAsync(user);
+                    await _userService.AddUserAsync(user);
 
                 ((App)App.Current).userID = await _userService.GetUserID(email);
 
                 if (user.Role == "user")
                 {
                     await Shell.Current.GoToAsync("//main/home");
+
                 }
-                else if (user.Role == "admin")
+                catch (Exception ex)
                 {
-                    await Shell.Current.GoToAsync($"//admin/homeAdmin");
+                    Console.WriteLine(ex.Message);
                 }
-
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine("Salah password");
+                await App.Current.MainPage.DisplayAlert("Register Failed", "Password doesn't match", "OK");
             }
-
+            
+           
         }
 
 
@@ -109,8 +120,15 @@ namespace ENSIKLO.ViewModels
             return !String.IsNullOrWhiteSpace(username)
                && !String.IsNullOrWhiteSpace(email)
                && !String.IsNullOrWhiteSpace(password)
-               && !String.IsNullOrWhiteSpace(role)
+               && !String.IsNullOrWhiteSpace(confirmation_password)
                ;
+        }
+
+        private bool ismatchPassword()
+        {
+              // isPasswordSame
+              return password.Equals(confirmation_password);
+
         }
     }
 }
