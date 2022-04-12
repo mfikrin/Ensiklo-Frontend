@@ -12,8 +12,7 @@ namespace ENSIKLO.ViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
-        
-
+        private readonly IUserService _userService;
         public Command SignUpCommand { get; }
 
         public Command TappedCommand { get; }
@@ -24,10 +23,10 @@ namespace ENSIKLO.ViewModels
         public string password;
         public string confirmation_password;
         public string role;
-        public IUserService UserServiceRegister { get; }
+
         public RegisterViewModel(IUserService userService)
         {
-            UserServiceRegister = userService;
+            _userService = userService;
 
             //SignUpCommand = new Command(OnClickSignUp);
 
@@ -39,7 +38,7 @@ namespace ENSIKLO.ViewModels
             (_, __) => SignUpCommand.ChangeCanExecute();
 
         }
-  
+
         public string Username
         {
             get => username;
@@ -70,11 +69,9 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref role, value);
         }
 
-        
-
         private async Task OnClickSignUp()
         {
-            
+
             if (ismatchPassword())
             {
                 try
@@ -104,8 +101,8 @@ namespace ENSIKLO.ViewModels
                 Debug.WriteLine("Salah password");
                 await App.Current.MainPage.DisplayAlert("Register Failed", "Password doesn't match", "OK");
             }
-            
-           
+
+
         }
 
 
@@ -125,8 +122,8 @@ namespace ENSIKLO.ViewModels
 
         private bool ismatchPassword()
         {
-              // isPasswordSame
-              return password.Equals(confirmation_password);
+            // isPasswordSame
+            return password.Equals(confirmation_password);
 
         }
     }

@@ -39,13 +39,11 @@ namespace ENSIKLO
 
             //add viewmodels
             services.AddTransient<BookViewModel>();
-            services.AddTransient<NewBookViewModel>();
             services.AddTransient<BookDetailViewModel>();
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<LoginViewModel>();
             services.AddTransient<ProfileViewModel>();
-            services.AddTransient<NewCategoryViewModel>();
-            services.AddTransient<AdminPageViewModel>();
+            services.AddTransient<CatalogViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }

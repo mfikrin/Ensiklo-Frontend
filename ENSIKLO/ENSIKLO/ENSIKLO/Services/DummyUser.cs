@@ -15,9 +15,9 @@ namespace ENSIKLO.Services
         {
             users = new List<User>()
             {
-                new User {Id_user = 1,Email="fikri@gmail.com",Username="Fikri",Password="Rahasia",Role="admin"},
-                new User {Id_user = 2,Email="fikriClone1@gmail.com",Username="Fikri1",Password="Rahasia1",Role="user"},
-                new User {Id_user = 3,Email="fikriClone2@gmail.com",Username="Fikri2",Password="Rahasia2",Role="user"},
+                new User {Id = 1,Email="fikri@gmail.com",Username="Fikri",Password="Rahasia",Role="admin"},
+                new User {Id = 2,Email="fikriClone1@gmail.com",Username="Fikri1",Password="Rahasia1",Role="user"},
+                new User {Id = 3,Email="fikriClone2@gmail.com",Username="Fikri2",Password="Rahasia2",Role="user"},
             };
         }
         public async Task<bool> AddUserAsync(User item)
@@ -29,15 +29,30 @@ namespace ENSIKLO.Services
 
         public async Task<bool> DeleteUserAsync(int id)
         {
-            var oldItem = users.Where((User arg) => arg.Id_user == id).FirstOrDefault();
+            var oldItem = users.Where((User arg) => arg.Id == id).FirstOrDefault();
             users.Remove(oldItem);
 
             return await Task.FromResult(true);
         }
 
+        public Task<bool> DeleteUserAsync(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> GetCurrentUser()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<User> GetUserAsync(int id)
         {
-            return await Task.FromResult(users.FirstOrDefault(s => s.Id_user == id));
+            return await Task.FromResult(users.FirstOrDefault(s => s.Id == id));
+        }
+
+        public Task<User> GetUserAsync(long id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false)
@@ -45,9 +60,14 @@ namespace ENSIKLO.Services
             return await Task.FromResult(users);
         }
 
+        public Task<string> LoginAsync(LoginRequest loginRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> UpdateUserAsync(User item)
         {
-            var oldItem = users.Where((User arg) => arg.Id_user == item.Id_user).FirstOrDefault();
+            var oldItem = users.Where((User arg) => arg.Id == item.Id).FirstOrDefault();
             users.Remove(oldItem);
             users.Add(item);
 

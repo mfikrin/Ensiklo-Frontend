@@ -5,9 +5,6 @@
              xmlns:model="clr-namespace:ENSIKLO.Models"
              xmlns:local="clr-namespace:ENSIKLO.ViewModels"
              x:Name="BrowseBooksPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddBookCommand}" />
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">

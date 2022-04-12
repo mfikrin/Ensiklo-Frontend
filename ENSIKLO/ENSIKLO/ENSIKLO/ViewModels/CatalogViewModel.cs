@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace ENSIKLO.ViewModels
 {
-    public class BookViewModel : BaseViewModel
+    public class CatalogViewModel : BaseViewModel
     {
         private Book _selectedBook;
 
@@ -18,15 +18,16 @@ namespace ENSIKLO.ViewModels
 
         private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
+        public Command AddBookCommand { get; }
         //public Command<object> ThreeDotCommand { get; }
 
         public Command TappedCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
-        public BookViewModel(IBookService bookService)
+        public CatalogViewModel(IBookService bookService)
         {
-            Title = "Browse";
+            Title = "Catalog";
 
             _bookService = bookService;
 
@@ -36,11 +37,27 @@ namespace ENSIKLO.ViewModels
 
             //BookTapped = new Command<Book>(OnBookSelected);
 
+            AddBookCommand = new Command(OnAddBook);
+
+            //ThreeDotCommand = new Command<object>(OnthreeDotClick);
 
             TappedCommand = new Command(onTapped);
         }
 
-      
+        //private async void OnthreeDotClick(object param)
+        //{
+        //    //Book temp = new Book();
+        //    Book temp = param as Book;
+        //    Debug.WriteLine(temp.Title);
+        //    var nav = App.Current.MainPage.Navigation;
+        //    await NavigationExtension.PushPopupAsync(nav,new PopUpBookPage(temp));
+        //}
+
+        //private void OnthreeDotClick(int32 param)
+        //{
+        //    Debug.WriteLine(param);
+        //}
+
 
 
         //async Task ExecuteLoadBooksCommand()
@@ -116,7 +133,7 @@ namespace ENSIKLO.ViewModels
                     SetProperty(ref _selectedBook, value);
                     OnBookSelected(value);
                 }
-                
+
             }
         }
 
