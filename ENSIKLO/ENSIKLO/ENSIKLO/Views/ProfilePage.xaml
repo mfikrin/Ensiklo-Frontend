@@ -10,15 +10,14 @@
                     <Label Text="{Binding Name, Mode=TwoWay}" TextColor="Black" FontSize="35" FontAttributes="Bold"/>
                     <Label Text="{Binding Email, Mode=TwoWay}" TextColor="Gray" FontSize="20" Margin="0, 0, 0, 20"/>
 
-                    <Button Text="Logout" CornerRadius="10" BorderColor="#009BF0" BackgroundColor="Transparent" TextColor="#009BF0" HorizontalOptions="Start"
-                        Command="{Binding LogoutCommand}">
-                    </Button>
-
                     <!--untuk admin, yang bagian ini dihapus-->
                     <Label Text="Finished books" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 35, 0, 0"/>
                     <!--collection view buku yang udah dibaca (harusnya di library_user ntar ada tanda dia udah baca bukunya apa belum, ambil sql yang udah-->
 
-
+                    <Button Text="Logout" CornerRadius="10" BorderColor="#009BF0" BackgroundColor="Transparent" TextColor="#009BF0" HorizontalOptions="Start"
+                        Command="{Binding LogoutCommand}">
+                    </Button>
+                    
                 </StackLayout>
             </StackLayout>
         </ScrollView>

@@ -1,4 +1,5 @@
-﻿using ENSIKLO.Services;
+﻿using ENSIKLO.Models;
+using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
@@ -24,13 +25,14 @@ namespace ENSIKLO.ViewModels
 
         private async void OnClickLogout(object obj)
         {
-            ((App)App.Current).userID = -1;
             await Shell.Current.GoToAsync($"//login");
         }
 
         public async void GetData()
         {
-            var user = await _userService.GetUserAsync(((App)App.Current).userID);
+            var user = await _userService.GetCurrentUser();
+            //email = ((App)App.Current).currUser.Email;
+            //userName = ((App)App.Current).currUser.Username;
             email = user.Email;
             userName = user.Username;
             Debug.WriteLine(email);

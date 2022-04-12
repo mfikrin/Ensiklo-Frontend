@@ -21,6 +21,8 @@ namespace ENSIKLO.ViewModels
 
         public string email;
         public string password;
+
+        public CurrentUser gotCurrUser;
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
@@ -30,7 +32,9 @@ namespace ENSIKLO.ViewModels
 
             PropertyChanged +=
             (_, __) => LoginCommand.ChangeCanExecute();
-        }
+
+            gotCurrUser = new CurrentUser();
+    }
 
 
         public string Email
@@ -64,18 +68,20 @@ namespace ENSIKLO.ViewModels
 
                 Debug.WriteLine(token);
 
-                CurrentUser.Token = token;
+                gotCurrUser.Token = token;
 
                 User gotuser = await _userService.GetCurrentUser();
 
-                CurrentUser.Id = gotuser.Id;
-                CurrentUser.Email = gotuser.Email;
-                CurrentUser.Username = gotuser.Username;
-                CurrentUser.Role = gotuser.Role;
+                gotCurrUser.Id = gotuser.Id;
+                gotCurrUser.Email = gotuser.Email;
+                gotCurrUser.Username = gotuser.Username;
+                gotCurrUser.Role = gotuser.Role;
 
-                Debug.WriteLine(gotuser.Email);
-                Debug.WriteLine("token = " + CurrentUser.Token);
-                Debug.WriteLine("username = " + CurrentUser.Username);
+                ((App)App.Current).currUser = gotCurrUser;
+
+                Debug.WriteLine(gotCurrUser.Email);
+                Debug.WriteLine("token = " + gotCurrUser.Token);
+                Debug.WriteLine("username = " + gotCurrUser.Username);
 
                 await Shell.Current.GoToAsync("//main/home");
             }
@@ -99,7 +105,7 @@ namespace ENSIKLO.ViewModels
             //await Shell.Current.GoToAsync($"//admin/homeAdmin");
 
             //Debug.WriteLine(await _userService.GetUserID(email));
-            ((App)App.Current).userID = await _userService.GetUserID(email);
+            //((App)App.Current).userID = await _userService.GetUserID(email);
 
         }
 

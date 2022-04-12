@@ -88,12 +88,6 @@ namespace ENSIKLO.ViewModels
 
                     await _userService.AddUserAsync(user);
 
-                ((App)App.Current).userID = await _userService.GetUserID(email);
-
-                if (user.Role == "user")
-                {
-                    await Shell.Current.GoToAsync("//main/home");
-
                 }
                 catch (Exception ex)
                 {

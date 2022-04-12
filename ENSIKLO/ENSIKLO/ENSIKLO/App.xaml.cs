@@ -1,4 +1,5 @@
-﻿using ENSIKLO.Services;
+﻿using ENSIKLO.Models;
+using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
 using Xamarin.Forms;
@@ -19,7 +20,7 @@ namespace ENSIKLO
             MainPage = new AppShell();
         }
 
-        public int userID { get; set; }
+        public CurrentUser currUser { get; set; }
 
         protected override void OnStart()
         {
