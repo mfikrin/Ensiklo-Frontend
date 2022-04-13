@@ -70,7 +70,6 @@ namespace ENSIKLO.ViewModels
                 CurrentUser.Id = gotuser.Id;
                 CurrentUser.Email = gotuser.Email;
                 CurrentUser.Username = gotuser.Username;
-                CurrentUser.Role = gotuser.Role;
 
                 Debug.WriteLine(gotuser.Email);
                 Debug.WriteLine("token = " + CurrentUser.Token);
@@ -82,21 +81,6 @@ namespace ENSIKLO.ViewModels
             {
                 Debug.WriteLine(ex.Message);
             }
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-
-            // NANTI UNCOMMENT INI
-
-            //if (role.Equals("Admin"){
-            //    await Shell.Current.GoToAsync($"//admin/homeAdmin");
-            //}
-            //else if (role.Equals("User"))
-            //{
-            //    await Shell.Current.GoToAsync($"//main/home");
-            //}
-
-            //await Shell.Current.GoToAsync($"//main/home");
-            //await Shell.Current.GoToAsync($"//admin/homeAdmin");
-
         }
 
         private async void onTapped(object obj)
