@@ -38,7 +38,7 @@ namespace ENSIKLO.ViewModels
             (_, __) => SignUpCommand.ChangeCanExecute();
 
         }
-  
+
         public string Username
         {
             get => username;
@@ -71,7 +71,7 @@ namespace ENSIKLO.ViewModels
 
         private async Task OnClickSignUp()
         {
-            
+
             if (ismatchPassword())
             {
                 try
@@ -101,8 +101,8 @@ namespace ENSIKLO.ViewModels
                 Debug.WriteLine("Salah password");
                 await App.Current.MainPage.DisplayAlert("Register Failed", "Password doesn't match", "OK");
             }
-            
-           
+
+
         }
 
 
@@ -122,8 +122,8 @@ namespace ENSIKLO.ViewModels
 
         private bool ismatchPassword()
         {
-              // isPasswordSame
-              return password.Equals(confirmation_password);
+            // isPasswordSame
+            return password.Equals(confirmation_password);
 
         }
     }

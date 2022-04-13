@@ -65,12 +65,39 @@ namespace ENSIKLO.Services
             return await Task.FromResult(true);
         }
 
+        public async Task<IEnumerable<Book>> GetAllNewArrivalBooks(bool forceRefresh = false)
+        {
+            return await Task.FromResult(books);
+        }
+
         public async Task<Book> GetItemAsync(int id)
         {
             return await Task.FromResult(books.FirstOrDefault(s => s.Id_book == id));
         }
 
         public async Task<IEnumerable<Book>> GetItemsAsync(bool forceRefresh = false)
+        {
+            return await Task.FromResult(books);
+        }
+
+        public async Task<IEnumerable<Book>> GetMostPopularBook(int limit, bool forceRefresh = false)
+        {
+            return await Task.FromResult(books);
+
+        }
+
+        public async Task<IEnumerable<Book>> GetNewArrivalBook(int limit, bool forceRefresh = false)
+        {
+            return await Task.FromResult(books);
+
+        }
+
+        public async Task<IEnumerable<Book>> GetSomeRandomBooks(int limit, bool forceRefresh = false)
+        {
+            return await Task.FromResult(books);
+        }
+
+        public async Task<IEnumerable<Book>> GetUserTopGenreBook(Int64 id_user, int limit, bool forceRefresh = false)
         {
             return await Task.FromResult(books);
         }
