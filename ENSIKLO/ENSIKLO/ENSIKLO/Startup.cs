@@ -26,12 +26,6 @@ namespace ENSIKLO
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
-            services.AddHttpClient<ICatService, APICatService>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
-
             services.AddHttpClient<IUserService, APIUserService>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:49067/api/");
