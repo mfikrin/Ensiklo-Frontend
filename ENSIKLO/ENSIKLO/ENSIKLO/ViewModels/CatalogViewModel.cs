@@ -5,6 +5,7 @@ using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,6 +15,7 @@ namespace ENSIKLO.ViewModels
     {
         private Book _selectedBook;
 
+        private string category;
         private ObservableCollection<Book> booksTop;
         private ObservableCollection<Book> booksBottom;
 
@@ -24,7 +26,7 @@ namespace ENSIKLO.ViewModels
         public Command AddBookCommand { get; }
         //public Command<object> ThreeDotCommand { get; }
 
-        public Command TappedCommand { get; }
+        public Command RefreshCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
@@ -34,10 +36,12 @@ namespace ENSIKLO.ViewModels
 
             _bookService = bookService;
             _userService = userService;
+            category = String.Empty;
+     
             BooksTop = new ObservableCollection<Book>();
             BooksBottom = new ObservableCollection<Book>();
 
-            TappedCommand = new Command(onTapped);
+            RefreshCommand = new Command(onTappedRefresh);
         }
 
         //async Task ExecuteLoadBooksCommand()
@@ -79,10 +83,25 @@ namespace ENSIKLO.ViewModels
                 Debug.WriteLine(id);
 
                 var booksTopTemp = await _bookService.GetUserTopGenreBook(id,5);
+
+                Debug.WriteLine(booksTopTemp);
                 foreach (var book in booksTopTemp)
                 {
                     BooksTop.Add(book);
+                    
                 }
+                var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
+
+                category = dataBook[0].Category;
+
+
+
+                UserTopCategory = char.ToUpper(category[0]) + category.Substring(1);
+
+                Debug.WriteLine(category);
+                Debug.WriteLine(UserTopCategory);
+
+
 
                 var booksBottomTemp = await _bookService.GetMostPopularBook(5);
                 foreach (var book in booksBottomTemp)
@@ -106,6 +125,15 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
+        public string UserTopCategory
+        {
+            get => category;
+            set
+            {
+                category = value;
+                OnPropertyChanged(nameof(UserTopCategory));
+            }
+        }
         public ObservableCollection<Book> BooksTop
         {
             get => booksTop;
@@ -150,9 +178,10 @@ namespace ENSIKLO.ViewModels
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
         }
 
-        private async void onTapped(object obj)
+        private async void onTappedRefresh(object obj)
         {
-            await Shell.Current.GoToAsync("//catalog");
+            OnAppearing();
+            await PopulateBooks();
         }
     }
 }

@@ -27,11 +27,11 @@
                         HeightRequest="230">
                     
                     <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="Newest Arrival!" FontSize="17"/>
-                        <Label HorizontalOptions="EndAndExpand" Text="View all catalogue" FontSize="17">
+                        <Label Text="Newest Arrival!" FontSize="17" FontAttributes="Bold"/>
+                        <Label HorizontalOptions="EndAndExpand" Text="View all new Arrival" FontSize="17">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer 
-                                    Command="{Binding TappedCommand}"
+                                    Command="{Binding AllNewArrivalCommand}"
                                     />
                             </Label.GestureRecognizers>
                         </Label>
@@ -43,7 +43,7 @@
 
 
                         <CollectionView 
-                                ItemsSource="{Binding Books}" 
+                                ItemsSource="{Binding BooksTop}" 
                                 Margin="10"
                                 x:Name="ItemsListViewUp" 
                                 SelectionMode="Single"
@@ -116,15 +116,49 @@
                 </StackLayout>
             </Frame>
 
+                <Frame CornerRadius="20" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Start"
+                       HasShadow="True"
+                       IsClippedToBounds="True"
+                       BackgroundColor="#009BF0"
+                       Margin="10"
+                       Padding="0"
+                    >
 
+                    <StackLayout
+                        Margin="10"
+                        HeightRequest="230">
 
-                <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                        <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="You might like these" FontAttributes="Bold" FontSize="17"/>
+                            <Label HorizontalOptions="EndAndExpand" Text="Refresh Suggestion" FontSize="17">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    Command="{Binding RefreshCommand}"
+                                    />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <ImageButton Source="Assets/refresh.png"
+                                    HorizontalOptions="End"
+                                    WidthRequest="10"
+                                    HeightRequest="16" 
+                                    
+                                    BorderColor="Black"
+                                    Command="{Binding RefreshCommand}"
+                                    
+                                  />
+                        </StackLayout>
+
+                        <RefreshView x:DataType="local:BookViewModel"   IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                     <CollectionView 
-                            ItemsSource="{Binding Books}" 
+                            ItemsSource="{Binding BooksBottom}" 
                             x:Name="ItemsListView" 
                             SelectionMode="Single"
                             HeightRequest="100"
                             SelectedItem="{Binding SelectedBook}"
+                            Margin="10"
                             >
                         <CollectionView.EmptyView>
 
@@ -139,8 +173,8 @@
                         </CollectionView.ItemsLayout>
 
                         <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                            <Frame CornerRadius="12" 
+                                    <DataTemplate>
+                                        <Frame CornerRadius="12" 
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Start"
                                            HasShadow="True"
@@ -159,7 +193,7 @@
                                                        Grid.Row="0"
                                                        Aspect="AspectFit" 
                                                        WidthRequest="30"
-                                                       HeightRequest="150"
+                                                       HeightRequest="100"
                                                        />
 
 
@@ -173,7 +207,7 @@
 
 
 
-                                        <Label Text="{Binding Description_book}"
+                                        <Label Text="{Binding Author}"
                                                             Grid.Row="1"
                                                             Grid.Column="1"
                                                             VerticalOptions="Start"
@@ -201,9 +235,12 @@
                     </CollectionView>
 
                 </RefreshView>
-                
-                
-        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+
+
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using ENSIKLO.Services;
 using ENSIKLO.ViewModels;
+using System.Diagnostics;
 
 namespace ENSIKLO
 {
@@ -17,6 +18,7 @@ namespace ENSIKLO
 
             //services.AddSingleton<IBookService, DummyBookStore>();
             //services.AddSingleton<IUserService, DummyUser>();
+
 
             services.AddHttpClient<IBookService, APIBookService>(client =>
             {

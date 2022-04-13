@@ -5,25 +5,40 @@
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout
+                <StackLayout
                         Margin="10"
                         HeightRequest="230">
 
                 <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Label Text="Your Top Genre" FontSize="17" TextColor="Black"/>
+
+                    <Label Text="Your Top Genre : " FontSize="17" TextColor="Black"/>
+
+                    <Label Text="{Binding UserTopCategory}" FontSize="17" TextColor="Black" />
+
+
                     <Label HorizontalOptions="EndAndExpand" Text="Refresh" FontSize="17" TextColor="Black">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer 
-                                    Command="{Binding TappedCommand}"
+                                    Command="{Binding RefreshCommand}"
                                     />
                         </Label.GestureRecognizers>
                     </Label>
-                </StackLayout>
 
+                    <ImageButton Source="Assets/refresh.png"
+                                    HorizontalOptions="End"
+                                    WidthRequest="10"
+                                    HeightRequest="16" 
+                                    
+                                    BorderColor="Black"
+                                    Command="{Binding RefreshCommand}"
+                                    
+                                  />
+                </StackLayout>
 
 
                 <RefreshView x:DataType="local:CatalogViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
 
+                   
 
                     <CollectionView 
                                 ItemsSource="{Binding BooksTop}" 
@@ -37,10 +52,14 @@
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
                         </CollectionView.ItemsLayout>
+                        
+                        
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
+                                
+                                 
                                 <Frame CornerRadius="12" 
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Start"
@@ -50,6 +69,8 @@
                                            IsClippedToBounds="True"
                                            Padding="0">
 
+                                    
+                                    
                                     <Grid x:DataType="model:Book" >
 
                                         <Grid.RowDefinitions>
@@ -57,6 +78,7 @@
                                             <RowDefinition Height="1*" />
                                         </Grid.RowDefinitions>
 
+                                     
 
                                         <Image Source="{Binding Url_cover}"
                                                            Grid.Row="0"

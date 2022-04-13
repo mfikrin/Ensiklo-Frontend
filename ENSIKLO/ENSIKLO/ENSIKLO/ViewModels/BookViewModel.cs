@@ -14,13 +14,16 @@ namespace ENSIKLO.ViewModels
     {
         private Book _selectedBook;
 
-        private ObservableCollection<Book> books;
+        private ObservableCollection<Book> booksTop;
+        private ObservableCollection<Book> booksBottom;
 
         private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
         //public Command<object> ThreeDotCommand { get; }
 
-        public Command TappedCommand { get; }
+        public Command AllNewArrivalCommand { get; }
+
+        public Command RefreshCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
@@ -30,17 +33,19 @@ namespace ENSIKLO.ViewModels
 
             _bookService = bookService;
 
-            Books = new ObservableCollection<Book>();
+            booksTop = new ObservableCollection<Book>();
+            booksBottom = new ObservableCollection<Book>();
 
             //LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
 
             //BookTapped = new Command<Book>(OnBookSelected);
+            RefreshCommand = new Command(onTappedRefresh);
 
 
-            TappedCommand = new Command(onTapped);
+            AllNewArrivalCommand = new Command(onTappedNewArrival);
         }
 
-      
+   
 
 
         //async Task ExecuteLoadBooksCommand()
@@ -66,18 +71,54 @@ namespace ENSIKLO.ViewModels
         //    }
         //}
 
+        //public async Task PopulateBooks()
+        //{
+        //    IsBusy = true;
+
+        //    try
+        //    {
+        //        Books.Clear();
+
+        //        var books = await _bookService.GetItemsAsync();
+        //        foreach (var book in books)
+        //        {
+        //            Books.Add(book);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
+
         public async Task PopulateBooks()
         {
             IsBusy = true;
 
             try
             {
-                Books.Clear();
+                BooksTop.Clear();
+                BooksBottom.Clear();
 
-                var books = await _bookService.GetItemsAsync();
-                foreach (var book in books)
+           
+
+                var booksTopTemp = await _bookService.GetNewArrivalBook(12);
+
+                Debug.WriteLine(booksTopTemp);
+                foreach (var book in booksTopTemp)
                 {
-                    Books.Add(book);
+                    BooksTop.Add(book);
+
+                }
+
+                var booksBottomTemp = await _bookService.GetSomeRandomBooks(12);
+                foreach (var book in booksBottomTemp)
+                {
+                    BooksBottom.Add(book);
                 }
             }
             catch (Exception ex)
@@ -96,13 +137,23 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
-        public ObservableCollection<Book> Books
+        public ObservableCollection<Book> BooksTop
         {
-            get => books;
+            get => booksTop;
             set
             {
-                books = value;
-                OnPropertyChanged(nameof(Books));
+                booksBottom = value;
+                OnPropertyChanged(nameof(BooksTop));
+            }
+        }
+
+        public ObservableCollection<Book> BooksBottom
+        {
+            get => booksBottom;
+            set
+            {
+                booksBottom = value;
+                OnPropertyChanged(nameof(BooksBottom));
             }
         }
 
@@ -135,9 +186,39 @@ namespace ENSIKLO.ViewModels
             await Shell.Current.GoToAsync(nameof(NewBookPage));
         }
 
-        private async void onTapped(object obj)
+        public async Task PopulateBooksBottom()
         {
-            await Shell.Current.GoToAsync("//catalog");
+            IsBusy = true;
+
+            try
+            {
+                BooksBottom.Clear();
+
+                var booksBottomTemp = await _bookService.GetSomeRandomBooks(12);
+                foreach (var book in booksBottomTemp)
+                {
+                    BooksBottom.Add(book);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private void onTappedNewArrival(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private async void onTappedRefresh(object obj)
+        {
+            OnAppearing();
+            await PopulateBooksBottom();
         }
     }
 }
