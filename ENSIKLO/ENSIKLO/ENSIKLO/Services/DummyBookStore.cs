@@ -65,6 +65,11 @@ namespace ENSIKLO.Services
             return await Task.FromResult(true);
         }
 
+        public async Task<IEnumerable<Book>> GetAllNewArrivalBooks(bool forceRefresh = false)
+        {
+            return await Task.FromResult(books);
+        }
+
         public async Task<Book> GetItemAsync(int id)
         {
             return await Task.FromResult(books.FirstOrDefault(s => s.Id_book == id));

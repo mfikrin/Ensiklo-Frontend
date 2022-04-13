@@ -181,9 +181,9 @@ namespace ENSIKLO.ViewModels
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
         }
 
-        private async void OnAddBook(object obj)
+        private async void onTappedNewArrival(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewBookPage));
+            await Shell.Current.GoToAsync(nameof(NewArrivalBooksPage));
         }
 
         public async Task PopulateBooksBottom()
@@ -210,11 +210,7 @@ namespace ENSIKLO.ViewModels
             }
         }
 
-        private void onTappedNewArrival(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         private async void onTappedRefresh(object obj)
         {
             OnAppearing();

@@ -38,6 +38,17 @@ namespace ENSIKLO.Services
             return await Task.FromResult(true);
         }
 
+        public async Task<IEnumerable<Book>> GetAllNewArrivalBooks(bool forceRefresh = false)
+        {
+            var response = await _httpClient.GetAsync($"Book/NewArrival");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+        }
+
         public async Task<Book> GetItemAsync(int id)
         {
             var response = await _httpClient.GetAsync($"Book/{id}");
