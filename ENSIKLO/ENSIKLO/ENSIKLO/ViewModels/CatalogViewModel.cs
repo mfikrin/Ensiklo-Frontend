@@ -5,48 +5,44 @@ using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ENSIKLO.ViewModels
 {
-    public class BookViewModel : BaseViewModel
+    public class CatalogViewModel : BaseViewModel
     {
         private Book _selectedBook;
 
+        private string category;
         private ObservableCollection<Book> booksTop;
         private ObservableCollection<Book> booksBottom;
 
-        private readonly IBookService _bookService;
-        public Command LoadBooksCommand { get; }
-        //public Command<object> ThreeDotCommand { get; }
 
-        public Command AllNewArrivalCommand { get; }
+        private readonly IBookService _bookService;
+        private readonly IUserService _userService;
+        public Command LoadBooksCommand { get; }
+        public Command AddBookCommand { get; }
+        //public Command<object> ThreeDotCommand { get; }
 
         public Command RefreshCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
-        public BookViewModel(IBookService bookService)
+        public CatalogViewModel(IBookService bookService, IUserService userService)
         {
-            Title = "Browse";
+            Title = "Catalog";
 
             _bookService = bookService;
+            _userService = userService;
+            category = String.Empty;
+     
+            BooksTop = new ObservableCollection<Book>();
+            BooksBottom = new ObservableCollection<Book>();
 
-            booksTop = new ObservableCollection<Book>();
-            booksBottom = new ObservableCollection<Book>();
-
-            //LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
-
-            //BookTapped = new Command<Book>(OnBookSelected);
             RefreshCommand = new Command(onTappedRefresh);
-
-
-            AllNewArrivalCommand = new Command(onTappedNewArrival);
         }
-
-   
-
 
         //async Task ExecuteLoadBooksCommand()
         //{
@@ -71,30 +67,6 @@ namespace ENSIKLO.ViewModels
         //    }
         //}
 
-        //public async Task PopulateBooks()
-        //{
-        //    IsBusy = true;
-
-        //    try
-        //    {
-        //        Books.Clear();
-
-        //        var books = await _bookService.GetItemsAsync();
-        //        foreach (var book in books)
-        //        {
-        //            Books.Add(book);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        IsBusy = false;
-        //    }
-        //}
-
         public async Task PopulateBooks()
         {
             IsBusy = true;
@@ -104,18 +76,34 @@ namespace ENSIKLO.ViewModels
                 BooksTop.Clear();
                 BooksBottom.Clear();
 
-           
+                User curr_user = await _userService.GetCurrentUser();
 
-                var booksTopTemp = await _bookService.GetNewArrivalBook(12);
+                var id = curr_user.Id;
+                Debug.WriteLine("ID USER");
+                Debug.WriteLine(id);
+
+                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,5);
 
                 Debug.WriteLine(booksTopTemp);
                 foreach (var book in booksTopTemp)
                 {
                     BooksTop.Add(book);
-
+                    
                 }
+                var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
 
-                var booksBottomTemp = await _bookService.GetSomeRandomBooks(12);
+                category = dataBook[0].Category;
+
+
+
+                UserTopCategory = char.ToUpper(category[0]) + category.Substring(1);
+
+                Debug.WriteLine(category);
+                Debug.WriteLine(UserTopCategory);
+
+
+
+                var booksBottomTemp = await _bookService.GetMostPopularBook(5);
                 foreach (var book in booksBottomTemp)
                 {
                     BooksBottom.Add(book);
@@ -137,12 +125,21 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
+        public string UserTopCategory
+        {
+            get => category;
+            set
+            {
+                category = value;
+                OnPropertyChanged(nameof(UserTopCategory));
+            }
+        }
         public ObservableCollection<Book> BooksTop
         {
             get => booksTop;
             set
             {
-                booksBottom = value;
+                booksTop = value;
                 OnPropertyChanged(nameof(BooksTop));
             }
         }
@@ -167,7 +164,7 @@ namespace ENSIKLO.ViewModels
                     SetProperty(ref _selectedBook, value);
                     OnBookSelected(value);
                 }
-                
+
             }
         }
 
@@ -181,40 +178,10 @@ namespace ENSIKLO.ViewModels
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
         }
 
-        private async void onTappedNewArrival(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewArrivalBooksPage));
-        }
-
-        public async Task PopulateBooksBottom()
-        {
-            IsBusy = true;
-
-            try
-            {
-                BooksBottom.Clear();
-
-                var booksBottomTemp = await _bookService.GetSomeRandomBooks(12);
-                foreach (var book in booksBottomTemp)
-                {
-                    BooksBottom.Add(book);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-      
         private async void onTappedRefresh(object obj)
         {
             OnAppearing();
-            await PopulateBooksBottom();
+            await PopulateBooks();
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using ENSIKLO.Services;
 using ENSIKLO.ViewModels;
+using System.Diagnostics;
 
 namespace ENSIKLO
 {
@@ -16,14 +17,10 @@ namespace ENSIKLO
             //add services
 
             //services.AddSingleton<IBookService, DummyBookStore>();
+            //services.AddSingleton<IUserService, DummyUser>();
+
 
             services.AddHttpClient<IBookService, APIBookService>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
-
-            services.AddHttpClient<ICatService, APICatService>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:49067/api/");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -38,13 +35,12 @@ namespace ENSIKLO
 
             //add viewmodels
             services.AddTransient<BookViewModel>();
-            services.AddTransient<NewBookViewModel>();
             services.AddTransient<BookDetailViewModel>();
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<LoginViewModel>();
             services.AddTransient<ProfileViewModel>();
-            services.AddTransient<NewCategoryViewModel>();
-            services.AddTransient<AdminPageViewModel>();
+            services.AddTransient<CatalogViewModel>();
+            services.AddTransient<NewArrivalViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }

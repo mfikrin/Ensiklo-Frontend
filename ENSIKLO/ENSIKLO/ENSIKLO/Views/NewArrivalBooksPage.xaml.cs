@@ -11,21 +11,21 @@ using Xamarin.Forms.Xaml;
 namespace ENSIKLO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CatalogPage : ContentPage
+    public partial class NewArrivalBooksPage : ContentPage
     {
-        private readonly CatalogViewModel _catalogViewModel;
-        public CatalogPage()
+        private readonly NewArrivalViewModel _newArrivalBooksViewModel;
+        public NewArrivalBooksPage()
         {
             InitializeComponent();
-            _catalogViewModel = Startup.Resolve<CatalogViewModel>();
-            BindingContext = _catalogViewModel;
+            _newArrivalBooksViewModel = Startup.Resolve<NewArrivalViewModel>();
+            BindingContext = _newArrivalBooksViewModel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _catalogViewModel.OnAppearing();
-            _catalogViewModel?.PopulateBooks();
+            _newArrivalBooksViewModel.OnAppearing();
+            _newArrivalBooksViewModel?.PopulateBooks();
         }
     }
 }
