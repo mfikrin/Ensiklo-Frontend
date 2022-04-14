@@ -44,13 +44,13 @@ namespace ENSIKLO.ViewModels
 
         public async void GetData()
         {
-            //var user = await _userService.GetCurrentUser();
-            var user = new User
-            {
-                Username = "tes nama",
-                Email = "tes email",
-                Id = 1,
-            };
+            var user = await _userService.GetCurrentUser();
+            //var user = new User
+            //{
+            //    Username = "tes nama",
+            //    Email = "tes email",
+            //    Id = 1,
+            //};
             email = user.Email;
             userName = user.Username;
             id = user.Id;

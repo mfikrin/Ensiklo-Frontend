@@ -95,7 +95,7 @@ namespace ENSIKLO.ViewModels
 
         private async void onTapped(object obj)
         {
-            await Shell.Current.GoToAsync("//main/profile");
+            await Shell.Current.GoToAsync("//login");
         }
 
         private bool ValidateRegister()
