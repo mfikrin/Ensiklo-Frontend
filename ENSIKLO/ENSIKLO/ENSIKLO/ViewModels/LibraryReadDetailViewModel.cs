@@ -12,46 +12,41 @@ using Xamarin.Forms;
 namespace ENSIKLO.ViewModels
 {
     [QueryProperty(nameof(BookId), nameof(BookId))]
-    public class BookDetailViewModel : BaseViewModel
+    public class LibraryReadDetailViewModel : BaseViewModel
     {
-    
-        private string id_book ;
 
-        private string title ;
+        private string id_book;
 
-        private string author ;
+        private string title;
 
-        private string publisher ;
+        private string author;
 
-        private DateTime year_published ;
+        private string publisher;
 
-        private string description_book ;
+        private DateTime year_published;
 
-        private string book_content ;
+        private string description_book;
 
-        private string url_cover ;
+        private string book_content;
 
-        private string category ;
+        private string url_cover;
 
-        private string keywords ;
+        private string category;
+
+        private string keywords;
 
         private readonly IBookService _bookService;
         private readonly ILibraryService _libraryService;
-        public Command DeleteBookCommand { get; }
-        public Command AddToLibraryCommand { get; set; }
-        public BookDetailViewModel(IBookService bookService, ILibraryService libraryService)
+        public Command RemoveFromLibraryCommand { get; }
+        public LibraryReadDetailViewModel(IBookService bookService, ILibraryService libraryService)
         {
             _bookService = bookService;
             _libraryService = libraryService;
 
-            DeleteBookCommand = new Command(async bookid => await OnDeleteBook(bookid: BookId));
-        
-            AddToLibraryCommand = new Command(async userId => await AddToLibrary(userId: "1", bookId: BookId));
-
-            //DeleteBookCommand = new Command(async () => await OnDeleteBook());
+            RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userid:"1", bookid: BookId));
         }
 
-        
+
 
         public int Id { get; set; }
         public string Title
@@ -116,7 +111,7 @@ namespace ENSIKLO.ViewModels
             {
                 id_book = value;
                 LoadBookId(id_book);
-                
+
             }
         }
 
@@ -139,8 +134,8 @@ namespace ENSIKLO.ViewModels
                     Category = book.Category;
                     Keywords = book.Keywords;
                 }
-                  
-               
+
+
             }
             catch (Exception ex)
             {
@@ -149,55 +144,16 @@ namespace ENSIKLO.ViewModels
             }
         }
 
-        private async Task OnDeleteBook(string bookid)
+        private async Task OnRemoveBook(string userid, string bookid)
         {
-            Debug.WriteLine("On delete Book");
-            Debug.WriteLine(bookid);
-            //var result = await UserDialogs.Instance.ConfirmAsync("Are you sure to delete this book ?", "Confirm Selection", "Yes", "No");
+            await _libraryService.DeleteFromLibraryAsync(int.Parse(userid), int.Parse(bookid));
+            await Shell.Current.GoToAsync(nameof(LibraryPage));
 
-            //Debug.WriteLine(result);
-            //if (result == 1)
-            //{
-            //    await _bookService.DeleteItemAsync(int.Parse(bookid));
-            //    await Shell.Current.GoToAsync(nameof(BooksPage));
-            //}
 
-            //TODO: Add confirmation Before Delete
-
-            await _bookService.DeleteItemAsync(int.Parse(bookid));
-            await Shell.Current.GoToAsync(nameof(BooksPage));
-
-            
 
 
 
         }
-
-        private async Task AddToLibrary(string userId, string bookId)
-        {
-            Debug.WriteLine("Add book to library");
-            Debug.WriteLine(bookId);
-
-            LibraryUser libraryUser = new LibraryUser
-            {
-                Id_user = int.Parse(userId),
-                Id_book = int.Parse(bookId),
-                At_page = 0,
-                Last_readtime = DateTime.Now
-
-            };
-
-            await _libraryService.AddToLibraryAsync(libraryUser);
-            await Shell.Current.GoToAsync(nameof(BooksPage));
-
-        }
-
-        //private async Task OnDeleteBook()
-        //{
-        //    var result = await UserDialogs.Instance.ConfirmAsync("Are you sure to delete this book ?", "Confirm Selection", "Yes", "No");
-        //    Debug.WriteLine(result);
-        //}
-
 
 
 

@@ -20,11 +20,11 @@ namespace ENSIKLO.Services
         }
 
 
-        public async Task<bool> AddToLibraryAsync(int userId, int bookId)
+        public async Task<bool> AddToLibraryAsync(LibraryUser libraryUser)
         {
 
             // TODO: add Id
-            var response = await _httpClient.PostAsync("LibraryUser",new StringContent(JsonSerializer.Serialize(userId), Encoding.UTF8, "application/json"));
+            var response = await _httpClient.PostAsync("LibraryUser",new StringContent(JsonSerializer.Serialize(libraryUser), Encoding.UTF8, "application/json"));
 
             response.EnsureSuccessStatusCode();
 

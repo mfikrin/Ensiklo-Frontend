@@ -23,7 +23,7 @@ namespace ENSIKLO.ViewModels
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
-            LoginCommand = new Command(async () => await OnLoginClicked(), ValidateLogin);
+            LoginCommand = new Command(OnLoginClicked);
 
             TappedCommand = new Command(onTapped);
 
@@ -44,8 +44,11 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref password, value);
         }
 
-        private async Task OnLoginClicked()
+        private /* async*/ void OnLoginClicked()
         {
+
+            Shell.Current.GoToAsync("//main/home");
+            /* 
             try
             {
                 Debug.WriteLine(email);
@@ -96,6 +99,7 @@ namespace ENSIKLO.ViewModels
 
             //await Shell.Current.GoToAsync($"//main/home");
             //await Shell.Current.GoToAsync($"//admin/homeAdmin");
+            */
 
         }
 
