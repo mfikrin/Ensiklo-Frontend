@@ -91,22 +91,22 @@ namespace ENSIKLO.Services
             throw new NotImplementedException();
         }
 
-        public async Task<int> GetUserID(string email)
-        {
-            var response = await _httpClient.GetAsync($"User/id/{email}");
+        //public async Task<int> GetUserID(string email)
+        //{
+        //    var response = await _httpClient.GetAsync($"User/id/{email}");
 
-            response.EnsureSuccessStatusCode();
+        //    response.EnsureSuccessStatusCode();
 
-            var responseAsString = await response.Content.ReadAsStringAsync();
-            //Debug.WriteLine(responseAsString);
+        //    var responseAsString = await response.Content.ReadAsStringAsync();
+        //    //Debug.WriteLine(responseAsString);
 
-            var removeSqrBracket = responseAsString.Substring(12);
-            var remove2char = removeSqrBracket.Substring(0, removeSqrBracket.Length - 2);
+        //    var removeSqrBracket = responseAsString.Substring(12);
+        //    var remove2char = removeSqrBracket.Substring(0, removeSqrBracket.Length - 2);
 
-            //Debug.WriteLine(remove2char);
+        //    //Debug.WriteLine(remove2char);
 
-            //removesqrbracket {"id_user":3}
-            return int.Parse(remove2char);
-        }
+        //    //removesqrbracket {"id_user":3}
+        //    return int.Parse(remove2char);
+        //}
     }
 }

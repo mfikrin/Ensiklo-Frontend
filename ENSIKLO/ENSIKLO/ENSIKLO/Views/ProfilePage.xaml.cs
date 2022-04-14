@@ -21,5 +21,11 @@ namespace ENSIKLO.Views
             BindingContext = _profileViewModel;
             _profileViewModel?.GetData();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _profileViewModel?.GetData();
+        }
     }
 }
