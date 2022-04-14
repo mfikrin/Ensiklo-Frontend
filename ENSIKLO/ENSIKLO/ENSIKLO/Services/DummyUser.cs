@@ -15,9 +15,9 @@ namespace ENSIKLO.Services
         {
             users = new List<User>()
             {
-                new User {Id = 1,Email="fikri@gmail.com",Username="Fikri",Password="Rahasia",Role="admin"},
-                new User {Id = 2,Email="fikriClone1@gmail.com",Username="Fikri1",Password="Rahasia1",Role="user"},
-                new User {Id = 3,Email="fikriClone2@gmail.com",Username="Fikri2",Password="Rahasia2",Role="user"},
+                new User {Id = 1,Email="fikri@gmail.com",Username="Fikri",Password="Rahasia"},
+                new User {Id = 2,Email="fikriClone1@gmail.com",Username="Fikri1",Password="Rahasia1"},
+                new User {Id = 3,Email="fikriClone2@gmail.com",Username="Fikri2",Password="Rahasia2"},
             };
         }
         public async Task<bool> AddUserAsync(User item)

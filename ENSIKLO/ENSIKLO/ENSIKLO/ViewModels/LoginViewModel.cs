@@ -22,7 +22,6 @@ namespace ENSIKLO.ViewModels
         public string email;
         public string password;
 
-        public CurrentUser gotCurrUser;
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
@@ -33,7 +32,6 @@ namespace ENSIKLO.ViewModels
             PropertyChanged +=
             (_, __) => LoginCommand.ChangeCanExecute();
 
-            gotCurrUser = new CurrentUser();
     }
 
 
@@ -68,20 +66,17 @@ namespace ENSIKLO.ViewModels
 
                 Debug.WriteLine(token);
 
-                gotCurrUser.Token = token;
+                CurrentUser.Token = token;
 
                 User gotuser = await _userService.GetCurrentUser();
+                
+                CurrentUser.Id = gotuser.Id;
+                CurrentUser.Email = gotuser.Email;
+                CurrentUser.Username = gotuser.Username;
 
-                gotCurrUser.Id = gotuser.Id;
-                gotCurrUser.Email = gotuser.Email;
-                gotCurrUser.Username = gotuser.Username;
-                gotCurrUser.Role = gotuser.Role;
-
-                ((App)App.Current).currUser = gotCurrUser;
-
-                Debug.WriteLine(gotCurrUser.Email);
-                Debug.WriteLine("token = " + gotCurrUser.Token);
-                Debug.WriteLine("username = " + gotCurrUser.Username);
+                Debug.WriteLine(CurrentUser.Email);
+                Debug.WriteLine("token = " + CurrentUser.Token);
+                Debug.WriteLine("username = " + CurrentUser.Username);
 
                 await Shell.Current.GoToAsync("//main/home");
             }
@@ -89,24 +84,6 @@ namespace ENSIKLO.ViewModels
             {
                 Debug.WriteLine(ex.Message);
             }
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-
-            // NANTI UNCOMMENT INI
-
-            //if (role.Equals("Admin"){
-            //    await Shell.Current.GoToAsync($"//admin/homeAdmin");
-            //}
-            //else if (role.Equals("User"))
-            //{
-            //    await Shell.Current.GoToAsync($"//main/home");
-            //}
-
-            //await Shell.Current.GoToAsync($"//main/home");
-            //await Shell.Current.GoToAsync($"//admin/homeAdmin");
-
-            //Debug.WriteLine(await _userService.GetUserID(email));
-            //((App)App.Current).userID = await _userService.GetUserID(email);
-
         }
 
         private async void onTapped(object obj)

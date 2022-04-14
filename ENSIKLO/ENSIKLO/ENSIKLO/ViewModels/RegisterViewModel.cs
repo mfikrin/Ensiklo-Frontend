@@ -22,7 +22,6 @@ namespace ENSIKLO.ViewModels
         public string email;
         public string password;
         public string confirmation_password;
-        public string role;
 
         public RegisterViewModel(IUserService userService)
         {
@@ -62,13 +61,6 @@ namespace ENSIKLO.ViewModels
             get => confirmation_password;
             set => SetProperty(ref confirmation_password, value);
         }
-
-        public string Role
-        {
-            get => role;
-            set => SetProperty(ref role, value);
-        }
-
         private async Task OnClickSignUp()
         {
 
@@ -76,14 +68,11 @@ namespace ENSIKLO.ViewModels
             {
                 try
                 {
-                    role = "user"; // yg bisa register dari hal register cuma role user
                     var user = new User
                     {
                         Username = username,
                         Email = email,
                         Password = password,
-                        Role = role
-
                     };
 
                     await _userService.AddUserAsync(user);

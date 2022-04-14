@@ -20,7 +20,6 @@ namespace ENSIKLO
             MainPage = new AppShell();
         }
 
-        public CurrentUser currUser { get; set; }
 
         protected override void OnStart()
         {

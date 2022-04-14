@@ -6,10 +6,9 @@ namespace ENSIKLO.Models
 {
     public class CurrentUser
     {
-        public string Token { get; set; }
-        public Int64 Id { get; set; }
-        public string Email { get; set; }
-        public string Username { get; set; }
-        public string Role { get; set; }
+        public static string Token { get; set; }
+        public static Int64 Id { get; set; }
+        public static string Email { get; set; }
+        public static string Username { get; set; }
     }
 }

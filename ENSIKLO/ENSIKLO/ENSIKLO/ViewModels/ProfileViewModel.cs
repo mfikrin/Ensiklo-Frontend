@@ -31,8 +31,6 @@ namespace ENSIKLO.ViewModels
         public async void GetData()
         {
             var user = await _userService.GetCurrentUser();
-            //email = ((App)App.Current).currUser.Email;
-            //userName = ((App)App.Current).currUser.Username;
             email = user.Email;
             userName = user.Username;
             Debug.WriteLine(email);
