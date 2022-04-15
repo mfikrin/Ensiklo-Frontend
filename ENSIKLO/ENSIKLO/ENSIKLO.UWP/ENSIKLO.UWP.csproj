@@ -110,6 +110,7 @@
     <Content Include="Assets\house_active.png" />
     <Content Include="Assets\local_mall.png" />
     <Content Include="Assets\logo.png" />
+    <Content Include="Assets\refresh.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="Assets\SplashScreen\SplashScreenEnsiklo1240x600.png" />

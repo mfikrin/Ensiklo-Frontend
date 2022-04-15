@@ -17,18 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\LibraryReadDetailPage.xaml.cs">
-      <DependentUpon>LibraryReadDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewCategoryPage.xaml.cs">
-      <DependentUpon>NewCategoryPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Views\AdminHomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\BookDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -50,10 +38,7 @@
     <EmbeddedResource Update="Views\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewBookPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewCategoryPage.xaml">
+    <EmbeddedResource Update="Views\NewArrivalBooksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
