@@ -12,9 +12,9 @@ namespace ENSIKLO.ViewModels
 {
     public class LibraryViewModel : BaseViewModel
     {
-        private LibraryUser _selectedBook;
+        private Library _selectedBook;
 
-        private ObservableCollection<LibraryUser> library;
+        private ObservableCollection<Library> library;
 
         private readonly ILibraryService _libraryService;
         public Command LoadBooksCommand { get; }
@@ -28,7 +28,7 @@ namespace ENSIKLO.ViewModels
 
             _libraryService = libraryService;
 
-            Library = new ObservableCollection<LibraryUser>();
+            Library = new ObservableCollection<Library>();
 
             TappedCommand = new Command(onTapped);
         }
@@ -41,7 +41,12 @@ namespace ENSIKLO.ViewModels
                 var books = await _libraryService.GetLibraryItemsAsync(Convert.ToInt32(CurrentUser.Id));
                 foreach (var book in books)
                 {
-                    Library.Add(book);
+                    Library temp = new Library
+                    {
+                        libraryItem = book,
+                        progressBar = Convert.ToInt32(((double)book.At_page / book.Page) * 130)
+                    };
+                    Library.Add(temp);
                 }
             }
             catch (Exception ex)
@@ -56,7 +61,7 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
-        public ObservableCollection<LibraryUser> Library
+        public ObservableCollection<Library> Library
         {
             get => library;
             set
@@ -66,7 +71,7 @@ namespace ENSIKLO.ViewModels
             }
         }
 
-        public LibraryUser SelectedBook
+        public Library SelectedBook
         {
             get => _selectedBook;
             set
@@ -81,17 +86,17 @@ namespace ENSIKLO.ViewModels
         }
 
 
-        async void OnBookSelected(LibraryUser book)
+        async void OnBookSelected(Library book)
         {
             if (book == null)
                 return;
 
-            if(book.At_page == 0)
+            if(book.libraryItem.At_page == 0)
             {
-                await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.Id_book}");
+                await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.libraryItem.Id_book}");
             } else
             {
-                await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={book.Id_book}");
+                await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={book.libraryItem.Id_book}");
             }
         
         }

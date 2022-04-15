@@ -26,7 +26,6 @@
 
 
                         </CollectionView.EmptyView>
-                        
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical" Span="6" HorizontalItemSpacing="4" VerticalItemSpacing="4"/>
                         </CollectionView.ItemsLayout>
@@ -34,51 +33,52 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame CornerRadius="12" 
-                                           HorizontalOptions="Center" 
+                                           HorizontalOptions="Start" 
                                            VerticalOptions="Start"
                                            HasShadow="True"
                                            BackgroundColor="White"       
                                            IsClippedToBounds="True"
                                            Padding="0">
-                                    <Grid Padding="8" Margin="4" x:DataType="model:Book" BackgroundColor="White">
+                                    <Grid Padding="8" Margin="4" x:DataType="model:Library" BackgroundColor="White">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="3*" />
 
                                             <RowDefinition Height="1*" />
                                         </Grid.RowDefinitions>
 
-                                        <Image Source="{Binding Url_cover}"
+                                        <Image Source="{Binding libraryItem.Url_cover}"
                                                        Grid.Row="0"
                                                        Aspect="AspectFit" 
                                                        WidthRequest="30"
                                                        HeightRequest="150"
                                                        />
 
-                                        <StackLayout Grid.Row="1" HeightRequest="10">
-                                            <Frame  HorizontalOptions="Start" 
-                                                    VerticalOptions="Start"
-                                                    HasShadow="True"                                                    
-                                                    IsClippedToBounds="True"
-                                                    Padding="0">
-                                                <Rectangle Fill="#7db051"
-                                                       WidthRequest="120"
-                                                       HeightRequest="10"
-                                                       HorizontalOptions="Start" />
-                                            </Frame>
-                                        </StackLayout>
+                                        
 
 
                                         <StackLayout Grid.Row="1">
+                                            <Frame  Grid.Column="1"
+                                                    HorizontalOptions="Start" 
+                                                    VerticalOptions="Start"
+                                                    HasShadow="True"                                                    
+                                                    IsClippedToBounds="True"
+                                                    Padding="0,15,0,0">
+                                                <Rectangle Fill="#7db051"
+                                                       WidthRequest="{Binding progressBar}"
+                                                       HeightRequest="10"
+                                                       HorizontalOptions="Start" 
+                                                       />
+                                            </Frame>
                                             <Label Grid.Column="1"
-                                                           VerticalOptions="Center"
-                                                           Text="{Binding Title}"
-                                                           FontAttributes="Bold"
-                                                           TextColor="Black"    
+                                                   VerticalOptions="Start"
+                                                   Text="{Binding libraryItem.Title}"
+                                                   FontAttributes="Bold"
+                                                    TextColor="Black"    
                                                            />
 
 
 
-                                            <Label Text="{Binding Description_book}"
+                                            <Label Text="{Binding libraryItem.Description_book}"
                                                             Grid.Row="1"
                                                             Grid.Column="1"
                                                             VerticalOptions="Start"

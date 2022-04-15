@@ -20,6 +20,7 @@ namespace ENSIKLO.Views
             InitializeComponent();
             _libraryViewModel = Startup.Resolve<LibraryViewModel>();
             BindingContext = _libraryViewModel;
+
         }
 
         protected override void OnAppearing()
