@@ -35,12 +35,10 @@ namespace ENSIKLO.ViewModels
 
         private string keywords;
 
-        private readonly IBookService _bookService;
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
-        public LibraryDetailViewModel(IBookService bookService, ILibraryService libraryService)
+        public LibraryDetailViewModel(ILibraryService libraryService)
         {
-            _bookService = bookService;
             _libraryService = libraryService;
 
             RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userId: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
@@ -120,8 +118,6 @@ namespace ENSIKLO.ViewModels
             try
             {
                 var book = await _libraryService.GetLibraryItemAsync(userId,int.Parse(bookId));
-                Debug.WriteLine(book.Id_user);
-                Debug.WriteLine("Pass in here");
                 if (bookId != null)
                 {
                     Id = book.Id_book;

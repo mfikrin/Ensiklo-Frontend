@@ -61,7 +61,7 @@
                                                     IsClippedToBounds="True"
                                                     Padding="0">
                                                 <Rectangle Fill="#7db051"
-                                                       WidthRequest="70"
+                                                       WidthRequest="120"
                                                        HeightRequest="10"
                                                        HorizontalOptions="Start" />
                                             </Frame>
