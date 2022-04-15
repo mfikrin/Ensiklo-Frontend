@@ -44,11 +44,11 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref password, value);
         }
 
-        private /* async*/ void OnLoginClicked()
+        private async void OnLoginClicked()
         {
 
-            Shell.Current.GoToAsync("//main/home");
-            /* 
+            // Shell.Current.GoToAsync("//main/home");
+            
             try
             {
                 Debug.WriteLine(email);
@@ -99,7 +99,7 @@ namespace ENSIKLO.ViewModels
 
             //await Shell.Current.GoToAsync($"//main/home");
             //await Shell.Current.GoToAsync($"//admin/homeAdmin");
-            */
+            
 
         }
 

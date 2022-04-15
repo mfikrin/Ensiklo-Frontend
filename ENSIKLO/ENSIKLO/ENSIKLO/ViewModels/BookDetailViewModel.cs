@@ -46,7 +46,7 @@ namespace ENSIKLO.ViewModels
 
             DeleteBookCommand = new Command(async bookid => await OnDeleteBook(bookid: BookId));
         
-            AddToLibraryCommand = new Command(async userId => await AddToLibrary(userId: "1", bookId: BookId));
+            AddToLibraryCommand = new Command(async userId => await AddToLibrary(userId: Convert.ToInt32(CurrentUser.Id), bookId: BookId));
 
             //DeleteBookCommand = new Command(async () => await OnDeleteBook());
         }
@@ -163,7 +163,7 @@ namespace ENSIKLO.ViewModels
 
         }
 
-        private async Task AddToLibrary(string userId, string bookId)
+        private async Task AddToLibrary(int userId, string bookId)
         {
             Debug.WriteLine(bookId);
 
@@ -174,7 +174,7 @@ namespace ENSIKLO.ViewModels
                 {
                     LibraryUser libraryUser = new LibraryUser
                     {
-                        Id_user = int.Parse(userId),
+                        Id_user = userId,
                         Id_book = int.Parse(bookId),
                         Title = book.Title,
                         Author = book.Author,

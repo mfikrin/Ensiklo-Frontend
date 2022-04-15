@@ -43,7 +43,7 @@ namespace ENSIKLO.ViewModels
             _bookService = bookService;
             _libraryService = libraryService;
 
-            RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userid:"1", bookid: BookId));
+            RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userid: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
         }
 
 
@@ -110,16 +110,16 @@ namespace ENSIKLO.ViewModels
             set
             {
                 id_book = value;
-                LoadBookId("1",id_book);
+                LoadBookId(Convert.ToInt32(CurrentUser.Id), id_book);
 
             }
         }
 
-        public async void LoadBookId(string userId, string bookId)
+        public async void LoadBookId(int userId, string bookId)
         {
             try
             {
-                var book = await _libraryService.GetLibraryItemAsync(int.Parse(userId), int.Parse(bookId));
+                var book = await _libraryService.GetLibraryItemAsync(userId, int.Parse(bookId));
                 Debug.WriteLine(book.Id_user);
                 Debug.WriteLine("Pass in here");
                 if (bookId != null)
@@ -145,9 +145,9 @@ namespace ENSIKLO.ViewModels
             }
         }
 
-        private async Task OnRemoveBook(string userid, string bookid)
+        private async Task OnRemoveBook(int userid, string bookid)
         {
-            await _libraryService.DeleteFromLibraryAsync(int.Parse(userid), int.Parse(bookid));
+            await _libraryService.DeleteFromLibraryAsync(Convert.ToInt32(CurrentUser.Id), int.Parse(bookid));
             await Shell.Current.GoToAsync(nameof(LibraryPage));
 
 

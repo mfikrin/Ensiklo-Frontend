@@ -38,7 +38,7 @@ namespace ENSIKLO.ViewModels
             {
                 Library.Clear();
 
-                var books = await _libraryService.GetLibraryItemsAsync(1);
+                var books = await _libraryService.GetLibraryItemsAsync(Convert.ToInt32(CurrentUser.Id));
                 foreach (var book in books)
                 {
                     Library.Add(book);
