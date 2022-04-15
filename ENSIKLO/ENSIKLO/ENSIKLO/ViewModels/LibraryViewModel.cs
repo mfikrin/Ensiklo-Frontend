@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-
 namespace ENSIKLO.ViewModels
 {
     public class LibraryViewModel : BaseViewModel
@@ -19,6 +18,7 @@ namespace ENSIKLO.ViewModels
 
         private readonly ILibraryService _libraryService;
         public Command LoadBooksCommand { get; }
+        public Command AddBookCommand { get; }
 
         public Command TappedCommand { get; }
 
@@ -32,8 +32,6 @@ namespace ENSIKLO.ViewModels
 
             TappedCommand = new Command(onTapped);
         }
-
-
         public async void PopulateBooks()
         {
             try
@@ -48,7 +46,7 @@ namespace ENSIKLO.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -88,14 +86,14 @@ namespace ENSIKLO.ViewModels
             if (book == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
-            if (book.At_page == 0)
+            if(book.At_page == 0)
             {
                 await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.Id_book}");
             } else
             {
                 await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={book.Id_book}");
             }
+        
         }
 
         private async void onTapped(object obj)
