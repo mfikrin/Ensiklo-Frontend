@@ -12,7 +12,7 @@
             <StackLayout BackgroundColor="WhiteSmoke">
                 <RefreshView x:DataType="local:LibraryViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                     <CollectionView 
-                            ItemsSource="{Binding Books}" 
+                            ItemsSource="{Binding Library}" 
                             x:Name="ItemsListView" 
                             SelectionMode="Single"
                             HeightRequest="100"
@@ -52,6 +52,19 @@
                                                        WidthRequest="30"
                                                        HeightRequest="150"
                                                        />
+
+                                        <StackLayout Grid.Row="1" HeightRequest="10">
+                                            <Frame  HorizontalOptions="Start" 
+                                                    VerticalOptions="Start"
+                                                    HasShadow="True"                                                    
+                                                    IsClippedToBounds="True"
+                                                    Padding="0">
+                                                <Rectangle Fill="#7db051"
+                                                       WidthRequest="70"
+                                                       HeightRequest="10"
+                                                       HorizontalOptions="Start" />
+                                            </Frame>
+                                        </StackLayout>
 
 
                                         <StackLayout Grid.Row="1">

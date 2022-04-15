@@ -13,16 +13,14 @@ namespace ENSIKLO.ViewModels
 {
     public class LibraryViewModel : BaseViewModel
     {
-        private Book _selectedBook;
+        private LibraryUser _selectedBook;
 
-        private ObservableCollection<Book> books;
+        private ObservableCollection<LibraryUser> library;
 
         private readonly ILibraryService _libraryService;
         public Command LoadBooksCommand { get; }
 
         public Command TappedCommand { get; }
-
-        //public Command<Book> BookTapped { get; }
 
         public LibraryViewModel(ILibraryService libraryService)
         {
@@ -30,7 +28,7 @@ namespace ENSIKLO.ViewModels
 
             _libraryService = libraryService;
 
-            Books = new ObservableCollection<Book>();
+            Library = new ObservableCollection<LibraryUser>();
 
             TappedCommand = new Command(onTapped);
         }
@@ -40,17 +38,17 @@ namespace ENSIKLO.ViewModels
         {
             try
             {
-                Books.Clear();
+                Library.Clear();
 
                 var books = await _libraryService.GetLibraryItemsAsync(1);
                 foreach (var book in books)
                 {
-                    Books.Add(book);
+                    Library.Add(book);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -60,17 +58,17 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
-        public ObservableCollection<Book> Books
+        public ObservableCollection<LibraryUser> Library
         {
-            get => books;
+            get => library;
             set
             {
-                books = value;
-                OnPropertyChanged(nameof(Books));
+                library = value;
+                OnPropertyChanged(nameof(Library));
             }
         }
 
-        public Book SelectedBook
+        public LibraryUser SelectedBook
         {
             get => _selectedBook;
             set
@@ -85,18 +83,19 @@ namespace ENSIKLO.ViewModels
         }
 
 
-        async void OnBookSelected(Book book)
+        async void OnBookSelected(LibraryUser book)
         {
             if (book == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.Id_book}");
-        }
-
-        private async void OnAddBook(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewBookPage));
+            if (book.At_page == 0)
+            {
+                await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.Id_book}");
+            } else
+            {
+                await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={book.Id_book}");
+            }
         }
 
         private async void onTapped(object obj)

@@ -153,16 +153,6 @@ namespace ENSIKLO.ViewModels
         {
             Debug.WriteLine("On delete Book");
             Debug.WriteLine(bookid);
-            //var result = await UserDialogs.Instance.ConfirmAsync("Are you sure to delete this book ?", "Confirm Selection", "Yes", "No");
-
-            //Debug.WriteLine(result);
-            //if (result == 1)
-            //{
-            //    await _bookService.DeleteItemAsync(int.Parse(bookid));
-            //    await Shell.Current.GoToAsync(nameof(BooksPage));
-            //}
-
-            //TODO: Add confirmation Before Delete
 
             await _bookService.DeleteItemAsync(int.Parse(bookid));
             await Shell.Current.GoToAsync(nameof(BooksPage));
@@ -175,20 +165,43 @@ namespace ENSIKLO.ViewModels
 
         private async Task AddToLibrary(string userId, string bookId)
         {
-            Debug.WriteLine("Add book to library");
             Debug.WriteLine(bookId);
 
-            LibraryUser libraryUser = new LibraryUser
+            try
             {
-                Id_user = int.Parse(userId),
-                Id_book = int.Parse(bookId),
-                At_page = 0,
-                Last_readtime = DateTime.Now
+                var book = await _bookService.GetItemAsync(int.Parse(bookId));
+                if (bookId != null)
+                {
+                    LibraryUser libraryUser = new LibraryUser
+                    {
+                        Id_user = int.Parse(userId),
+                        Id_book = int.Parse(bookId),
+                        Title = book.Title,
+                        Author = book.Author,
+                        Publisher = book.Publisher,
+                        Year_published = book.Year_published,
+                        Description_book = book.Description_book,
+                        Book_content = book.Book_content,
+                        Page = book.Page,
+                        Url_cover = book.Url_cover,
+                        Category = book.Category,
+                        Keywords = book.Keywords,
+                        Added_time = book.Added_time,
+                        At_page = 0,
+                        Last_readtime = DateTime.Now,
+                        // Finish_reading =0
 
-            };
+                    };
 
-            await _libraryService.AddToLibraryAsync(libraryUser);
-            await Shell.Current.GoToAsync(nameof(BooksPage));
+                    await _libraryService.AddToLibraryAsync(libraryUser);
+                    await Shell.Current.GoToAsync(nameof(BooksPage));
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine(ex.Message);
+            }
 
         }
 

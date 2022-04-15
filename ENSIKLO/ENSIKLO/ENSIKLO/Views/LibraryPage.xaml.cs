@@ -19,7 +19,6 @@ namespace ENSIKLO.Views
         {
             InitializeComponent();
             _libraryViewModel = Startup.Resolve<LibraryViewModel>();
-            Console.WriteLine(_libraryViewModel);
             BindingContext = _libraryViewModel;
         }
 

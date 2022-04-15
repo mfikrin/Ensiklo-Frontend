@@ -40,14 +40,24 @@ namespace ENSIKLO.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<IEnumerable<Book>> GetLibraryItemsAsync(int userId)
+        public async Task<IEnumerable<LibraryUser>> GetLibraryItemsAsync(int userId)
         {
             var response = await _httpClient.GetAsync($"LibraryUser/{userId}");
 
             response.EnsureSuccessStatusCode();
+            var responseAsString = await response.Content.ReadAsStringAsync(); 
+            return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+        }
+
+        public async Task<LibraryUser> GetLibraryItemAsync(int userId, int bookId)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/get/{userId}/{bookId}");
+
+            response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+            var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
+            return JsonSerializer.Deserialize<LibraryUser>(removeSqrBracket);
         }
     }
 }

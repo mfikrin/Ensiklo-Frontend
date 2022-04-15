@@ -110,16 +110,17 @@ namespace ENSIKLO.ViewModels
             set
             {
                 id_book = value;
-                LoadBookId(id_book);
+                LoadBookId("1",id_book);
 
             }
         }
 
-        public async void LoadBookId(string bookId)
+        public async void LoadBookId(string userId, string bookId)
         {
             try
             {
-                var book = await _bookService.GetItemAsync(int.Parse(bookId));
+                var book = await _libraryService.GetLibraryItemAsync(int.Parse(userId), int.Parse(bookId));
+                Debug.WriteLine(book.Id_user);
                 Debug.WriteLine("Pass in here");
                 if (bookId != null)
                 {
