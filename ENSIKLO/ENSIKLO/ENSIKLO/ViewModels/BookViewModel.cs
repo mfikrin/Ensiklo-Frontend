@@ -19,13 +19,9 @@ namespace ENSIKLO.ViewModels
 
         private readonly IBookService _bookService;
         public Command LoadBooksCommand { get; }
-        //public Command<object> ThreeDotCommand { get; }
-
         public Command AllNewArrivalCommand { get; }
 
         public Command RefreshCommand { get; }
-
-        //public Command<Book> BookTapped { get; }
 
         public BookViewModel(IBookService bookService)
         {
@@ -36,64 +32,11 @@ namespace ENSIKLO.ViewModels
             booksTop = new ObservableCollection<Book>();
             booksBottom = new ObservableCollection<Book>();
 
-            //LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
-
-            //BookTapped = new Command<Book>(OnBookSelected);
             RefreshCommand = new Command(onTappedRefresh);
 
 
             AllNewArrivalCommand = new Command(onTappedNewArrival);
         }
-
-   
-
-
-        //async Task ExecuteLoadBooksCommand()
-        //{
-        //    IsBusy = true;
-
-        //    try
-        //    {
-        //        Books.Clear();
-        //        var books = await _bookService.GetItemsAsync(true);
-        //        foreach (var book in books)
-        //        {
-        //            Books.Add(book);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex);
-        //    }
-        //    finally
-        //    {
-        //        IsBusy = false;
-        //    }
-        //}
-
-        //public async Task PopulateBooks()
-        //{
-        //    IsBusy = true;
-
-        //    try
-        //    {
-        //        Books.Clear();
-
-        //        var books = await _bookService.GetItemsAsync();
-        //        foreach (var book in books)
-        //        {
-        //            Books.Add(book);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        IsBusy = false;
-        //    }
-        //}
 
         public async Task PopulateBooks()
         {

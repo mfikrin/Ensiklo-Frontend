@@ -19,13 +19,16 @@ namespace ENSIKLO.Views
             InitializeComponent();
             _catalogViewModel = Startup.Resolve<CatalogViewModel>();
             BindingContext = _catalogViewModel;
-        }
-
-        protected override void OnAppearing()
-        {
             base.OnAppearing();
             _catalogViewModel.OnAppearing();
             _catalogViewModel?.PopulateBooks();
         }
+
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    _catalogViewModel.OnAppearing();
+        //    _catalogViewModel?.PopulateBooks();
+        //}
     }
 }

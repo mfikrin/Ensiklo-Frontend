@@ -25,19 +25,14 @@ namespace ENSIKLO.ViewModels
         private readonly IUserService _userService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
-        //public Command<object> ThreeDotCommand { get; }
 
         public Command RefreshCommand { get; }
-
-        //public Command<Book> BookTapped { get; }
-
         public CatalogViewModel(IBookService bookService, IUserService userService)
         {
             Title = "Catalog";
 
             _bookService = bookService;
             _userService = userService;
-            //category = String.Empty;
             topTitleBook = String.Empty;
 
             BooksTop = new ObservableCollection<Book>();
@@ -45,29 +40,6 @@ namespace ENSIKLO.ViewModels
 
             RefreshCommand = new Command(onTappedRefresh);
         }
-
-        //async Task ExecuteLoadBooksCommand()
-        //{
-        //    IsBusy = true;
-
-        //    try
-        //    {
-        //        Books.Clear();
-        //        var books = await _bookService.GetItemsAsync(true);
-        //        foreach (var book in books)
-        //        {
-        //            Books.Add(book);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex);
-        //    }
-        //    finally
-        //    {
-        //        IsBusy = false;
-        //    }
-        //}
 
         public async Task PopulateBooks()
         {
@@ -81,13 +53,9 @@ namespace ENSIKLO.ViewModels
                 User curr_user = await _userService.GetCurrentUser();
 
                 var id = curr_user.Id;
-                Debug.WriteLine("ID USER");
-                Debug.WriteLine(id);
+     
+                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,12);
 
-                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,5);
-
-                Debug.WriteLine("SINI LEWAT KAH");
-                Debug.WriteLine(booksTopTemp);
                 foreach (var book in booksTopTemp)
                 {
                     BooksTop.Add(book);
@@ -96,14 +64,10 @@ namespace ENSIKLO.ViewModels
                 var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
 
                 category = dataBook[0].Category;
-
-
-
                 category = char.ToUpper(category[0]) + category.Substring(1);
 
-                Debug.WriteLine(category);
  
-                var booksBottomTemp = await _bookService.GetMostPopularBook(5);
+                var booksBottomTemp = await _bookService.GetMostPopularBook(12);
                 Debug.WriteLine(booksBottomTemp);
 
                 foreach (var book in booksBottomTemp)
@@ -116,10 +80,9 @@ namespace ENSIKLO.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine("MASUK CATCH");
                 Console.WriteLine(ex.Message);
 
-                var booksTopTemp = await _bookService.GetSomeRandomBooks(5);
+                var booksTopTemp = await _bookService.GetSomeRandomBooks(12);
 
                 Debug.WriteLine(booksTopTemp);
                 foreach (var book in booksTopTemp)
@@ -129,7 +92,7 @@ namespace ENSIKLO.ViewModels
                 }
                 var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
 
-                var booksBottomTemp = await _bookService.GetMostPopularBook(5);
+                var booksBottomTemp = await _bookService.GetMostPopularBook(12);
                 Debug.WriteLine(booksBottomTemp);
 
                 foreach (var book in booksBottomTemp)
@@ -163,15 +126,6 @@ namespace ENSIKLO.ViewModels
             }
         }
 
-        //public string UserTopCategory
-        //{
-        //    get => category;
-        //    set
-        //    {
-        //        category = value;
-        //        OnPropertyChanged(nameof(UserTopCategory));
-        //    }
-        //}
         public ObservableCollection<Book> BooksTop
         {
             get => booksTop;
