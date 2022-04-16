@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ENSIKLO.Views.UpdateProfilePage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Update Profile"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Spacing="6" Padding="15" Margin="45, 90, 45, 45" >
+            <Label Text="Update Profile" FontSize="Large" FontAttributes="Bold" Grid.Column="0"/>
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Username" FontSize="Medium" Grid.Column="0"/>
+                <Editor Text="{Binding Username , Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Email" FontSize="Medium" Grid.Column="0"/>
+                <Editor Text="{Binding Email, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Password" FontSize="Medium" Grid.Column="0"/>
+                <Entry Text="{Binding Password, Mode=TwoWay}" IsPassword="True" FontSize="Medium" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="200, *">
+                <Label Text="Confirm Password" FontSize="Medium" Grid.Column="0"/>
+                <Entry Text="{Binding ConfirmationPassword, Mode=TwoWay}" IsPassword="True" FontSize="Medium" Grid.Column="1"/>
+            </Grid>
+
+
+
+            <StackLayout Orientation="Horizontal" Margin="0, 30, 0, 0">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
