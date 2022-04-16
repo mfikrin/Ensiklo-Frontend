@@ -85,9 +85,14 @@ namespace ENSIKLO.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateUserAsync(User item)
+        public async Task<bool> UpdateUserAsync(User item)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PutAsync($"User/updateUser/{CurrentUser.Id}",
+            new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json"));
+            Debug.WriteLine(response);
+            response.EnsureSuccessStatusCode();
+
+            return await Task.FromResult(true);
         }
     }
 }
