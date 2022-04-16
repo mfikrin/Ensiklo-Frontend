@@ -11,9 +11,10 @@
 
                 <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
-                    <Label Text="Your Top Genre : " FontSize="17" TextColor="Black"/>
+                    <Label Text="{Binding TopTitleBook}" FontSize="17" TextColor="Black"/>
 
-                    <Label Text="{Binding UserTopCategory}" FontSize="17" TextColor="Black" />
+                    <!--Your Top Genre :-->
+                    <!--<Label Text="{Binding UserTopCategory}" FontSize="17" TextColor="Black" />-->
 
 
                     <Label HorizontalOptions="EndAndExpand" Text="Refresh" FontSize="17" TextColor="Black">
