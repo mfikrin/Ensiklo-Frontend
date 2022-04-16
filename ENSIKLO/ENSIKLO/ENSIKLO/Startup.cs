@@ -51,6 +51,7 @@ namespace ENSIKLO
             services.AddTransient<ProfileViewModel>();
             services.AddTransient<CatalogViewModel>();
             services.AddTransient<NewArrivalViewModel>();
+            services.AddTransient<UpdateProfileViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }
