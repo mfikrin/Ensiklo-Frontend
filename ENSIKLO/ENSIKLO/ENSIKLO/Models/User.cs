@@ -19,8 +19,5 @@ namespace ENSIKLO.Models
         [JsonPropertyName("password")]
         public string Password { get; set; }
 
-        [JsonPropertyName("role")]
-        public string Role { get; set; }
-
     }
 }
