@@ -102,6 +102,11 @@ namespace ENSIKLO.Services
             return await Task.FromResult(books);
         }
 
+        public async Task<IEnumerable<Book>> SearchBooks(string query)
+        {
+            return await Task.FromResult(books);
+        }
+
         public async Task<bool> UpdateItemAsync(Book item)
         {
             var oldItem = books.Where((Book arg) => arg.Id_book == item.Id_book).FirstOrDefault();

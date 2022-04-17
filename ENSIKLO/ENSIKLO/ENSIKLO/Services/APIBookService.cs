@@ -120,6 +120,17 @@ namespace ENSIKLO.Services
             return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
         }
 
+        public async Task<IEnumerable<Book>> SearchBooks(string query)
+        {
+            var response = await _httpClient.GetAsync($"Book/search?title={query}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+        }
+
         public async Task<bool> UpdateItemAsync(Book item)
         {
             var response = await _httpClient.PutAsync($"Book?id={item.Id_book}",

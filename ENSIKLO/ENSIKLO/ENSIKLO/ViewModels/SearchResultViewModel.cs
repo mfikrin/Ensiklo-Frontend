@@ -51,7 +51,7 @@ namespace ENSIKLO.ViewModels
             {
                 BooksBottom.Clear();
 
-                var booksBottomTemp = await _bookService.GetMostPopularBook(5);
+                var booksBottomTemp = await _bookService.SearchBooks(SearchQuery);
                 foreach (var book in booksBottomTemp)
                 {
                     BooksBottom.Add(book);
