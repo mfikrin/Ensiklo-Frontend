@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\SearchResultPage.xaml.cs">
+      <DependentUpon>SearchResultPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UpdateProfilePage.xaml.cs">
       <DependentUpon>UpdateProfilePage.xaml</DependentUpon>
     </Compile>
