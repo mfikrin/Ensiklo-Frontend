@@ -19,6 +19,7 @@ namespace ENSIKLO.ViewModels
         private ObservableCollection<Book> booksTop;
         private ObservableCollection<Book> booksBottom;
 
+        public string search_input;
 
         private readonly IBookService _bookService;
         private readonly IUserService _userService;
@@ -27,6 +28,7 @@ namespace ENSIKLO.ViewModels
         //public Command<object> ThreeDotCommand { get; }
 
         public Command RefreshCommand { get; }
+        public Command SearchCommand { get; }
 
         //public Command<Book> BookTapped { get; }
 
@@ -42,6 +44,7 @@ namespace ENSIKLO.ViewModels
             BooksBottom = new ObservableCollection<Book>();
 
             RefreshCommand = new Command(onTappedRefresh);
+            SearchCommand = new Command(OnSearchClicked);
         }
 
         //async Task ExecuteLoadBooksCommand()
@@ -154,6 +157,12 @@ namespace ENSIKLO.ViewModels
             }
         }
 
+        public string SearchInput
+        {
+            get => search_input;
+            set => SetProperty(ref search_input, value);
+        }
+
         public Book SelectedBook
         {
             get => _selectedBook;
@@ -182,6 +191,11 @@ namespace ENSIKLO.ViewModels
         {
             OnAppearing();
             await PopulateBooks();
+        }
+
+        private async void OnSearchClicked()
+        {
+            //navigate to search result
         }
     }
 }

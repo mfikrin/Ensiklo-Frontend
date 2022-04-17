@@ -5,10 +5,14 @@
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <ScrollView>
+            
                 <StackLayout
                         Margin="10"
                         HeightRequest="230">
-
+                <Entry BackgroundColor="#FFFFFF" Placeholder="" TextColor="Black"
+                       Text="{Binding SearchInput, Mode=TwoWay}"></Entry>
+                <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Search" Margin="0,20"
+                        Command="{Binding SearchCommand}" WidthRequest="200"></Button>
                 <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
                     <Label Text="Your Top Genre : " FontSize="17" TextColor="Black"/>
