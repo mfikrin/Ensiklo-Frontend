@@ -28,7 +28,7 @@
                     
                     <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Label Text="Newest Arrival!" FontSize="17" FontAttributes="Bold"/>
-                        <Label HorizontalOptions="EndAndExpand" Text="View all new Arrival" FontSize="17">
+                            <Label HorizontalOptions="EndAndExpand" Text="View all new Arrival" FontSize="17" FontAttributes="Bold">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     Command="{Binding AllNewArrivalCommand}"
@@ -52,7 +52,7 @@
                                 >
                                 
                             <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
+                                <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="10"/>
                             </CollectionView.ItemsLayout>
 
                             <CollectionView.ItemTemplate>
@@ -121,7 +121,7 @@
                        VerticalOptions="Start"
                        HasShadow="True"
                        IsClippedToBounds="True"
-                       BackgroundColor="#009BF0"
+                       BackgroundColor="Transparent"
                        Margin="10"
                        Padding="0"
                     >
@@ -131,8 +131,8 @@
                         HeightRequest="230">
 
                         <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <Label Text="You might like these" FontAttributes="Bold" FontSize="17"/>
-                            <Label HorizontalOptions="EndAndExpand" Text="Refresh Suggestion" FontSize="17">
+                            <Label Text="You might like these" FontAttributes="Bold" FontSize="17" TextColor="#009BF0"/>
+                            <Label HorizontalOptions="EndAndExpand" Text="Refresh Suggestion" FontSize="17" TextColor="#009BF0" FontAttributes="Bold">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer 
                                     Command="{Binding RefreshCommand}"
@@ -144,14 +144,14 @@
                                     HorizontalOptions="End"
                                     WidthRequest="10"
                                     HeightRequest="16" 
-                                    
+                                 
                                     BorderColor="Black"
                                     Command="{Binding RefreshCommand}"
                                     
                                   />
                         </StackLayout>
 
-                        <RefreshView x:DataType="local:BookViewModel"   IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                        <!--<RefreshView x:DataType="local:BookViewModel"   IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                     <CollectionView 
                             ItemsSource="{Binding BooksBottom}" 
                             x:Name="ItemsListView" 
@@ -216,15 +216,6 @@
                                                             />
 
 
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer 
-                                                    NumberOfTapsRequired="1"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BookViewModel}}, Path=BookTapped}"		
-                                                    CommandParameter="{Binding .}">
-                                            </TapGestureRecognizer>
-                                        </StackLayout.GestureRecognizers>
-
                                     </StackLayout>
 
                                 </Grid>
@@ -234,7 +225,81 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
-                </RefreshView>
+                </RefreshView>-->
+                        <RefreshView x:DataType="local:BookViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+
+                            <CollectionView 
+                                ItemsSource="{Binding BooksBottom}" 
+                                Margin="10"
+                                x:Name="ItemsListViewBottom" 
+                                SelectionMode="Single"
+                                SelectedItem="{Binding SelectedBook}"
+                                EmptyView="No data Available"
+                                >
+
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="8" HorizontalItemSpacing="6" VerticalItemSpacing="6"/>
+                                </CollectionView.ItemsLayout>
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Frame CornerRadius="12" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Start"
+                                           HasShadow="True"
+                                           BackgroundColor="White"
+                                           BorderColor="Gray"         
+                                           IsClippedToBounds="True"
+                                           Padding="0">
+
+                                            <Grid x:DataType="model:Book" >
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*" />
+                                                    <RowDefinition Height=".6*" />
+                                                </Grid.RowDefinitions>
+
+
+                                                <Image Source="{Binding Url_cover}"
+                                                           Grid.Row="0"
+                                                           Aspect="AspectFill" 
+                                                           WidthRequest="100"
+                                                           HeightRequest="100"
+                                                           />
+
+
+                                                <StackLayout Grid.Row="1">
+
+                                                    <Label Grid.Column="1"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       TextColor="Black"
+                                                       Text="{Binding Title}"
+                                                       FontAttributes="Bold"
+                                                      />
+
+
+                                                    <Label Text="{Binding Author}"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        TextColor="Black"
+                                                        FontAttributes="Italic"
+                                                        />
+                                                </StackLayout>
+
+                                            </Grid>
+
+
+                                        </Frame>
+
+                                    </DataTemplate>
+
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </RefreshView>
                     </StackLayout>
                 </Frame>
 

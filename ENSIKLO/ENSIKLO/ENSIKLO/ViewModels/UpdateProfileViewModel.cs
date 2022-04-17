@@ -79,7 +79,7 @@ namespace ENSIKLO.ViewModels
                         Username = username,
                         Email = email,
                         Password = password,
-                        Role = "user"
+                        //Role = "user"
 
                     };
 
@@ -90,7 +90,7 @@ namespace ENSIKLO.ViewModels
                     CurrentUser.Id = gotuser.Id;
                     CurrentUser.Email = gotuser.Email;
                     CurrentUser.Username = gotuser.Username;
-                    CurrentUser.Role = gotuser.Role;
+                    //CurrentUser.Role = gotuser.Role;
 
                     Debug.WriteLine("Finished updating profile");
                     Debug.WriteLine(CurrentUser.Username);

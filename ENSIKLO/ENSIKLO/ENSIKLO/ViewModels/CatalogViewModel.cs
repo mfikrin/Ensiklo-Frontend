@@ -15,6 +15,7 @@ namespace ENSIKLO.ViewModels
     {
         private Book _selectedBook;
 
+        private string topTitleBook;
         private string category;
         private ObservableCollection<Book> booksTop;
         private ObservableCollection<Book> booksBottom;
@@ -24,48 +25,21 @@ namespace ENSIKLO.ViewModels
         private readonly IUserService _userService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
-        //public Command<object> ThreeDotCommand { get; }
 
         public Command RefreshCommand { get; }
-
-        //public Command<Book> BookTapped { get; }
-
         public CatalogViewModel(IBookService bookService, IUserService userService)
         {
             Title = "Catalog";
 
             _bookService = bookService;
             _userService = userService;
-            category = String.Empty;
-     
+            topTitleBook = String.Empty;
+
             BooksTop = new ObservableCollection<Book>();
             BooksBottom = new ObservableCollection<Book>();
 
             RefreshCommand = new Command(onTappedRefresh);
         }
-
-        //async Task ExecuteLoadBooksCommand()
-        //{
-        //    IsBusy = true;
-
-        //    try
-        //    {
-        //        Books.Clear();
-        //        var books = await _bookService.GetItemsAsync(true);
-        //        foreach (var book in books)
-        //        {
-        //            Books.Add(book);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex);
-        //    }
-        //    finally
-        //    {
-        //        IsBusy = false;
-        //    }
-        //}
 
         public async Task PopulateBooks()
         {
@@ -79,12 +53,9 @@ namespace ENSIKLO.ViewModels
                 User curr_user = await _userService.GetCurrentUser();
 
                 var id = curr_user.Id;
-                Debug.WriteLine("ID USER");
-                Debug.WriteLine(id);
+     
+                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,12);
 
-                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,5);
-
-                Debug.WriteLine(booksTopTemp);
                 foreach (var book in booksTopTemp)
                 {
                     BooksTop.Add(book);
@@ -93,25 +64,45 @@ namespace ENSIKLO.ViewModels
                 var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
 
                 category = dataBook[0].Category;
+                category = char.ToUpper(category[0]) + category.Substring(1);
 
+ 
+                var booksBottomTemp = await _bookService.GetMostPopularBook(12);
+                Debug.WriteLine(booksBottomTemp);
 
-
-                UserTopCategory = char.ToUpper(category[0]) + category.Substring(1);
-
-                Debug.WriteLine(category);
-                Debug.WriteLine(UserTopCategory);
-
-
-
-                var booksBottomTemp = await _bookService.GetMostPopularBook(5);
                 foreach (var book in booksBottomTemp)
                 {
                     BooksBottom.Add(book);
                 }
+
+                topTitleBook = "Your Top Genre : " + category;
+                TopTitleBook = topTitleBook;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+
+                var booksTopTemp = await _bookService.GetSomeRandomBooks(12);
+
+                Debug.WriteLine(booksTopTemp);
+                foreach (var book in booksTopTemp)
+                {
+                    BooksTop.Add(book);
+
+                }
+                var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
+
+                var booksBottomTemp = await _bookService.GetMostPopularBook(12);
+                Debug.WriteLine(booksBottomTemp);
+
+                foreach (var book in booksBottomTemp)
+                {
+                    BooksBottom.Add(book);
+                }
+
+                topTitleBook = "You might like these";
+                TopTitleBook = topTitleBook;
+
             }
             finally
             {
@@ -125,15 +116,16 @@ namespace ENSIKLO.ViewModels
             SelectedBook = null;
         }
 
-        public string UserTopCategory
+        public string TopTitleBook
         {
-            get => category;
+            get => topTitleBook;
             set
             {
-                category = value;
-                OnPropertyChanged(nameof(UserTopCategory));
+                topTitleBook = value;
+                OnPropertyChanged(nameof(TopTitleBook));
             }
         }
+
         public ObservableCollection<Book> BooksTop
         {
             get => booksTop;
