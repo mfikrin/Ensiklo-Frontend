@@ -41,6 +41,9 @@ namespace ENSIKLO.Models
         [JsonPropertyName("page")]
         public int Page { get; set; }
 
+        [JsonPropertyName("isbn")]
+        public string ISBN { get; set; }
+
         [JsonPropertyName("id_user")]
         public int Id_user { get; set; }
 
@@ -48,6 +51,7 @@ namespace ENSIKLO.Models
         public int At_page { get; set; }
         [JsonPropertyName("last_readtime")]
         public DateTime Last_readtime { get; set; }
+
         /* [JsonPropertyName("finish_reading")]
         public int Finish_reading { get; set; } */
     }

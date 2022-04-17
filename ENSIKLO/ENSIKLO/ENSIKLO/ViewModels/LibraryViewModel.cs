@@ -51,7 +51,8 @@ namespace ENSIKLO.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine("Cannot fetch books");
+                Debug.WriteLine(ex.Message);
             }
         }
 

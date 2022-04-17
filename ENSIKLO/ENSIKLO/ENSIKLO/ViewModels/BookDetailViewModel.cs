@@ -183,6 +183,7 @@ namespace ENSIKLO.ViewModels
                         Description_book = book.Description_book,
                         Book_content = book.Book_content,
                         Page = book.Page,
+       
                         Url_cover = book.Url_cover,
                         Category = book.Category,
                         Keywords = book.Keywords,
@@ -194,7 +195,7 @@ namespace ENSIKLO.ViewModels
                     };
 
                     await _libraryService.AddToLibraryAsync(libraryUser);
-                    await Shell.Current.GoToAsync(nameof(BooksPage));
+                    await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={bookId}");
                 }
             }
             catch (Exception ex)

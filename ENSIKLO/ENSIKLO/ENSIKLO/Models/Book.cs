@@ -30,6 +30,7 @@ namespace ENSIKLO.Models
 
         [JsonPropertyName("page")]
         public int Page { get; set; }
+       
 
         [JsonPropertyName("url_cover")]
         public string Url_cover { get; set; }

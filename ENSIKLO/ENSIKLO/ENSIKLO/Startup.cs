@@ -44,7 +44,7 @@ namespace ENSIKLO
             services.AddTransient<LibraryViewModel>();
             services.AddTransient<LibraryReadDetailViewModel>();
             services.AddTransient<LibraryDetailViewModel>();
-            services.AddTransient<NewBookViewModel>();
+            // services.AddTransient<NewBookViewModel>();
             services.AddTransient<BookDetailViewModel>();
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<LoginViewModel>();

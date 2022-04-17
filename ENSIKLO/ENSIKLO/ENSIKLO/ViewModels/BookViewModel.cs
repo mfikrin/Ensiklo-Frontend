@@ -18,6 +18,7 @@ namespace ENSIKLO.ViewModels
         private ObservableCollection<Book> booksBottom;
 
         private readonly IBookService _bookService;
+        private readonly ILibraryService _libraryService;
         public Command LoadBooksCommand { get; }
         //public Command<object> ThreeDotCommand { get; }
 
@@ -27,11 +28,12 @@ namespace ENSIKLO.ViewModels
 
         //public Command<Book> BookTapped { get; }
 
-        public BookViewModel(IBookService bookService)
+        public BookViewModel(IBookService bookService, ILibraryService libraryService)
         {
             Title = "Browse";
 
             _bookService = bookService;
+            _libraryService = libraryService;
 
             booksTop = new ObservableCollection<Book>();
             booksBottom = new ObservableCollection<Book>();
@@ -176,9 +178,29 @@ namespace ENSIKLO.ViewModels
         {
             if (book == null)
                 return;
-
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
+            
+            try
+            {
+                var select = await _libraryService.GetLibraryItemAsync(Convert.ToInt32(CurrentUser.Id), book.Id_book);
+                if (select != null)
+                {
+                    if (select.At_page == 0)
+                    {
+                        await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={select.Id_book}");
+                    }
+                    else
+                    {
+                        await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={select.Id_book}");
+                    }
+                } else
+                {
+                    // This will push the ItemDetailPage onto the navigation stack
+                    await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
+                }
+            } catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         private async void onTappedNewArrival(object obj)
