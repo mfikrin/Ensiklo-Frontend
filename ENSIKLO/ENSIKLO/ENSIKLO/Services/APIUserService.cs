@@ -53,13 +53,9 @@ namespace ENSIKLO.Services
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            //Debug.WriteLine(responseAsString);
 
             var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
 
-            //Debug.WriteLine(removeSqrBracket);
-
-            //responseAsString = @"{""id_book"":1,""title"":""test judul"",""author"":""siapa"",""publisher"":""Gra"",""year_published"":""2001"",""description_book"":""bagus bgt lho"",""book_content"":""https://www.google.com"",""url_cover"":""https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"",""category"":""science"",""keywords"":""science, nature""}";
             return JsonSerializer.Deserialize<User>(removeSqrBracket);
         }
 
@@ -70,13 +66,9 @@ namespace ENSIKLO.Services
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            //Debug.WriteLine(responseAsString);
 
             var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
 
-            //Debug.WriteLine(removeSqrBracket);
-
-            //responseAsString = @"{""id_book"":1,""title"":""test judul"",""author"":""siapa"",""publisher"":""Gra"",""year_published"":""2001"",""description_book"":""bagus bgt lho"",""book_content"":""https://www.google.com"",""url_cover"":""https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"",""category"":""science"",""keywords"":""science, nature""}";
             return JsonSerializer.Deserialize<User>(removeSqrBracket);
         }
 
