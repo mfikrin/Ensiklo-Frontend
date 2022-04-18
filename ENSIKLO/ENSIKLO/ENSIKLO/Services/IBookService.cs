@@ -17,6 +17,7 @@ namespace ENSIKLO.Services
         Task<IEnumerable<Book>> GetMostPopularBook(int limit, bool forceRefresh = false);
         Task<IEnumerable<Book>> GetNewArrivalBook(int limit, bool forceRefresh = false);
         Task<IEnumerable<Book>> GetSomeRandomBooks(int limit, bool forceRefresh = false);
+        Task<IEnumerable<Book>> SearchBooks(string query);
 
     }
 }

@@ -11,23 +11,19 @@ using Xamarin.Forms.Xaml;
 namespace ENSIKLO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LibraryPage : ContentPage
+    public partial class SearchResultPage : ContentPage
     {
-        private readonly LibraryViewModel _libraryViewModel;
- 
-        public LibraryPage()
+        private readonly SearchResultViewModel _searchResultViewModel;
+        public SearchResultPage()
         {
             InitializeComponent();
-            _libraryViewModel = Startup.Resolve<LibraryViewModel>();
-            BindingContext = _libraryViewModel;
-
+            _searchResultViewModel = Startup.Resolve<SearchResultViewModel>();
+            BindingContext = _searchResultViewModel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _libraryViewModel.OnAppearing();
-            _libraryViewModel?.PopulateBooks();
         }
     }
 }

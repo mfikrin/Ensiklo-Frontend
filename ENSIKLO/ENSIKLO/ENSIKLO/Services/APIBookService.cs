@@ -56,13 +56,9 @@ namespace ENSIKLO.Services
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            //Debug.WriteLine(responseAsString);
 
             var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
-
-            //Debug.WriteLine(removeSqrBracket);
-
-            //responseAsString = @"{""id_book"":1,""title"":""test judul"",""author"":""siapa"",""publisher"":""Gra"",""year_published"":""2001"",""description_book"":""bagus bgt lho"",""book_content"":""https://www.google.com"",""url_cover"":""https://res.cloudinary.com/ensiklo/image/upload/v1645609810/samples/compact_cover_book_xjkzwq.jpg"",""category"":""science"",""keywords"":""science, nature""}";
+            
             return JsonSerializer.Deserialize<Book>(removeSqrBracket);
         }
 
@@ -112,6 +108,17 @@ namespace ENSIKLO.Services
         public async Task<IEnumerable<Book>> GetUserTopGenreBook(Int64 id_user, int limit, bool forceRefresh = false)
         {
             var response = await _httpClient.GetAsync($"Book/TopGenre/{id_user}/{limit}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+        }
+
+        public async Task<IEnumerable<Book>> SearchBooks(string query)
+        {
+            var response = await _httpClient.GetAsync($"Book/search?title={query}");
 
             response.EnsureSuccessStatusCode();
 

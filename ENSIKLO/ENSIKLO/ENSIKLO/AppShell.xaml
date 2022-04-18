@@ -41,17 +41,7 @@
         <ShellContent Title="Home" Icon="Assets/house_active.png" Route="home" ContentTemplate="{DataTemplate local:BooksPage}" />
         <ShellContent Title="Library" Icon="Assets/bookmarks.png" Route="library" ContentTemplate="{DataTemplate local:LibraryPage}" />
         <ShellContent Title="Catalog" Icon="Assets/local_mall.png" Route="catalog" ContentTemplate="{DataTemplate local:CatalogPage}" />
-        <ShellContent Title="Profile" Icon="Assets/account_circle.png" Route="profile" ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        <ShellContent Title="Profile" Icon="Assets/account_circle.png" Route="profile" ContentTemplate="{DataTemplate local:UpdateProfilePage}"/>
     </TabBar>
-
-
-    <!--
-        If you would like to navigate to this content you can do so by calling
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
-    <!--<TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:BooksPage}" />
-    </TabBar>-->
-
 
 </Shell>

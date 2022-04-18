@@ -11,19 +11,17 @@ using Xamarin.Forms;
 
 namespace ENSIKLO.ViewModels
 {
-    public class CatalogViewModel : BaseViewModel
+    [QueryProperty(nameof(SearchQuery), nameof(SearchQuery))]
+    public class SearchResultViewModel : BaseViewModel
     {
         private Book _selectedBook;
 
-        private string topTitleBook;
-        private string category;
-        private ObservableCollection<Book> booksTop;
         private ObservableCollection<Book> booksBottom;
 
         public string search_input;
+        public string search_query;
 
         private readonly IBookService _bookService;
-        private readonly IUserService _userService;
         public Command LoadBooksCommand { get; }
         public Command AddBookCommand { get; }
 
@@ -32,83 +30,37 @@ namespace ENSIKLO.ViewModels
 
         //public Command<Book> BookTapped { get; }
 
-        public CatalogViewModel(IBookService bookService, IUserService userService)
+        public SearchResultViewModel(IBookService bookService)
         {
             Title = "Catalog";
 
             _bookService = bookService;
-            _userService = userService;
-            topTitleBook = String.Empty;
-
-            BooksTop = new ObservableCollection<Book>();
+     
             BooksBottom = new ObservableCollection<Book>();
 
             RefreshCommand = new Command(onTappedRefresh);
             SearchCommand = new Command(OnSearchClicked);
         }
 
-        public async Task PopulateBooks()
+        public async void PopulateBooks()
         {
             IsBusy = true;
+            Debug.WriteLine("POPULATING");
 
             try
             {
-                BooksTop.Clear();
                 BooksBottom.Clear();
 
-                User curr_user = await _userService.GetCurrentUser();
-
-                var id = curr_user.Id;
-     
-                var booksTopTemp = await _bookService.GetUserTopGenreBook(id,12);
-
-                foreach (var book in booksTopTemp)
-                {
-                    BooksTop.Add(book);
-                    
-                }
-                var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
-
-                category = dataBook[0].Category;
-                category = char.ToUpper(category[0]) + category.Substring(1);
-
- 
-                var booksBottomTemp = await _bookService.GetMostPopularBook(12);
-                Debug.WriteLine(booksBottomTemp);
-
+                var booksBottomTemp = await _bookService.SearchBooks(SearchQuery);
                 foreach (var book in booksBottomTemp)
                 {
                     BooksBottom.Add(book);
                 }
-
-                topTitleBook = "Your Top Genre : " + category;
-                TopTitleBook = topTitleBook;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-
-                var booksTopTemp = await _bookService.GetSomeRandomBooks(12);
-
-                Debug.WriteLine(booksTopTemp);
-                foreach (var book in booksTopTemp)
-                {
-                    BooksTop.Add(book);
-
-                }
-                var dataBook = booksTopTemp.AsEnumerable().Select(book => book).ToArray();
-
-                var booksBottomTemp = await _bookService.GetMostPopularBook(12);
-                Debug.WriteLine(booksBottomTemp);
-
-                foreach (var book in booksBottomTemp)
-                {
-                    BooksBottom.Add(book);
-                }
-
-                topTitleBook = "You might like these";
-                TopTitleBook = topTitleBook;
-
+                Debug.WriteLine("POPULATING: ERROR");
+                Debug.WriteLine(ex);
             }
             finally
             {
@@ -120,26 +72,6 @@ namespace ENSIKLO.ViewModels
         {
             IsBusy = true;
             SelectedBook = null;
-        }
-
-        public string TopTitleBook
-        {
-            get => topTitleBook;
-            set
-            {
-                topTitleBook = value;
-                OnPropertyChanged(nameof(TopTitleBook));
-            }
-        }
-
-        public ObservableCollection<Book> BooksTop
-        {
-            get => booksTop;
-            set
-            {
-                booksTop = value;
-                OnPropertyChanged(nameof(BooksTop));
-            }
         }
 
         public ObservableCollection<Book> BooksBottom
@@ -172,6 +104,17 @@ namespace ENSIKLO.ViewModels
             }
         }
 
+        public string SearchQuery
+        {
+            get => search_query;
+            set
+            {
+                search_query = value;
+                SearchInput = value;
+                PopulateBooks();
+            }
+        }
+
 
         async void OnBookSelected(Book book)
         {
@@ -180,16 +123,19 @@ namespace ENSIKLO.ViewModels
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
+            
         }
 
         private async void onTappedRefresh(object obj)
         {
             OnAppearing();
-            await PopulateBooks();
+            PopulateBooks();
         }
 
         private async void OnSearchClicked()
         {
+            //await Shell.Current.Navigation.PopAllPopupAsync();
+            await Shell.Current.Navigation.PopAsync();
             await Shell.Current.GoToAsync($"{nameof(SearchResultPage)}?{nameof(SearchResultViewModel.SearchQuery)}={search_input}");
         }
     }
