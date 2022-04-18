@@ -13,12 +13,14 @@ namespace ENSIKLO.ViewModels
     public class BookViewModel : BaseViewModel
     {
         private Book _selectedBook;
+        private string username;
 
         private ObservableCollection<Book> booksTop;
         private ObservableCollection<Book> booksBottom;
 
         private readonly IBookService _bookService;
         private readonly ILibraryService _libraryService;
+        private readonly IUserService _userService;
         public Command LoadBooksCommand { get; }
         public Command AllNewArrivalCommand { get; }
 
@@ -26,12 +28,15 @@ namespace ENSIKLO.ViewModels
 
         //public Command<Book> BookTapped { get; }
 
-        public BookViewModel(IBookService bookService, ILibraryService libraryService)
+        public BookViewModel(IBookService bookService, ILibraryService libraryService, IUserService userService)
         {
             Title = "Browse";
 
             _bookService = bookService;
             _libraryService = libraryService;
+            _userService = userService;
+
+            username = String.Empty;
 
             booksTop = new ObservableCollection<Book>();
             booksBottom = new ObservableCollection<Book>();
@@ -50,8 +55,14 @@ namespace ENSIKLO.ViewModels
             {
                 BooksTop.Clear();
                 BooksBottom.Clear();
+                Username = String.Empty;
 
-           
+
+                User curr_user = await _userService.GetCurrentUser();
+
+                username = curr_user.Username;
+
+                Username = username;
 
                 var booksTopTemp = await _bookService.GetNewArrivalBook(12);
 
@@ -115,6 +126,16 @@ namespace ENSIKLO.ViewModels
                     OnBookSelected(value);
                 }
                 
+            }
+        }
+
+        public string Username
+        {
+            get => username;
+            set
+            {
+                username = value;
+                OnPropertyChanged(nameof(Username));
             }
         }
 
