@@ -34,6 +34,7 @@ namespace ENSIKLO.ViewModels
         }
         public async void PopulateBooks()
         {
+            IsBusy = true;
             try
             {
                 Library.Clear();
@@ -46,6 +47,8 @@ namespace ENSIKLO.ViewModels
                         libraryItem = book,
                         progressBar = Convert.ToInt32(((double)book.At_page / book.Page) * 130)
                     };
+
+                    Debug.WriteLine(Convert.ToInt32(((double)book.At_page / book.Page) * 130));
                     Library.Add(temp);
                 }
             }
@@ -53,6 +56,10 @@ namespace ENSIKLO.ViewModels
             {
                 Debug.WriteLine("Cannot fetch books");
                 Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 

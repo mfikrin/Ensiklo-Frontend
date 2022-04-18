@@ -195,7 +195,10 @@ namespace ENSIKLO.ViewModels
                     };
 
                     await _libraryService.AddToLibraryAsync(libraryUser);
+                    await Shell.Current.Navigation.PopAsync();
                     await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={bookId}");
+
+
                 }
             }
             catch (Exception ex)

@@ -64,7 +64,7 @@
                                                     IsClippedToBounds="True"
                                                     Padding="0,15,0,0">
                                                 <Rectangle Fill="#7db051"
-                                                       WidthRequest="{Binding progressBar}"
+                                                       WidthRequest="{Binding progressBar, Mode=TwoWay}"
                                                        HeightRequest="10"
                                                        HorizontalOptions="Start" 
                                                        />
