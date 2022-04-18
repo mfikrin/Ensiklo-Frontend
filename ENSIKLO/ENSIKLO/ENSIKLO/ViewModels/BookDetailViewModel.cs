@@ -36,13 +36,17 @@ namespace ENSIKLO.ViewModels
         private string keywords ;
 
         private readonly IBookService _bookService;
+        private readonly ILibraryService _libraryService;
         public Command DeleteBookCommand { get; }
-
-        public BookDetailViewModel(IBookService bookService)
+        public Command AddToLibraryCommand { get; set; }
+        public BookDetailViewModel(IBookService bookService, ILibraryService libraryService)
         {
             _bookService = bookService;
+            _libraryService = libraryService;
 
             DeleteBookCommand = new Command(async bookid => await OnDeleteBook(bookid: BookId));
+        
+            AddToLibraryCommand = new Command(async userId => await AddToLibrary(userId: Convert.ToInt32(CurrentUser.Id), bookId: BookId));
 
             //DeleteBookCommand = new Command(async () => await OnDeleteBook());
         }
@@ -149,16 +153,6 @@ namespace ENSIKLO.ViewModels
         {
             Debug.WriteLine("On delete Book");
             Debug.WriteLine(bookid);
-            //var result = await UserDialogs.Instance.ConfirmAsync("Are you sure to delete this book ?", "Confirm Selection", "Yes", "No");
-
-            //Debug.WriteLine(result);
-            //if (result == 1)
-            //{
-            //    await _bookService.DeleteItemAsync(int.Parse(bookid));
-            //    await Shell.Current.GoToAsync(nameof(BooksPage));
-            //}
-
-            //TODO: Add confirmation Before Delete
 
             await _bookService.DeleteItemAsync(int.Parse(bookid));
             await Shell.Current.GoToAsync(nameof(BooksPage));
@@ -166,6 +160,52 @@ namespace ENSIKLO.ViewModels
             
 
 
+
+        }
+
+        private async Task AddToLibrary(int userId, string bookId)
+        {
+            Debug.WriteLine(bookId);
+
+            try
+            {
+                var book = await _bookService.GetItemAsync(int.Parse(bookId));
+                if (bookId != null)
+                {
+                    LibraryUser libraryUser = new LibraryUser
+                    {
+                        Id_user = userId,
+                        Id_book = int.Parse(bookId),
+                        Title = book.Title,
+                        Author = book.Author,
+                        Publisher = book.Publisher,
+                        Year_published = book.Year_published,
+                        Description_book = book.Description_book,
+                        Book_content = book.Book_content,
+                        Page = book.Page,
+       
+                        Url_cover = book.Url_cover,
+                        Category = book.Category,
+                        Keywords = book.Keywords,
+                        Added_time = book.Added_time,
+                        At_page = 0,
+                        Last_readtime = DateTime.Now,
+                        // Finish_reading =0
+
+                    };
+
+                    await _libraryService.AddToLibraryAsync(libraryUser);
+                    await Shell.Current.Navigation.PopAsync();
+                    await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={bookId}");
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine(ex.Message);
+            }
 
         }
 
