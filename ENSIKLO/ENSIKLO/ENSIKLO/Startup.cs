@@ -32,9 +32,19 @@ namespace ENSIKLO
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
+            services.AddHttpClient<ILibraryService, APILibraryService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:49067/api/");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
 
             //add viewmodels
             services.AddTransient<BookViewModel>();
+            services.AddTransient<LibraryViewModel>();
+            services.AddTransient<LibraryReadDetailViewModel>();
+            services.AddTransient<LibraryDetailViewModel>();
+            // services.AddTransient<NewBookViewModel>();
             services.AddTransient<BookDetailViewModel>();
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<LoginViewModel>();
