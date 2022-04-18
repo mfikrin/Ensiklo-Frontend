@@ -190,7 +190,9 @@ namespace ENSIKLO.ViewModels
                         Added_time = book.Added_time,
                         At_page = 0,
                         Last_readtime = DateTime.Now,
+                        Added_time_to_library = DateTime.Now
                         // Finish_reading =0
+
 
                     };
 

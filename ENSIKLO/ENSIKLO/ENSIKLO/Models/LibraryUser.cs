@@ -49,10 +49,16 @@ namespace ENSIKLO.Models
 
         [JsonPropertyName("at_page")]
         public int At_page { get; set; }
+
         [JsonPropertyName("last_readtime")]
         public DateTime Last_readtime { get; set; }
 
-        /* [JsonPropertyName("finish_reading")]
-        public int Finish_reading { get; set; } */
+        [JsonPropertyName("finish_reading")]
+        public bool Finish_reading { get; set; }
+
+        [JsonPropertyName("added_time_to_library")]
+        public DateTime Added_time_to_library { get; set; }
+
+        
     }
 }
