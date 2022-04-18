@@ -15,7 +15,7 @@
                     <Label Text="Finished books" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 35, 0, 0"/>
                     <!--collection view buku yang udah dibaca (harusnya di library_user ntar ada tanda dia udah baca bukunya apa belum, ambil sql yang udah-->
 
-                    <!--<RefreshView x:DataType="local:ProfileViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <RefreshView x:DataType="local:ProfileViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                         <CollectionView 
                             ItemsSource="{Binding BooksBottom}" 
                             x:Name="ItemsListView" 
@@ -98,7 +98,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
 
-                    </RefreshView>-->
+                    </RefreshView>
 
                     <Button Text="Logout" CornerRadius="10" BorderColor="#009BF0" BackgroundColor="Transparent" TextColor="#009BF0" HorizontalOptions="Start"
                         Command="{Binding LogoutCommand}">

@@ -1,9 +1,12 @@
-﻿using ENSIKLO.Services;
+﻿using ENSIKLO.Models;
+using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ENSIKLO.ViewModels
@@ -12,20 +15,26 @@ namespace ENSIKLO.ViewModels
     {
         private readonly IUserService _userService;
         private readonly IBookService _bookService;
+        private readonly ILibraryService _libraryService;
         public Command LogoutCommand { get; }
         public string email;
         public string userName;
         public Int64 id;
 
+        private ObservableCollection<Book> booksBottom;
+        private Book _selectedBook;
 
-        public ProfileViewModel(IBookService bookService, IUserService userService)
+
+
+        public ProfileViewModel(IBookService bookService, IUserService userService, ILibraryService libraryService)
         {
 
             _userService = userService;
             _bookService = bookService;
+            _libraryService = libraryService;
 
             LogoutCommand = new Command(OnClickLogout);
-
+            booksBottom = new ObservableCollection<Book>();
 
         }
 
@@ -71,8 +80,74 @@ namespace ENSIKLO.ViewModels
             Name = userName;
         }
 
+        public ObservableCollection<Book> BooksBottom
+        {
+            get => booksBottom;
+            set
+            {
+                booksBottom = value;
+                OnPropertyChanged(nameof(BooksBottom));
+            }
+        }
 
+        public Book SelectedBook
+        {
+            get => _selectedBook;
+            set
+            {
+                if (_selectedBook != value)
+                {
+                    SetProperty(ref _selectedBook, value);
+                    OnBookSelected(value);
+                }
 
+            }
+        }
+
+        async void OnBookSelected(Book book)
+        {
+            if (book == null)
+                return;
+
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
+        }
+
+        public async Task PopulateBooks()
+        {
+            IsBusy = true;
+
+            try
+            {
+                BooksBottom.Clear();
+
+                var user = await _userService.GetCurrentUser();
+                id = user.Id;
+
+                var booksBottomTemp = await _libraryService.GetFinishedBooks(id);
+                foreach (var book in booksBottomTemp)
+                {
+                    BooksBottom.Add(await _bookService.GetItemAsync(book));
+                    Debug.WriteLine("sukses");
+                }
+
+                Debug.WriteLine(BooksBottom.Count);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedBook = null;
+        }
 
     }
 }
