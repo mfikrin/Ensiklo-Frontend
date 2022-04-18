@@ -59,5 +59,32 @@ namespace ENSIKLO.Services
             var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
             return JsonSerializer.Deserialize<LibraryUser>(removeSqrBracket);
         }
+
+        public async Task<IEnumerable<LibraryUser>> SortByTitle(int userId)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/sort/title/{userId}");
+
+            response.EnsureSuccessStatusCode();
+            var responseAsString = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+        }
+
+        public async Task<IEnumerable<LibraryUser>> SortByAddedTimeToLibrary(int userId)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/sort/AddedTime/{userId}");
+
+            response.EnsureSuccessStatusCode();
+            var responseAsString = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+        }
+
+        public async Task<IEnumerable<LibraryUser>> SortByLastRead(int userId)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/sort/LastRead/{userId}");
+
+            response.EnsureSuccessStatusCode();
+            var responseAsString = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+        }
     }
 }

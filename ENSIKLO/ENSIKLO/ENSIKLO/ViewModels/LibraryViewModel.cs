@@ -21,6 +21,11 @@ namespace ENSIKLO.ViewModels
         public Command AddBookCommand { get; }
 
         public Command TappedCommand { get; }
+        public Command SortByTitleCommand { get; }
+        public Command SortByLastReadCommand { get; }
+        public Command SortByAddedTimeCommand { get; }
+
+
 
         public LibraryViewModel(ILibraryService libraryService)
         {
@@ -31,7 +36,105 @@ namespace ENSIKLO.ViewModels
             Library = new ObservableCollection<Library>();
 
             TappedCommand = new Command(onTapped);
+            SortByTitleCommand = new Command(onSortByTitle);
+            SortByLastReadCommand = new Command(onSortByLastRead);
+            SortByAddedTimeCommand = new Command(SortByAddedTime);
+
         }
+
+        private async void SortByAddedTime(object obj)
+        {
+            IsBusy = true;
+            try
+            {
+                Library.Clear();
+
+                var books = await _libraryService.SortByAddedTimeToLibrary(Convert.ToInt32(CurrentUser.Id));
+                foreach (var book in books)
+                {
+                    Library temp = new Library
+                    {
+                        libraryItem = book,
+                        progressBar = Convert.ToInt32(((double)book.At_page / book.Page) * 130)
+                    };
+
+                    Debug.WriteLine(Convert.ToInt32(((double)book.At_page / book.Page) * 130));
+                    Library.Add(temp);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Cannot fetch books");
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private async void onSortByLastRead(object obj)
+        {
+            IsBusy = true;
+            try
+            {
+                Library.Clear();
+
+                var books = await _libraryService.SortByLastRead(Convert.ToInt32(CurrentUser.Id));
+                foreach (var book in books)
+                {
+                    Library temp = new Library
+                    {
+                        libraryItem = book,
+                        progressBar = Convert.ToInt32(((double)book.At_page / book.Page) * 130)
+                    };
+
+                    Debug.WriteLine(Convert.ToInt32(((double)book.At_page / book.Page) * 130));
+                    Library.Add(temp);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Cannot fetch books");
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private async void onSortByTitle(object obj)
+        {
+            IsBusy = true;
+            try
+            {
+                Library.Clear();
+
+                var books = await _libraryService.SortByTitle(Convert.ToInt32(CurrentUser.Id));
+                foreach (var book in books)
+                {
+                    Library temp = new Library
+                    {
+                        libraryItem = book,
+                        progressBar = Convert.ToInt32(((double)book.At_page / book.Page) * 130)
+                    };
+
+                    Debug.WriteLine(Convert.ToInt32(((double)book.At_page / book.Page) * 130));
+                    Library.Add(temp);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Cannot fetch books");
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
         public async void PopulateBooks()
         {
             IsBusy = true;
