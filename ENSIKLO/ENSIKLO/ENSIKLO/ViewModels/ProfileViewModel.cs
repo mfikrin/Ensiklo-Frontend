@@ -24,7 +24,7 @@ namespace ENSIKLO.ViewModels
         private ObservableCollection<Book> booksBottom;
         private Book _selectedBook;
 
-
+        public Command UpdateProfile { get; }
 
         public ProfileViewModel(IBookService bookService, IUserService userService, ILibraryService libraryService)
         {
@@ -35,6 +35,7 @@ namespace ENSIKLO.ViewModels
 
             LogoutCommand = new Command(OnClickLogout);
             booksBottom = new ObservableCollection<Book>();
+            UpdateProfile = new Command(UpdateProfileTapped);
 
         }
 
@@ -147,6 +148,11 @@ namespace ENSIKLO.ViewModels
         {
             IsBusy = true;
             SelectedBook = null;
+        }
+
+        private async void UpdateProfileTapped(object obj)
+        {
+            await Shell.Current.GoToAsync(nameof(UpdateProfilePage));
         }
 
     }

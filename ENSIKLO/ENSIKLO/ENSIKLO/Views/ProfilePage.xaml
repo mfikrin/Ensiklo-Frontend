@@ -10,8 +10,14 @@
                 <StackLayout BackgroundColor="WhiteSmoke" Margin="45, 45, 45, 45">
 
                     <Label Text="{Binding Name, Mode=TwoWay}" TextColor="Black" FontSize="35" FontAttributes="Bold"/>
-                    <Label Text="{Binding Email, Mode=TwoWay}" TextColor="Gray" FontSize="20" Margin="0, 0, 0, 20"/>
-
+                    <Label Text="{Binding Email, Mode=TwoWay}" TextColor="Gray" FontSize="20" />
+                    <Label Text="Edit my profile" TextColor="#009BF0" FontSize="10" FontAttributes="Italic,Bold"  Margin="0, 0, 0, 20">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding UpdateProfile}"
+                                />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Label Text="Finished books" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 35, 0, 0"/>
                     <!--collection view buku yang udah dibaca (harusnya di library_user ntar ada tanda dia udah baca bukunya apa belum, ambil sql yang udah-->
 
@@ -27,7 +33,7 @@
                             <CollectionView.EmptyView>
 
                                 <StackLayout>
-                                    <Label Text="No data Available" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                                    <Label Text="You haven't finish any books!" TextColor="Gray" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
                                 </StackLayout>
 
 
