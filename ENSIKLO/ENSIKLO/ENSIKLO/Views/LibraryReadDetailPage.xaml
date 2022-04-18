@@ -1,16 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ENSIKLO.Views.BookDetailPage">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete Book" Command="{Binding DeleteBookCommand}" />
-    </ContentPage.ToolbarItems>
-
-
+             x:Class="ENSIKLO.Views.LibraryReadDetailPage">
     <StackLayout Spacing="20" Padding="15" Margin="20">
         <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -40,8 +33,8 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Add to Library" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="0" CornerRadius="15" Command="{Binding AddToLibraryCommand}"></Button>
-                    <Button Text="Preview" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="15"></Button>
+                    <Button Text="Delete from Library" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="0" CornerRadius="15" BackgroundColor="#B91515" Command="{Binding RemoveFromLibraryCommand}"></Button>
+                    <Button Text="Continue reading" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" CornerRadius="15" BackgroundColor="#6CBC5E"></Button>
                 </Grid>
             </StackLayout>
 

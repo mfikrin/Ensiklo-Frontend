@@ -1,12 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ENSIKLO.Views.LibraryPage">
+             x:Class="ENSIKLO.Views.LibraryPage"
+             xmlns:model="clr-namespace:ENSIKLO.Models"
+             xmlns:local="clr-namespace:ENSIKLO.ViewModels"
+             x:Name="BrowseLibraryPage">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Library page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView Orientation="Vertical">
+
+            <StackLayout BackgroundColor="WhiteSmoke">
+                <RefreshView x:DataType="local:LibraryViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView 
+                            ItemsSource="{Binding Library}" 
+                            x:Name="ItemsListView" 
+                            SelectionMode="Single"
+                            HeightRequest="100"
+                            SelectedItem="{Binding SelectedBook}"
+                            >
+                        <CollectionView.EmptyView>
+
+                            <StackLayout>
+                                <Label Text="No data Available" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
+
+
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="6" HorizontalItemSpacing="4" VerticalItemSpacing="4"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="12" 
+                                           HorizontalOptions="Start" 
+                                           VerticalOptions="Start"
+                                           HasShadow="True"
+                                           BackgroundColor="White"       
+                                           IsClippedToBounds="True"
+                                           Padding="0">
+                                    <Grid Padding="8" Margin="4" x:DataType="model:Library" BackgroundColor="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="3*" />
+
+                                            <RowDefinition Height="1*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Image Source="{Binding libraryItem.Url_cover}"
+                                                       Grid.Row="0"
+                                                       Aspect="AspectFit" 
+                                                       WidthRequest="30"
+                                                       HeightRequest="150"
+                                                       />
+
+                                        
+
+
+                                        <StackLayout Grid.Row="1">
+                                            <Frame  Grid.Column="1"
+                                                    HorizontalOptions="Start" 
+                                                    VerticalOptions="Start"
+                                                    HasShadow="True"                                                    
+                                                    IsClippedToBounds="True"
+                                                    Padding="0,15,0,0">
+                                                <Rectangle Fill="#7db051"
+                                                       WidthRequest="{Binding progressBar, Mode=TwoWay}"
+                                                       HeightRequest="10"
+                                                       HorizontalOptions="Start" 
+                                                       />
+                                            </Frame>
+                                            <Label Grid.Column="1"
+                                                   VerticalOptions="Start"
+                                                   Text="{Binding libraryItem.Title}"
+                                                   FontAttributes="Bold"
+                                                    TextColor="Black"    
+                                                           />
+
+
+
+                                            <Label Text="{Binding libraryItem.Description_book}"
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            VerticalOptions="Start"
+                                                            FontAttributes="Italic"
+                                                            TextColor="Black"
+                                                            />
+
+
+
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    NumberOfTapsRequired="1"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LibraryViewModel}}, Path=BookTapped}"		
+                                                    CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+
+                                    </Grid>
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </RefreshView>
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
