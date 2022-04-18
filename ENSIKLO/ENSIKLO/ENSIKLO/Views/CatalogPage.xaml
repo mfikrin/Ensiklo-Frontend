@@ -4,27 +4,48 @@
              x:Class="ENSIKLO.Views.CatalogPage"
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout
+ 
+        <ScrollView Orientation="Vertical">
+
+            <StackLayout BackgroundColor="WhiteSmoke">
+
+                <StackLayout
+                        Margin="10"
+                        HeightRequest="80">
+                    <Entry BackgroundColor="#FFFFFF" Placeholder="" TextColor="Black"
+                       Text="{Binding SearchInput, Mode=TwoWay}"></Entry>
+                    <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Search" Margin="0,10"
+                        Command="{Binding SearchCommand}" WidthRequest="200"></Button>
+           
+                </StackLayout>
+
+                    <Frame CornerRadius="20" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Start"
+                       HasShadow="True"
+                       IsClippedToBounds="True"
+                       BackgroundColor="#009BF0"
+                       Margin="10"
+                       Padding="0"
+                    >
+
+                    <StackLayout
                         Margin="10"
                         HeightRequest="230">
-                <Entry BackgroundColor="#FFFFFF" Placeholder="" TextColor="Black"
-                       Text="{Binding SearchInput, Mode=TwoWay}"></Entry>
-                <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Search" Margin="0,20"
-                        Command="{Binding SearchCommand}" WidthRequest="200"></Button>
-                <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
-                    <Label Text="{Binding TopTitleBook}" FontSize="17" TextColor="#009BF0" FontAttributes="Bold"/>
+                        <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
-                    <Label HorizontalOptions="EndAndExpand" Text="Refresh" FontSize="17" TextColor="#009BF0" FontAttributes="Bold">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            <Label Text="{Binding TopTitleBook}" FontSize="17" TextColor="White" FontAttributes="Bold"/>
+
+                            <Label HorizontalOptions="EndAndExpand" Text="Refresh" FontSize="17" TextColor="White" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
                                     Command="{Binding RefreshCommand}"
                                     />
-                        </Label.GestureRecognizers>
-                    </Label>
+                                </Label.GestureRecognizers>
+                            </Label>
 
-                    <ImageButton Source="Assets/refresh.png"
+                            <ImageButton Source="Assets/refresh.png"
                                     HorizontalOptions="End"
                                     WidthRequest="10"
                                     HeightRequest="16" 
@@ -33,14 +54,15 @@
                                     Command="{Binding RefreshCommand}"
                                     
                                   />
-                </StackLayout>
-
-
-                <RefreshView x:DataType="local:CatalogViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                        </StackLayout>
 
 
 
-                    <CollectionView 
+                        <RefreshView x:DataType="local:CatalogViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+
+
+                                <CollectionView 
                                 ItemsSource="{Binding BooksTop}" 
                                 Margin="10"
                                 x:Name="ItemsListViewTop" 
@@ -49,18 +71,18 @@
                                 EmptyView="No data Available"
                                 >
 
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
-                        </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
+                                    </CollectionView.ItemsLayout>
 
 
 
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
 
 
 
-                                <Frame CornerRadius="12" 
+                                            <Frame CornerRadius="12" 
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Start"
                                            HasShadow="True"
@@ -71,16 +93,16 @@
 
 
 
-                                    <Grid x:DataType="model:Book" >
+                                                <Grid x:DataType="model:Book" >
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height=".5*" />
-                                            <RowDefinition Height="1*" />
-                                        </Grid.RowDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height=".5*" />
+                                                        <RowDefinition Height="1*" />
+                                                    </Grid.RowDefinitions>
 
 
 
-                                        <Image Source="{Binding Url_cover}"
+                                                    <Image Source="{Binding Url_cover}"
                                                            Grid.Row="0"
                                                            Aspect="AspectFill" 
                                                            WidthRequest="100"
@@ -88,9 +110,9 @@
                                                            />
 
 
-                                        <StackLayout Grid.Row="1">
+                                                    <StackLayout Grid.Row="1">
 
-                                            <Label Grid.Column="1"
+                                                        <Label Grid.Column="1"
                                                        HorizontalOptions="CenterAndExpand"
                                                        TextColor="Black"
                                                        Text="{Binding Title}"
@@ -98,36 +120,51 @@
                                                       />
 
 
-                                            <Label Text="{Binding Author}"
+                                                        <Label Text="{Binding Author}"
                                                         Grid.Row="1"
                                                         Grid.Column="1"
                                                         HorizontalOptions="CenterAndExpand"
                                                         TextColor="Black"
                                                         FontAttributes="Italic"
                                                         />
-                                        </StackLayout>
+                                                    </StackLayout>
 
-                                    </Grid>
-
-
-                                </Frame>
-
-                            </DataTemplate>
-
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-                </RefreshView>
+                                                </Grid>
 
 
-                <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Label Text="Most Popular Right Now" FontSize="17" TextColor="#009BF0" FontAttributes="Bold"/>
-                </StackLayout>
+                                            </Frame>
 
-                <RefreshView x:DataType="local:CatalogViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                                        </DataTemplate>
+
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                            </RefreshView>
+                        </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="20" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Start"
+                       HasShadow="True"
+                       IsClippedToBounds="True"
+                       BackgroundColor="Transparent"
+                       Margin="10"
+                       Padding="0"
+                    >
+
+                    <StackLayout
+                        Margin="10"
+                        HeightRequest="230">
+
+                            <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Most Popular Right Now" FontSize="17" TextColor="#009BF0" FontAttributes="Bold"/>
+                            </StackLayout>
+
+                            <RefreshView x:DataType="local:CatalogViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
 
 
-                    <CollectionView 
+                                <CollectionView 
                                 ItemsSource="{Binding BooksBottom}" 
                                 Margin="10"
                                 x:Name="ItemsListViewBottom"
@@ -136,14 +173,14 @@
                                 EmptyView="No data Available"
                                 >
 
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
-                        </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
+                                    </CollectionView.ItemsLayout>
 
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
 
-                                <Frame CornerRadius="12" 
+                                            <Frame CornerRadius="12" 
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Start"
                                            HasShadow="True"
@@ -152,15 +189,15 @@
                                            IsClippedToBounds="True"
                                            Padding="0">
 
-                                    <Grid x:DataType="model:Book" >
+                                                <Grid x:DataType="model:Book" >
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height=".5*" />
-                                            <RowDefinition Height="1*" />
-                                        </Grid.RowDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height=".5*" />
+                                                        <RowDefinition Height="1*" />
+                                                    </Grid.RowDefinitions>
 
 
-                                        <Image Source="{Binding Url_cover}"
+                                                    <Image Source="{Binding Url_cover}"
                                                            Grid.Row="0"
                                                            Aspect="AspectFill" 
                                                            WidthRequest="100"
@@ -168,9 +205,9 @@
                                                            />
 
 
-                                        <StackLayout Grid.Row="1">
+                                                    <StackLayout Grid.Row="1">
 
-                                            <Label Grid.Column="1"
+                                                        <Label Grid.Column="1"
                                                        HorizontalOptions="CenterAndExpand"
                                                        TextColor="Black"
                                                        Text="{Binding Title}"
@@ -178,20 +215,25 @@
                                                       />
 
 
-                                            <Label Text="{Binding Author}"
+                                                        <Label Text="{Binding Author}"
                                                         Grid.Row="1"
                                                         Grid.Column="1"
                                                         HorizontalOptions="CenterAndExpand"
                                                         TextColor="Black"
                                                         FontAttributes="Italic"
                                                         />
-                                        </StackLayout>
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </RefreshView>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </RefreshView>
+                        </StackLayout>
+                </Frame>
+
+
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

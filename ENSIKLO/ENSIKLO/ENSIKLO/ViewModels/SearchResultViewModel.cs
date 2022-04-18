@@ -123,6 +123,7 @@ namespace ENSIKLO.ViewModels
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(BookDetailPage)}?{nameof(BookDetailViewModel.BookId)}={book.Id_book}");
+            
         }
 
         private async void onTappedRefresh(object obj)
@@ -133,6 +134,8 @@ namespace ENSIKLO.ViewModels
 
         private async void OnSearchClicked()
         {
+            //await Shell.Current.Navigation.PopAllPopupAsync();
+            await Shell.Current.Navigation.PopAsync();
             await Shell.Current.GoToAsync($"{nameof(SearchResultPage)}?{nameof(SearchResultViewModel.SearchQuery)}={search_input}");
         }
     }
