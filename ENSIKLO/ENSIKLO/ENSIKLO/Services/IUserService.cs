@@ -15,5 +15,6 @@ namespace ENSIKLO.Services
         Task<User> GetUserAsync(Int64 id);
         Task<User> GetCurrentUser();
         Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false);
+        //Task<int> GetUserID(string email);
     }
 }
