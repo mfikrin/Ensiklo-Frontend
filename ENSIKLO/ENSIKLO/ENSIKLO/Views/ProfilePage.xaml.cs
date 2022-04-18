@@ -17,17 +17,15 @@ namespace ENSIKLO.Views
         public ProfilePage()
         {
             InitializeComponent();
+            InitializeComponent();
             _profileViewModel = Startup.Resolve<ProfileViewModel>();
             BindingContext = _profileViewModel;
             _profileViewModel?.GetData();
-            _profileViewModel?.PopulateBooks();
         }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
             _profileViewModel?.GetData();
-            _profileViewModel?.PopulateBooks();
         }
-    }
-}
+        }
+ }
