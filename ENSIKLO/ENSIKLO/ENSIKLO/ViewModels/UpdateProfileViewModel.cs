@@ -1,48 +1,41 @@
-﻿using ENSIKLO.Models;
-using ENSIKLO.Services;
+﻿using ENSIKLO.Services;
+using ENSIKLO.Models;
 using ENSIKLO.Views;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
+using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace ENSIKLO.ViewModels
 {
-    public class RegisterViewModel : BaseViewModel
+    public class UpdateProfileViewModel : BaseViewModel
     {
-        private readonly IUserService _userService;
-        public Command SignUpCommand { get; }
+        private readonly IUserService _userService; // nanti ganti jadi service buat register dan login
+        public Command SaveCommand { get; }
+        public Command CancelCommand { get; }
 
-        public Command TappedCommand { get; }
-
-
-        public string username;
         public string email;
         public string password;
         public string confirmation_password;
-
-        public RegisterViewModel(IUserService userService)
+        public string username;
+        public UpdateProfileViewModel(IUserService userService)
         {
             _userService = userService;
+            email = CurrentUser.Email;
+            username = CurrentUser.Username;
 
-            //SignUpCommand = new Command(OnClickSignUp);
+            SaveCommand = new Command(async () => await OnSave(), ValidateInput);
 
-            SignUpCommand = new Command(async () => await OnClickSignUp(), ValidateRegister);
-
-            TappedCommand = new Command(onTapped);
+            //TappedCommand = new Command(onTapped);
+            CancelCommand = new Command(OnCancel);
 
             PropertyChanged +=
-            (_, __) => SignUpCommand.ChangeCanExecute();
-
+            (_, __) => SaveCommand.ChangeCanExecute();
         }
 
-        public string Username
-        {
-            get => username;
-            set => SetProperty(ref username, value);
-        }
 
         public string Email
         {
@@ -56,14 +49,27 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref password, value);
         }
 
+        public string Username
+        {
+            get => username;
+            set => SetProperty(ref username, value);
+        }
+
         public string ConfirmationPassword
         {
             get => confirmation_password;
             set => SetProperty(ref confirmation_password, value);
         }
-        private async Task OnClickSignUp()
-        {
 
+        private async void OnCancel()
+        {
+            // This will pop the current page off the navigation stack
+            Debug.WriteLine("Oncancel");
+            await Shell.Current.GoToAsync("//main/home");
+        }
+
+        private async Task OnSave()
+        {
             if (ismatchPassword())
             {
                 try
@@ -73,10 +79,21 @@ namespace ENSIKLO.ViewModels
                         Username = username,
                         Email = email,
                         Password = password,
+
                     };
 
-                    await _userService.AddUserAsync(user);
+                    await _userService.UpdateUserAsync(user);
 
+                    User gotuser = await _userService.GetCurrentUser();
+
+                    CurrentUser.Id = gotuser.Id;
+                    CurrentUser.Email = gotuser.Email;
+                    CurrentUser.Username = gotuser.Username;
+
+                    Debug.WriteLine("Finished updating profile");
+                    Debug.WriteLine(CurrentUser.Username);
+
+                    Debug.WriteLine("Onsave");
                     await Shell.Current.GoToAsync("//main/home");
 
                 }
@@ -90,17 +107,11 @@ namespace ENSIKLO.ViewModels
                 Debug.WriteLine("Salah password");
                 await App.Current.MainPage.DisplayAlert("Register Failed", "Password doesn't match", "OK");
             }
-
+            // This will pop the current page off the navigation stack
 
         }
 
-
-        private async void onTapped(object obj)
-        {
-            await Shell.Current.GoToAsync("//login");
-        }
-
-        private bool ValidateRegister()
+        private bool ValidateInput()
         {
             return !String.IsNullOrWhiteSpace(username)
                && !String.IsNullOrWhiteSpace(email)

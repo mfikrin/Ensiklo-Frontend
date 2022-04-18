@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ENSIKLO.ViewModels" xmlns:model="clr-namespace:ENSIKLO.Models"
+             x:Class="ENSIKLO.Views.SearchResultPage"
+             BackgroundColor="WhiteSmoke">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout
+                        Margin="10"
+                        HeightRequest="230">
+                <Entry BackgroundColor="#FFFFFF" Placeholder="" TextColor="Black"
+                       Text="{Binding SearchInput, Mode=TwoWay}"></Entry>
+                <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Search" Margin="0,20"
+                        Command="{Binding SearchCommand}" WidthRequest="200"></Button>
+
+
+                <StackLayout Margin="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Result:" FontSize="17" TextColor="Black"/>
+                </StackLayout>
+
+                <RefreshView x:DataType="local:SearchResultViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+
+                    <CollectionView 
+                                ItemsSource="{Binding BooksBottom}" 
+                                Margin="10"
+                                x:Name="ItemsListViewBottom" 
+                                SelectionMode="Single"
+                                SelectedItem="{Binding SelectedBook}"
+                                EmptyView="No data Available"
+                                >
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="6"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame CornerRadius="12" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Start"
+                                           HasShadow="True"
+                                           BackgroundColor="White"
+                                           BorderColor="Gray"         
+                                           IsClippedToBounds="False"
+                                           Padding="0"
+                                           HeightRequest="50"
+                                       >
+
+                                    <Grid x:DataType="model:Book" >
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height=".5*" />
+                                            <RowDefinition Height="1*" />
+                                        </Grid.RowDefinitions>
+
+
+                                        <Image Source="{Binding Url_cover}"
+                                                           Grid.Row="0"
+                                                           Aspect="AspectFill" 
+                                                           WidthRequest="100"
+                                                           HeightRequest="100"
+                                                           />
+
+
+                                        <StackLayout Grid.Row="1">
+
+                                            <Label Grid.Column="1"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       TextColor="Black"
+                                                       Text="{Binding Title}"
+                                                       FontAttributes="Bold"
+                                                      />
+
+
+                                            <Label Text="{Binding Author}"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        TextColor="Black"
+                                                        FontAttributes="Italic"
+                                                        />
+                                        </StackLayout>
+
+                                    </Grid>
+
+
+                                </Frame>
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </RefreshView>
+
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
