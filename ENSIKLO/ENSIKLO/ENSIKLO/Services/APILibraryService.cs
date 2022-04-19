@@ -107,5 +107,16 @@ namespace ENSIKLO.Services
 
             return finishedbooks;
         }
+
+        public async Task<IEnumerable<LibraryUser>> SearchBooks(string query, int userId)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/search?title={query}&user_id={userId}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+        }
     }
 }

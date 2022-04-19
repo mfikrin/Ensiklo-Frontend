@@ -1,60 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ENSIKLO.Views.LibraryPage"
-             xmlns:model="clr-namespace:ENSIKLO.Models"
-             xmlns:local="clr-namespace:ENSIKLO.ViewModels"
-             x:Name="BrowseLibraryPage">
-
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ENSIKLO.ViewModels" xmlns:model="clr-namespace:ENSIKLO.Models"
+             x:Class="ENSIKLO.Views.SearchLibraryPage"
+             BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
+            <StackLayout
+                Margin="10"
+                HeightRequest="200">
 
-            <StackLayout BackgroundColor="WhiteSmoke">
+                <Entry BackgroundColor="#FFFFFF" Placeholder="" TextColor="Black"
+                            Text="{Binding SearchInput, Mode=TwoWay}"></Entry>
+                <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Search" Margin="0,10"
+                            Command="{Binding SearchCommand}" WidthRequest="200"></Button>
 
-                <StackLayout Orientation="Vertical">
-
-                    <StackLayout
-                        Margin="10"
-                        HeightRequest="80">
-                        <Entry BackgroundColor="#FFFFFF" Placeholder="" TextColor="Black"
-                       Text="{Binding SearchInput, Mode=TwoWay}"></Entry>
-                        <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Search" Margin="0,10"
-                        Command="{Binding SearchCommand}" WidthRequest="200"></Button>
-
-                    </StackLayout>
-
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Sort by Title" TextColor="#009BF0" Margin="15,10,0,0" FontSize="15" FontAttributes="Bold">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                    Command="{Binding SortByTitleCommand}"
-                                    />
-                            </Label.GestureRecognizers>
-                        </Label>
-
-                        <Label Text="Sort by Last Read" TextColor="#009BF0" Margin="15,10,0,0" FontSize="15" FontAttributes="Bold" VerticalOptions="Start">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                    Command="{Binding SortByLastReadCommand}"
-                                    />
-                            </Label.GestureRecognizers>
-                        </Label>
-
-                        <Label Text="Sort by Added Time" TextColor="#009BF0" Margin="15,10,0,0" FontSize="15" FontAttributes="Bold" VerticalOptions="Start">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                    Command="{Binding SortByAddedTimeCommand}"
-                                    />
-                            </Label.GestureRecognizers>
-                        </Label>
-
-                    </StackLayout>
-
-                </StackLayout>
-
-                <RefreshView x:DataType="local:LibraryViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <RefreshView x:DataType="local:SearchLibraryViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                     <CollectionView 
-                            ItemsSource="{Binding Library}" 
+                            ItemsSource="{Binding LibrarySearch}" 
                             x:Name="ItemsListView" 
                             SelectionMode="Single"
                             HeightRequest="100"
@@ -95,7 +57,7 @@
                                                        HeightRequest="150"
                                                        />
 
-                                        
+
 
 
                                         <StackLayout Grid.Row="1">
@@ -148,9 +110,12 @@
                     </CollectionView>
 
                 </RefreshView>
-
-
             </StackLayout>
+            <!--</Frame>-->
+
+
+
+            <!--</StackLayout>-->
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

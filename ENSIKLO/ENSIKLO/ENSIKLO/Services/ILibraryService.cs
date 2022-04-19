@@ -15,5 +15,7 @@ namespace ENSIKLO.Services
         Task<IEnumerable<LibraryUser>> SortByLastRead(int userId);
         Task<LibraryUser> GetLibraryItemAsync(int userId, int bookId);
         Task<List<int>> GetFinishedBooks(Int64 id_user);
+        Task<IEnumerable<LibraryUser>> SearchBooks(string query, int userId);
+
     }
 }

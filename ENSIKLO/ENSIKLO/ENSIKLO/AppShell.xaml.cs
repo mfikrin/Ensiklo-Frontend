@@ -20,6 +20,7 @@ namespace ENSIKLO
             //Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(NewArrivalBooksPage), typeof(NewArrivalBooksPage));
             Routing.RegisterRoute(nameof(SearchResultPage), typeof(SearchResultPage));
+            Routing.RegisterRoute(nameof(SearchLibraryPage), typeof(SearchLibraryPage));
             Routing.RegisterRoute(nameof(UpdateProfilePage), typeof(UpdateProfilePage));
         }
 
