@@ -86,5 +86,37 @@ namespace ENSIKLO.Services
             var responseAsString = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
         }
+
+        public async Task<List<int>> GetFinishedBooks(Int64 id_user)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/FinishedBooks/{id_user}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+            //Debug.WriteLine(responseAsString);
+            var tesjson = JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+            //Debug.WriteLine(tesjson);
+
+            List<int> finishedbooks = new List<int>();
+            foreach (var item in tesjson)
+            {
+                Debug.WriteLine(item.Id_book);
+                finishedbooks.Add(item.Id_book);
+            }
+
+            return finishedbooks;
+        }
+
+        public async Task<IEnumerable<LibraryUser>> SearchBooks(string query, int userId)
+        {
+            var response = await _httpClient.GetAsync($"LibraryUser/search?title={query}&user_id={userId}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
+        }
     }
 }

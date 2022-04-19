@@ -24,7 +24,9 @@ namespace ENSIKLO.ViewModels
         public Command SortByTitleCommand { get; }
         public Command SortByLastReadCommand { get; }
         public Command SortByAddedTimeCommand { get; }
+        public Command SearchCommand { get; }
 
+        public string search_input;
 
 
         public LibraryViewModel(ILibraryService libraryService)
@@ -39,7 +41,15 @@ namespace ENSIKLO.ViewModels
             SortByTitleCommand = new Command(onSortByTitle);
             SortByLastReadCommand = new Command(onSortByLastRead);
             SortByAddedTimeCommand = new Command(SortByAddedTime);
+            SearchCommand = new Command(OnSearchClicked);
 
+
+        }
+
+        public string SearchInput
+        {
+            get => search_input;
+            set => SetProperty(ref search_input, value);
         }
 
         private async void SortByAddedTime(object obj)
@@ -215,6 +225,11 @@ namespace ENSIKLO.ViewModels
         private async void onTapped(object obj)
         {
             await Shell.Current.GoToAsync("//catalog");
+        }
+
+        private async void OnSearchClicked()
+        {
+            await Shell.Current.GoToAsync($"{nameof(SearchLibraryPage)}?{nameof(SearchLibraryViewModel.SearchQuery)}={search_input}");
         }
     }
 }

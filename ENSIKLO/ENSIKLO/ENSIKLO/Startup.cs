@@ -38,7 +38,6 @@ namespace ENSIKLO
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
-
             //add viewmodels
             services.AddTransient<BookViewModel>();
             services.AddTransient<LibraryViewModel>();
@@ -53,6 +52,7 @@ namespace ENSIKLO
             services.AddTransient<NewArrivalViewModel>();
             services.AddTransient<UpdateProfileViewModel>();
             services.AddTransient<SearchResultViewModel>();
+            services.AddTransient<SearchLibraryViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }

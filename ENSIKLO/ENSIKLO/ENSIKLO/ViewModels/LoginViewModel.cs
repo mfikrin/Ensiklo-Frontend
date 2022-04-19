@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Net;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace ENSIKLO.ViewModels
 
         public string email;
         public string password;
+
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
@@ -29,7 +31,8 @@ namespace ENSIKLO.ViewModels
 
             PropertyChanged +=
             (_, __) => LoginCommand.ChangeCanExecute();
-        }
+
+    }
 
 
         public string Email
@@ -69,12 +72,12 @@ namespace ENSIKLO.ViewModels
                 CurrentUser.Token = token;
 
                 User gotuser = await _userService.GetCurrentUser();
-
+                
                 CurrentUser.Id = gotuser.Id;
                 CurrentUser.Email = gotuser.Email;
                 CurrentUser.Username = gotuser.Username;
 
-                Debug.WriteLine(gotuser.Email);
+                Debug.WriteLine(CurrentUser.Email);
                 Debug.WriteLine("token = " + CurrentUser.Token);
                 Debug.WriteLine("username = " + CurrentUser.Username);
 

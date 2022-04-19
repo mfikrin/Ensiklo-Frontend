@@ -13,10 +13,21 @@ namespace ENSIKLO.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        private readonly ProfileViewModel _profileViewModel;
         public ProfilePage()
         {
             InitializeComponent();
-            BindingContext = Startup.Resolve<ProfileViewModel>();
+            _profileViewModel = Startup.Resolve<ProfileViewModel>();
+            BindingContext = _profileViewModel;
+            //_profileViewModel?.GetData();
+            //_profileViewModel?.PopulateBooks();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _profileViewModel.OnAppearing();
+            _profileViewModel.GetData();
+            _profileViewModel.PopulateBooks();
         }
     }
-}
+ }

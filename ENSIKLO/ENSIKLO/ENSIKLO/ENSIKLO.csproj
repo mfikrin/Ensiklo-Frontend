@@ -50,6 +50,9 @@
     <EmbeddedResource Update="Views\NewArrivalBooksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\SearchLibraryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\UpdateProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

@@ -1,14 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ENSIKLO.Views.ProfilePage">
+             xmlns:local="clr-namespace:ENSIKLO.ViewModels"
+             xmlns:model="clr-namespace:ENSIKLO.Models"
+             x:Class="ENSIKLO.Views.ProfilePage"
+             BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Logout"
-                Command="{Binding LogoutCommand}">
+        <ScrollView Orientation="Vertical">
+            <StackLayout
+                Margin="10"
+                HeightRequest="200">
 
-            </Button>
-        </StackLayout>
-        
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Name, Mode=TwoWay}" TextColor="Black" FontSize="22" FontAttributes="Bold" Margin="15,10,0,0"/>
+                    
+                    
+                    <Button Text="Logout" CornerRadius="10" BorderColor="#009BF0" BackgroundColor="Transparent" TextColor="#009BF0" HorizontalOptions="EndAndExpand"
+                        Command="{Binding LogoutCommand}">
+                    </Button>
+                </StackLayout>
+
+                
+                <Label Text="{Binding Email, Mode=TwoWay}" TextColor="Gray" FontSize="20" Margin="15,0,0,0"/>
+                <Label Text="Edit my profile" TextColor="#009BF0" FontSize="10" FontAttributes="Italic,Bold"  Margin="15,0,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+                                Command="{Binding UpdateProfile}"
+                                />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label Text="Finished books" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="15,20,0,0"/>
+                
+                
+
+                <RefreshView x:DataType="local:ProfileViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+
+                    <CollectionView 
+                                ItemsSource="{Binding BooksBottom}" 
+                                Margin="10"
+                                x:Name="ItemsListView" 
+                                SelectionMode="Single"
+                                SelectedItem="{Binding SelectedBook}"
+                                >
+
+                        <CollectionView.EmptyView>
+
+                            <StackLayout>
+                                <Label Text="You haven't finish any books!" TextColor="Gray" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
+
+
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="8" HorizontalItemSpacing="6" VerticalItemSpacing="6"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame CornerRadius="12" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Start"
+                                           HasShadow="True"
+                                           BackgroundColor="White"
+                                           BorderColor="Gray"         
+                                           IsClippedToBounds="True"
+                                           Padding="0">
+
+                                    <Grid x:DataType="model:Book" >
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height=".6*" />
+                                        </Grid.RowDefinitions>
+
+
+                                        <Image Source="{Binding Url_cover}"
+                                                           Grid.Row="0"
+                                                           Aspect="AspectFill" 
+                                                           WidthRequest="100"
+                                                           HeightRequest="100"
+                                                           />
+
+
+                                        <StackLayout Grid.Row="1">
+
+                                            <Label Grid.Column="1"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       TextColor="Black"
+                                                       Text="{Binding Title}"
+                                                       FontAttributes="Bold"
+                                                      />
+
+
+                                            <Label Text="{Binding Author}"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        TextColor="Black"
+                                                        FontAttributes="Italic"
+                                                        />
+                                        </StackLayout>
+
+                                    </Grid>
+
+
+                                </Frame>
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+
+
+            </StackLayout>
+            <!--</Frame>-->
+
+
+
+            <!--</StackLayout>-->
+        </ScrollView>
+
+
     </ContentPage.Content>
 </ContentPage>

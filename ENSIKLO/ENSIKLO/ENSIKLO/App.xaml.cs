@@ -1,4 +1,5 @@
-﻿using ENSIKLO.Services;
+﻿using ENSIKLO.Models;
+using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
 using Xamarin.Forms;
@@ -18,6 +19,7 @@ namespace ENSIKLO
             //DependencyService.Register<DummyBookStore>();
             MainPage = new AppShell();
         }
+
 
         protected override void OnStart()
         {

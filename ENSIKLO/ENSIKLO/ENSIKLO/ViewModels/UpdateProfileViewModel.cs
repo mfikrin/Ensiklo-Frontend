@@ -65,7 +65,7 @@ namespace ENSIKLO.ViewModels
         {
             // This will pop the current page off the navigation stack
             Debug.WriteLine("Oncancel");
-            await Shell.Current.GoToAsync("//main/home");
+            await Shell.Current.GoToAsync("//main/profile");
         }
 
         private async Task OnSave()
@@ -96,7 +96,7 @@ namespace ENSIKLO.ViewModels
                     Debug.WriteLine(CurrentUser.Username);
 
                     Debug.WriteLine("Onsave");
-                    await Shell.Current.GoToAsync("//main/home");
+                    await Shell.Current.GoToAsync("//main/profile");
 
                 }
                 catch (Exception ex)
