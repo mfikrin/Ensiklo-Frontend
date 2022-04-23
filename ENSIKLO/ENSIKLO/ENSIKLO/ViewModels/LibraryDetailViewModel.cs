@@ -148,7 +148,7 @@ namespace ENSIKLO.ViewModels
 
             //await Shell.Current.GoToAsync(nameof(LibraryPage));
 
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync(nameof(LibraryDeletePopupPage));
 
 
 

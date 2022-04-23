@@ -16,6 +16,7 @@ namespace ENSIKLO
             Routing.RegisterRoute(nameof(LibraryPage), typeof(LibraryPage));
             Routing.RegisterRoute(nameof(LibraryReadDetailPage), typeof(LibraryReadDetailPage));
             Routing.RegisterRoute(nameof(LibraryDetailPage), typeof(LibraryDetailPage));
+            Routing.RegisterRoute(nameof(LibraryDeletePopupPage), typeof(LibraryDeletePopupPage));
             //Routing.RegisterRoute(nameof(NewCategoryPage), typeof(NewCategoryPage));
             //Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(NewArrivalBooksPage), typeof(NewArrivalBooksPage));
