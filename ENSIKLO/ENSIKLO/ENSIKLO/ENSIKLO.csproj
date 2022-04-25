@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\BooksFromAuthorPage.xaml.cs">
+      <DependentUpon>BooksFromAuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BooksFromPublisherPage.xaml.cs">
+      <DependentUpon>BooksFromPublisherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SearchResultPage.xaml.cs">
       <DependentUpon>SearchResultPage.xaml</DependentUpon>
     </Compile>
@@ -48,6 +54,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewArrivalBooksPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BooksFromPublisherPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SearchLibraryPage.xaml">

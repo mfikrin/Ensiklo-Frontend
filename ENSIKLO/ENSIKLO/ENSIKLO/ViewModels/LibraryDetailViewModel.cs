@@ -37,14 +37,28 @@ namespace ENSIKLO.ViewModels
 
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
+        public Command PublisherTappedCommand { get; }
+        public Command AuthorTappedCommand { get; }
         public LibraryDetailViewModel(ILibraryService libraryService)
         {
             _libraryService = libraryService;
 
             RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userId: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
+            PublisherTappedCommand = new Command(async publishername => await onPublisherTapped(publisher_name: Publisher));
+            AuthorTappedCommand = new Command(async authorname => await onAuthorTapped(author_name: Author));
+
         }
 
+        private async Task onPublisherTapped(string publisher_name)
+        {
+            //await Shell.Current.GoToAsync(nameof(BooksFromPublisherPage));
+            await Shell.Current.GoToAsync($"{nameof(BooksFromPublisherPage)}?{nameof(BooksFromPublisherViewModel.PublisherName)}={publisher_name}");
+        }
 
+        private async Task onAuthorTapped(string author_name)
+        {
+            await Shell.Current.GoToAsync($"{nameof(BooksFromAuthorPage)}?{nameof(BooksFromAuthorViewModel.AuthorName)}={author_name}");
+        }
 
         public int Id { get; set; }
         public string Title
@@ -146,9 +160,9 @@ namespace ENSIKLO.ViewModels
             await _libraryService.DeleteFromLibraryAsync(Convert.ToInt32(CurrentUser.Id), int.Parse(bookid));
             //await Shell.Current.Navigation.PopToRootAsync();
 
-            //await Shell.Current.GoToAsync(nameof(LibraryPage));
+            await Shell.Current.GoToAsync(nameof(LibraryPage));
 
-            await Shell.Current.GoToAsync("..");
+            
 
 
 
