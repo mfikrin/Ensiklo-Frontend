@@ -160,9 +160,9 @@ namespace ENSIKLO.ViewModels
             await _libraryService.DeleteFromLibraryAsync(Convert.ToInt32(CurrentUser.Id), int.Parse(bookid));
             //await Shell.Current.Navigation.PopToRootAsync();
 
-            //await Shell.Current.GoToAsync(nameof(LibraryPage));
+            await Shell.Current.GoToAsync(nameof(LibraryPage));
 
-            await Shell.Current.GoToAsync("..");
+            
 
 
 
