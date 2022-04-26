@@ -118,5 +118,15 @@ namespace ENSIKLO.Services
 
             return JsonSerializer.Deserialize<IEnumerable<LibraryUser>>(responseAsString);
         }
+
+        public async Task<bool> SetAsFinished(int userId, int bookId)
+        {
+            var stringJson = $"{{\"id_user\": {userId},\"id_book\":{bookId}}}";
+            var response = await _httpClient.PutAsync($"LibraryUser/updateFinishStatus/{userId}/{bookId}", new StringContent(JsonSerializer.Serialize(stringJson), Encoding.UTF8, "application/json"));
+
+            response.EnsureSuccessStatusCode();
+
+            return await Task.FromResult(true);
+        }
     }
 }
