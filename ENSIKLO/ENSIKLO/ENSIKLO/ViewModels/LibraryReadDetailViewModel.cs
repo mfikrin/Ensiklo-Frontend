@@ -12,6 +12,7 @@ using Xamarin.Forms;
 namespace ENSIKLO.ViewModels
 {
     [QueryProperty(nameof(BookId), nameof(BookId))]
+    [QueryProperty(nameof(AtPage), nameof(AtPage))]
     public class LibraryReadDetailViewModel : BaseViewModel
     {
 
@@ -35,13 +36,17 @@ namespace ENSIKLO.ViewModels
 
         private string keywords;
 
+        private int at_page;
+
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
+        public Command ReadBookCommand { get; }
         public LibraryReadDetailViewModel(ILibraryService libraryService)
         {
             _libraryService = libraryService;
 
             RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userid: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
+            ReadBookCommand = new Command(async () => await OnReadBook());
         }
 
 
@@ -113,10 +118,19 @@ namespace ENSIKLO.ViewModels
             }
         }
 
+        public int AtPage
+        {
+            get => at_page;
+            set
+            {
+                SetProperty(ref at_page, value);
+            }
+        }
+
         public async void LoadBookId(int userId, string bookId)
         {
             try
-            {
+            {                
                 var book = await _libraryService.GetLibraryItemAsync(userId, int.Parse(bookId));
                 if (bookId != null)
                 {
@@ -147,14 +161,13 @@ namespace ENSIKLO.ViewModels
             //await Shell.Current.Navigation.PopToRootAsync();
             //await Shell.Current.GoToAsync(nameof(LibraryPage));
             await Shell.Current.GoToAsync("..");
-
-
-
-
-
         }
 
-
-
+        private async Task OnReadBook()
+        {
+            //
+            Debug.WriteLine($"{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.Content)}={Book_content}");
+            await Shell.Current.GoToAsync($"{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.ContentURL)}={Book_content}");
+        }
     }
 }

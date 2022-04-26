@@ -12,6 +12,7 @@ using Xamarin.Forms;
 namespace ENSIKLO.ViewModels
 {
     [QueryProperty(nameof(BookId), nameof(BookId))]
+    [QueryProperty(nameof(AtPage), nameof(AtPage))]
     public class LibraryDetailViewModel : BaseViewModel
     {
 
@@ -34,6 +35,8 @@ namespace ENSIKLO.ViewModels
         private string category;
 
         private string keywords;
+
+        private int at_page;
 
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
@@ -110,6 +113,15 @@ namespace ENSIKLO.ViewModels
                 id_book = value;
                 LoadBookId(Convert.ToInt32(CurrentUser.Id), id_book);
 
+            }
+        }
+
+        public int AtPage
+        {
+            get => at_page;
+            set
+            {
+                at_page = value;
             }
         }
 

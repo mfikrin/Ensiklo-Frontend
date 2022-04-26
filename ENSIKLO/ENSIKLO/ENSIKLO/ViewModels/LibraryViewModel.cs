@@ -214,10 +214,10 @@ namespace ENSIKLO.ViewModels
 
             if(book.libraryItem.At_page == 0)
             {
-                await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.libraryItem.Id_book}");
+                await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.libraryItem.Id_book}&{nameof(LibraryDetailViewModel.AtPage)}={book.libraryItem.At_page}");
             } else
             {
-                await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={book.libraryItem.Id_book}");
+                await Shell.Current.GoToAsync($"{nameof(LibraryReadDetailPage)}?{nameof(LibraryReadDetailViewModel.BookId)}={book.libraryItem.Id_book}&{nameof(LibraryReadDetailViewModel.AtPage)}={book.libraryItem.At_page}");
             }
         
         }
