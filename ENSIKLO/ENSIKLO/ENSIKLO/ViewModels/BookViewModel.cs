@@ -47,6 +47,26 @@ namespace ENSIKLO.ViewModels
             AllNewArrivalCommand = new Command(onTappedNewArrival);
         }
 
+        public async Task LoadUserName()
+        {
+            try
+            {
+                Username = String.Empty;
+
+                User curr_user = await _userService.GetCurrentUser();
+
+                username = curr_user.Username;
+
+                Username = username;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
         public async Task PopulateBooks()
         {
             IsBusy = true;
@@ -55,14 +75,7 @@ namespace ENSIKLO.ViewModels
             {
                 BooksTop.Clear();
                 BooksBottom.Clear();
-                Username = String.Empty;
-
-
-                User curr_user = await _userService.GetCurrentUser();
-
-                username = curr_user.Username;
-
-                Username = username;
+              
 
                 var booksTopTemp = await _bookService.GetNewArrivalBook(12);
 

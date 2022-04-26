@@ -5,28 +5,24 @@
              Shell.PresentationMode="ModalAnimated"
              Title="Update Profile"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <StackLayout Spacing="6" Padding="15" Margin="45, 90, 45, 45" >
-            <Label Text="Update Profile" FontSize="Large" FontAttributes="Bold" Grid.Column="0"/>
+            <Label Text="Update Profile" FontSize="Large" FontAttributes="Bold" Grid.Column="0" TextColor="#009BF0"/>
             <Grid ColumnDefinitions="200, *">
-                <Label Text="Username" FontSize="Medium" Grid.Column="0"/>
-                <Editor Text="{Binding Username , Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+                <Label Text="Username" FontSize="Medium" Grid.Column="0" TextColor="Black"/>
+                <Editor Text="{Binding Username , Mode=TwoWay}" FontSize="Medium" Grid.Column="1" TextColor="Black" BackgroundColor="White"/>
             </Grid>
 
             <Grid ColumnDefinitions="200, *">
-                <Label Text="Email" FontSize="Medium" Grid.Column="0"/>
-                <Editor Text="{Binding Email, Mode=TwoWay}" FontSize="Medium" Grid.Column="1"/>
+                <Label Text="Password" FontSize="Medium" Grid.Column="0" TextColor="Black"/>
+                <Entry Text="{Binding Password, Mode=TwoWay}" IsPassword="True" FontSize="Medium" Grid.Column="1" TextColor="Black" BackgroundColor="White"/>
             </Grid>
 
             <Grid ColumnDefinitions="200, *">
-                <Label Text="Password" FontSize="Medium" Grid.Column="0"/>
-                <Entry Text="{Binding Password, Mode=TwoWay}" IsPassword="True" FontSize="Medium" Grid.Column="1"/>
-            </Grid>
-
-            <Grid ColumnDefinitions="200, *">
-                <Label Text="Confirm Password" FontSize="Medium" Grid.Column="0"/>
-                <Entry Text="{Binding ConfirmationPassword, Mode=TwoWay}" IsPassword="True" FontSize="Medium" Grid.Column="1"/>
+                <Label Text="Confirm Password" FontSize="Medium" Grid.Column="0" TextColor="Black"/>
+                <Entry Text="{Binding ConfirmationPassword, Mode=TwoWay}" IsPassword="True" FontSize="Medium" Grid.Column="1" TextColor="Black" BackgroundColor="White"/>
             </Grid>
 
 

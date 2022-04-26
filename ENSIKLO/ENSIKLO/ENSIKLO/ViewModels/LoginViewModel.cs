@@ -25,7 +25,7 @@ namespace ENSIKLO.ViewModels
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
-            LoginCommand = new Command(OnLoginClicked);
+            LoginCommand = new Command(async () => await OnLoginClicked(), ValidateLogin); ;
 
             TappedCommand = new Command(onTapped);
 
@@ -47,7 +47,7 @@ namespace ENSIKLO.ViewModels
             set => SetProperty(ref password, value);
         }
 
-        private async void OnLoginClicked()
+        private async Task OnLoginClicked()
         {
 
             // Shell.Current.GoToAsync("//main/home");
@@ -86,6 +86,8 @@ namespace ENSIKLO.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                await App.Current.MainPage.DisplayAlert("Login Failed", "Please Check username or password", "OK");
+
             }
         }
 

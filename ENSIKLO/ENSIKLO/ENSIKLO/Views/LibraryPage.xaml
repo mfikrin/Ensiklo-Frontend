@@ -63,7 +63,7 @@
                         <CollectionView.EmptyView>
 
                             <StackLayout>
-                                <Label Text="No data Available" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="You don't have any books in the library" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Gray"></Label>
                             </StackLayout>
 
 

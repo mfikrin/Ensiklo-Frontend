@@ -158,6 +158,7 @@ namespace ENSIKLO.ViewModels
         {
             await _libraryService.DeleteFromLibraryAsync(Convert.ToInt32(CurrentUser.Id), int.Parse(bookid));
             //await Shell.Current.Navigation.PopToRootAsync();
+            await App.Current.MainPage.DisplayAlert("Removed Book", "The book has been removed from the library", "OK");
             await Shell.Current.GoToAsync(nameof(LibraryPage));
             //await Shell.Current.GoToAsync("..");
 

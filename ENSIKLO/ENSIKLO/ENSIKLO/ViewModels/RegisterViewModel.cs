@@ -77,6 +77,8 @@ namespace ENSIKLO.ViewModels
 
                     await _userService.AddUserAsync(user);
 
+                    await Shell.Current.GoToAsync("//login");
+
                 }
                 catch (Exception ex)
                 {
