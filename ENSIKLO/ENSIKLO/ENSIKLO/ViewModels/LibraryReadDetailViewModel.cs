@@ -43,6 +43,8 @@ namespace ENSIKLO.ViewModels
         public Command ReadBookCommand { get; }
         public Command PublisherTappedCommand { get; }
         public Command AuthorTappedCommand { get; }
+
+        public Command TappedCommand { get; }
         public LibraryReadDetailViewModel(ILibraryService libraryService)
         {
             _libraryService = libraryService;
@@ -51,6 +53,13 @@ namespace ENSIKLO.ViewModels
             ReadBookCommand = new Command(async () => await OnReadBook());
             PublisherTappedCommand = new Command(async publishername => await onPublisherTapped(publisher_name: Publisher));
             AuthorTappedCommand = new Command(async authorname => await onAuthorTapped(author_name: Author));
+            TappedCommand = new Command(async () => await SetAsFinished());
+        }
+
+        public async Task SetAsFinished()
+        {
+            //Debug.WriteLine("called");
+            await _libraryService.SetAsFinished((int)CurrentUser.Id, int.Parse(id_book));
         }
 
         private async Task onPublisherTapped(string publisher_name)

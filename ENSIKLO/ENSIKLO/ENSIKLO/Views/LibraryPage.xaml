@@ -120,7 +120,7 @@
 
 
 
-                                            <Label Text="{Binding libraryItem.Description_book}"
+                                            <Label Text="{Binding libraryItem.Author}"
                                                             Grid.Row="1"
                                                             Grid.Column="1"
                                                             VerticalOptions="Start"

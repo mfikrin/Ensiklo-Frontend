@@ -41,6 +41,11 @@ namespace ENSIKLO.ViewModels
 
         private async void OnClickLogout(object obj)
         {
+            await _userService.LogoutUserAsync();
+            CurrentUser.Token = null;
+            CurrentUser.Id = -1;
+            CurrentUser.Email = null;
+            CurrentUser.Username = null;
             await Shell.Current.GoToAsync($"//login");
         }
 
