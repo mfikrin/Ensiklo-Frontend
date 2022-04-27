@@ -58,7 +58,6 @@
                 <Label Text="{Binding Description_book}" FontSize="Small"  Margin="75, 0, 75, 0" />
                 <Label Text="{Binding Keywords}" FontAttributes="Italic" FontSize="Micro" TextColor="Gray"  Margin="75, 0, 0, 0" />
             </StackLayout>
-
         </StackLayout>
     </ScrollView>
 </ContentPage>

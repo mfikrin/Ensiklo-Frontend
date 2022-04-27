@@ -5,8 +5,12 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms" xmlns:viewmodels="clr-namespace:ENSIKLO.ViewModels" x:DataType="viewmodels:BookReaderViewModel">
     
     <ContentPage.Content>
-        <Grid x:Name="pdfViewGrid">
-            <syncfusion:SfPdfViewer x:Name="pdfViewerControl"/>
-        </Grid>
+        <StackLayout>
+            <Button Text="Close Book" Clicked="Button_Clicked"/>
+            <Grid x:Name="pdfViewGrid" VerticalOptions="FillAndExpand">
+                <syncfusion:SfPdfViewer x:Name="pdfViewerControl" PageChanged="PageChanged"/>
+            </Grid>
+        </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
