@@ -40,11 +40,13 @@ namespace ENSIKLO.ViewModels
 
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
+        public Command ReadBookCommand { get; }
         public LibraryDetailViewModel(ILibraryService libraryService)
         {
             _libraryService = libraryService;
 
             RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userId: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
+            ReadBookCommand = new Command(async () => await OnReadBook());
         }
 
 
@@ -166,6 +168,11 @@ namespace ENSIKLO.ViewModels
 
 
 
+        }
+
+        private async Task OnReadBook()
+        {
+            await Shell.Current.GoToAsync($"//{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.ContentURL)}={Book_content}&{nameof(BookReaderPage.BookId)}={id_book}");
         }
 
 

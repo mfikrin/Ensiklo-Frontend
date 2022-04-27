@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,13 +21,13 @@ namespace ENSIKLO.Views
         public Stream pdfDocumentStream;
         public int at_page;
         public string content_url;
+        public string book_id;
         public int AtPage
         {
             get => at_page;
             set
             {
-                // at_page = value;
-                at_page = 3;
+                at_page = value;
                 LoadFromURL();
             } 
         }
@@ -41,21 +41,40 @@ namespace ENSIKLO.Views
                 LoadFromURL();
             }
         }
+
+        public string BookId
+        {
+            get => book_id;
+            set
+            {
+                book_id = value;
+            }
+        }
         public BookReaderPage()
         {
             InitializeComponent();
-            LoadFromURL();
+            BindingContext = Startup.Resolve<BookReaderViewModel>();
         }
 
         async void LoadFromURL()
         {
             if (string.IsNullOrEmpty(content_url) || at_page == 0) return;
-            content_url = "https://dwuwgntlmmbscgwycsxt.supabase.co/storage/v1/object/public/test/130564406-Tugas%20Besar%20Arduino%20IF3210%202021_2022.pdf";
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(content_url);
             pdfDocumentStream = await response.Content.ReadAsStreamAsync();
             pdfViewerControl.LoadDocument(pdfDocumentStream);
             pdfViewerControl.GoToPage(at_page);
+        }
+
+        private void PageChanged(object sender, Syncfusion.SfPdfViewer.XForms.PageChangedEventArgs args)
+        {
+            at_page = args.NewPageNumber;
+        }
+
+        public async void Button_Clicked(object sender, EventArgs e)
+        {
+
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ENSIKLO.Views.BookReaderPage"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms">
-
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms" xmlns:viewmodels="clr-namespace:ENSIKLO.ViewModels" x:DataType="viewmodels:BookReaderViewModel">
+    
     <ContentPage.Content>
         <Grid x:Name="pdfViewGrid">
             <syncfusion:SfPdfViewer x:Name="pdfViewerControl"/>

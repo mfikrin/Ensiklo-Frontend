@@ -31,6 +31,15 @@ namespace ENSIKLO.Services
             return await Task.FromResult(true);
         }
 
+        public async Task<bool> UpdateLibraryAsync(int userId, int bookId, int page)
+        {
+            var response = await _httpClient.PostAsync($"LibraryUser/{userId}/{bookId}/{page}", new StringContent(JsonSerializer.Serialize(""), Encoding.UTF8, "application/json"));
+
+            response.EnsureSuccessStatusCode();
+
+            return await Task.FromResult(true);
+        }
+
         public async Task<bool> DeleteFromLibraryAsync(int userId, int bookId)
         {
             var response = await _httpClient.DeleteAsync($"LibraryUser/{userId}/{bookId}");

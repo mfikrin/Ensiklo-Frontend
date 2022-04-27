@@ -164,10 +164,8 @@ namespace ENSIKLO.ViewModels
         }
 
         private async Task OnReadBook()
-        {
-            //
-            Debug.WriteLine($"{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.Content)}={Book_content}");
-            await Shell.Current.GoToAsync($"{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.ContentURL)}={Book_content}");
+        {          
+            await Shell.Current.GoToAsync($"//{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.ContentURL)}={Book_content}&{nameof(BookReaderPage.BookId)}={id_book}");
         }
     }
 }
