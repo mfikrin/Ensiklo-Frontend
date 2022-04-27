@@ -13,7 +13,11 @@
             </StackLayout>
             <StackLayout Grid.Column="1" Padding="20, -5, 0, 0">
                 <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
-                <Label Text="{Binding Author}" FontSize="Medium" TextColor="DarkGray"/>
+                <Label Text="{Binding Author}" FontSize="Medium" TextColor="DarkGray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AuthorTappedCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
 
                 <Label FontSize="Medium" TextColor="DarkGray">
                     <Label.FormattedText>
@@ -24,6 +28,9 @@
                             <Span Text=")"/>
                         </FormattedString>
                     </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PublisherTappedCommand}" />
+                    </Label.GestureRecognizers>
                 </Label>
 
                 <Label Text="{Binding Category}" FontSize="Medium" TextColor="DarkGray"/>

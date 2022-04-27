@@ -53,6 +53,8 @@ namespace ENSIKLO
             services.AddTransient<UpdateProfileViewModel>();
             services.AddTransient<SearchResultViewModel>();
             services.AddTransient<SearchLibraryViewModel>();
+            services.AddTransient<BooksFromPublisherViewModel>();
+            services.AddTransient<BooksFromAuthorViewModel>();
 
             serviceProvider = services.BuildServiceProvider();
         }

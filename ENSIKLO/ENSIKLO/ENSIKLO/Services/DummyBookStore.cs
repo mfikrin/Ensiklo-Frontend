@@ -115,5 +115,15 @@ namespace ENSIKLO.Services
 
             return await Task.FromResult(true);
         }
+
+        public Task<IEnumerable<Book>> GetByPublisher(string query)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Book>> GetByAuthor(string query)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

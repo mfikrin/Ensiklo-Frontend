@@ -3,19 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
-             x:Class="ENSIKLO.Views.LoginPage">
+             x:Class="ENSIKLO.Views.LoginPage"
+             BackgroundColor="WhiteSmoke">
     <StackLayout>
-        <Image VerticalOptions="CenterAndExpand" Source="Assets/logo.png" WidthRequest="200" HeightRequest="200"/>
+
         <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Margin="150,0" Padding="100,35">
-            <StackLayout >
-                <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"></Entry>
-                <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password, Mode=TwoWay}"></Entry>
-                <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="White" Text="Sign In" Margin="0,20"
+            <StackLayout>
+                <Image VerticalOptions="CenterAndExpand" Source="Assets/logo.png" WidthRequest="200" HeightRequest="200"/>
+                <Label Text="Login" TextColor="#009BF0" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}" TextColor="Black" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"></Entry>
+                <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password, Mode=TwoWay}" TextColor="Black" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"></Entry>
+                <Button BackgroundColor="#009BF0" CornerRadius="10" TextColor="Black" Text="Sign In" Margin="0,20" FontAttributes="Bold"
                         Command="{Binding LoginCommand}">
                 </Button>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Don't Have an account?"></Label>
-                    <Label Text="Sign Up" TextColor="#009BF0">
+                    <Label Text="Don't Have an account?" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label Text="Sign Up" TextColor="#009BF0" FontAttributes="Bold">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer 
                                 Command="{Binding TappedCommand}"

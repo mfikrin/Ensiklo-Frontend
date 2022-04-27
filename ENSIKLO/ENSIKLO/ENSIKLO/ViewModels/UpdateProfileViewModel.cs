@@ -17,14 +17,15 @@ namespace ENSIKLO.ViewModels
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
-        public string email;
         public string password;
         public string confirmation_password;
         public string username;
         public UpdateProfileViewModel(IUserService userService)
         {
             _userService = userService;
-            email = CurrentUser.Email;
+
+
+          
             username = CurrentUser.Username;
 
             SaveCommand = new Command(async () => await OnSave(), ValidateInput);
@@ -36,12 +37,6 @@ namespace ENSIKLO.ViewModels
             (_, __) => SaveCommand.ChangeCanExecute();
         }
 
-
-        public string Email
-        {
-            get => email;
-            set => SetProperty(ref email, value);
-        }
 
         public string Password
         {
@@ -77,15 +72,18 @@ namespace ENSIKLO.ViewModels
                     var user = new User
                     {
                         Username = username,
-                        Email = email,
+                        Email = CurrentUser.Email,
                         Password = password,
-                        //Role = "user"
 
                     };
 
                     await _userService.UpdateUserAsync(user);
 
+                    Debug.WriteLine("DI BAWAH UPDATE USER ASYNC");
                     User gotuser = await _userService.GetCurrentUser();
+
+                    Debug.WriteLine("DI BAWAH GET CURRENT USER");
+
 
                     CurrentUser.Id = gotuser.Id;
                     CurrentUser.Email = gotuser.Email;
@@ -116,7 +114,6 @@ namespace ENSIKLO.ViewModels
         private bool ValidateInput()
         {
             return !String.IsNullOrWhiteSpace(username)
-               && !String.IsNullOrWhiteSpace(email)
                && !String.IsNullOrWhiteSpace(password)
                && !String.IsNullOrWhiteSpace(confirmation_password)
                ;

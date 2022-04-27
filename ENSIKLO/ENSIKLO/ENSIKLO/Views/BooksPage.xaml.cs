@@ -24,11 +24,12 @@ namespace ENSIKLO.Views
             _booksViewModel?.PopulateBooks();
         }
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    _booksViewModel.OnAppearing();
-        //    _booksViewModel?.PopulateBooks();
-        //}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //_booksViewModel.OnAppearing();
+            //_booksViewModel?.PopulateBooks();
+            _booksViewModel.LoadUserName();
+        }
     }
 }
