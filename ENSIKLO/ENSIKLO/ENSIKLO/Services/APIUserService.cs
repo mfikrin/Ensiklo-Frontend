@@ -72,6 +72,19 @@ namespace ENSIKLO.Services
             return JsonSerializer.Deserialize<User>(removeSqrBracket);
         }
 
+        public async Task<bool> LogoutUserAsync()
+        {
+            var response = await _httpClient.PostAsync($"User/Logout?token={CurrentUser.Token}",
+            new StringContent(JsonSerializer.Serialize(""), Encoding.UTF8, "application/json"));
+
+            response.EnsureSuccessStatusCode();
+
+            var responseAsString = await response.Content.ReadAsStringAsync();
+
+            var removeSqrBracket = responseAsString.Substring(1, responseAsString.Length - 2);
+
+            return await Task.FromResult(true);
+        }
 
         public Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false)
         {

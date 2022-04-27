@@ -45,6 +45,11 @@ namespace ENSIKLO.Services
             throw new NotImplementedException();
         }
 
+        public Task<bool> LogoutUserAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<User> GetUserAsync(int id)
         {
             return await Task.FromResult(users.FirstOrDefault(s => s.Id == id));

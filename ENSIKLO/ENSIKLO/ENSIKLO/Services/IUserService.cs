@@ -12,6 +12,7 @@ namespace ENSIKLO.Services
         Task<string> LoginAsync(LoginRequest loginRequest);
         Task<bool> UpdateUserAsync(User item);
         Task<bool> DeleteUserAsync(Int64 id);
+        Task<bool> LogoutUserAsync();
         Task<User> GetUserAsync(Int64 id);
         Task<User> GetCurrentUser();
         Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false);
