@@ -212,7 +212,7 @@ namespace ENSIKLO.ViewModels
             if (book == null)
                 return;
 
-            if(book.libraryItem.At_page == 0)
+            if(book.libraryItem.At_page == 1)
             {
                 await Shell.Current.GoToAsync($"{nameof(LibraryDetailPage)}?{nameof(LibraryDetailViewModel.BookId)}={book.libraryItem.Id_book}&{nameof(LibraryDetailViewModel.AtPage)}={book.libraryItem.At_page}");
             } else
