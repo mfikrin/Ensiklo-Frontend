@@ -37,10 +37,6 @@
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" FlyoutItemIsVisible="False" />
     </ShellItem>
 
-    <ShellItem Route="book-reader">
-        <ShellContent ContentTemplate="{DataTemplate local:BookReaderPage}" FlyoutItemIsVisible="False" />
-    </ShellItem>
-
     <TabBar Route="main">
         <ShellContent Title="Home" Icon="Assets/house_active.png" Route="home" ContentTemplate="{DataTemplate local:BooksPage}" />
         <ShellContent Title="Library" Icon="Assets/bookmarks.png" Route="library" ContentTemplate="{DataTemplate local:LibraryPage}" />

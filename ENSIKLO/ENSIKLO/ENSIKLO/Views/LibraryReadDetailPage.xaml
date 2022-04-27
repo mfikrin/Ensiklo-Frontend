@@ -57,7 +57,7 @@
                     <Button Text="Continue reading" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" CornerRadius="15" BackgroundColor="#6CBC5E" Command="{Binding ReadBookCommand}"></Button>
                 </Grid>
             </StackLayout>
-
+            </Grid>
         </StackLayout>
     </ScrollView>
 </ContentPage>
