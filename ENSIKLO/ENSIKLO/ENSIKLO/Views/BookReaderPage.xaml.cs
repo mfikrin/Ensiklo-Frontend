@@ -58,12 +58,15 @@ namespace ENSIKLO.Views
 
         async void LoadFromURL()
         {
-            if (string.IsNullOrEmpty(content_url) || at_page == 0) return;
+            if (string.IsNullOrEmpty(content_url)) return;
+            Debug.WriteLine(content_url);
+            Debug.WriteLine(at_page);
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(content_url);
             pdfDocumentStream = await response.Content.ReadAsStreamAsync();
             pdfViewerControl.LoadDocument(pdfDocumentStream);
-            pdfViewerControl.GoToPage(at_page);
+            // pdfViewerControl.GoToPage(at_page);
+            Debug.WriteLine("done loading --------");
         }
 
         private void PageChanged(object sender, Syncfusion.SfPdfViewer.XForms.PageChangedEventArgs args)
