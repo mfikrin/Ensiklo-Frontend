@@ -115,5 +115,13 @@ namespace ENSIKLO.ViewModels
             return password.Equals(confirmation_password);
 
         }
+
+        public void OnAppearing()
+        {
+            Username = "";
+            Email = "";
+            Password = "";
+            ConfirmationPassword = "";
+        }
     }
 }
