@@ -12,6 +12,8 @@ namespace ENSIKLO
 
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjI0Nzk1QDMyMzAyZTMxMmUzMExmOEhYdTVPSmZYZXdublVxRzBnTVBWbWpSMnhPS05zb2loeENleHJRdlU9");
+
             InitializeComponent();
 
             Startup.ConfigureServices();

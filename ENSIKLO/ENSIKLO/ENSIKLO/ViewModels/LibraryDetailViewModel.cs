@@ -12,6 +12,7 @@ using Xamarin.Forms;
 namespace ENSIKLO.ViewModels
 {
     [QueryProperty(nameof(BookId), nameof(BookId))]
+    [QueryProperty(nameof(AtPage), nameof(AtPage))]
     public class LibraryDetailViewModel : BaseViewModel
     {
 
@@ -35,15 +36,22 @@ namespace ENSIKLO.ViewModels
 
         private string keywords;
 
+        private int at_page;
+
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
+
+        public Command ReadBookCommand { get; }
+
         public Command PublisherTappedCommand { get; }
         public Command AuthorTappedCommand { get; }
+
         public LibraryDetailViewModel(ILibraryService libraryService)
         {
             _libraryService = libraryService;
 
             RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userId: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
+            ReadBookCommand = new Command(async () => await OnReadBook());
             PublisherTappedCommand = new Command(async publishername => await onPublisherTapped(publisher_name: Publisher));
             AuthorTappedCommand = new Command(async authorname => await onAuthorTapped(author_name: Author));
 
@@ -127,6 +135,15 @@ namespace ENSIKLO.ViewModels
             }
         }
 
+        public int AtPage
+        {
+            get => at_page;
+            set
+            {
+                at_page = value;
+            }
+        }
+
         public async void LoadBookId(int userId, string bookId)
         {
             try
@@ -168,6 +185,11 @@ namespace ENSIKLO.ViewModels
 
 
 
+        }
+
+        private async Task OnReadBook()
+        {
+            await Shell.Current.GoToAsync($"{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.ContentURL)}={Book_content}&{nameof(BookReaderPage.BookId)}={id_book}");
         }
 
 

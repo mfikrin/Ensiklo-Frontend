@@ -6,7 +6,7 @@
              x:Class="ENSIKLO.Views.LoginPage"
              BackgroundColor="WhiteSmoke">
     <StackLayout>
-        
+
         <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Margin="150,0" Padding="100,35">
             <StackLayout>
                 <Image VerticalOptions="CenterAndExpand" Source="Assets/logo.png" WidthRequest="200" HeightRequest="200"/>

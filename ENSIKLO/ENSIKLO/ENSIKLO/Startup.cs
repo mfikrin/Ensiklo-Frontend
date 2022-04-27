@@ -22,19 +22,19 @@ namespace ENSIKLO
 
             services.AddHttpClient<IBookService, APIBookService>(client =>
             {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
+                client.BaseAddress = new Uri("http://localhost:5223/api/");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
             services.AddHttpClient<IUserService, APIUserService>(client =>
             {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
+                client.BaseAddress = new Uri("http://localhost:5223/api/");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
             services.AddHttpClient<ILibraryService, APILibraryService>(client =>
             {
-                client.BaseAddress = new Uri("http://localhost:49067/api/");
+                client.BaseAddress = new Uri("http://localhost:5223/api/");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 

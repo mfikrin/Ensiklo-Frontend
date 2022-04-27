@@ -12,6 +12,7 @@ using Xamarin.Forms;
 namespace ENSIKLO.ViewModels
 {
     [QueryProperty(nameof(BookId), nameof(BookId))]
+    [QueryProperty(nameof(AtPage), nameof(AtPage))]
     public class LibraryReadDetailViewModel : BaseViewModel
     {
 
@@ -35,8 +36,11 @@ namespace ENSIKLO.ViewModels
 
         private string keywords;
 
+        private int at_page;
+
         private readonly ILibraryService _libraryService;
         public Command RemoveFromLibraryCommand { get; }
+        public Command ReadBookCommand { get; }
         public Command PublisherTappedCommand { get; }
         public Command AuthorTappedCommand { get; }
 
@@ -46,6 +50,7 @@ namespace ENSIKLO.ViewModels
             _libraryService = libraryService;
 
             RemoveFromLibraryCommand = new Command(async bookid => await OnRemoveBook(userid: Convert.ToInt32(CurrentUser.Id), bookid: BookId));
+            ReadBookCommand = new Command(async () => await OnReadBook());
             PublisherTappedCommand = new Command(async publishername => await onPublisherTapped(publisher_name: Publisher));
             AuthorTappedCommand = new Command(async authorname => await onAuthorTapped(author_name: Author));
             TappedCommand = new Command(async () => await SetAsFinished());
@@ -135,10 +140,19 @@ namespace ENSIKLO.ViewModels
             }
         }
 
+        public int AtPage
+        {
+            get => at_page;
+            set
+            {
+                SetProperty(ref at_page, value);
+            }
+        }
+
         public async void LoadBookId(int userId, string bookId)
         {
             try
-            {
+            {                
                 var book = await _libraryService.GetLibraryItemAsync(userId, int.Parse(bookId));
                 if (bookId != null)
                 {
@@ -167,6 +181,7 @@ namespace ENSIKLO.ViewModels
         {
             await _libraryService.DeleteFromLibraryAsync(Convert.ToInt32(CurrentUser.Id), int.Parse(bookid));
             //await Shell.Current.Navigation.PopToRootAsync();
+            //await Shell.Current.GoToAsync(nameof(LibraryPage));
             await App.Current.MainPage.DisplayAlert("Removed Book", "The book has been removed from the library", "OK");
             await Shell.Current.GoToAsync(nameof(LibraryPage));
             //await Shell.Current.GoToAsync("..");
@@ -177,7 +192,9 @@ namespace ENSIKLO.ViewModels
 
         }
 
-
-
+        private async Task OnReadBook()
+        {          
+            await Shell.Current.GoToAsync($"{nameof(BookReaderPage)}?{nameof(BookReaderPage.AtPage)}={AtPage}&{nameof(BookReaderPage.ContentURL)}={Book_content}&{nameof(BookReaderPage.BookId)}={id_book}");
+        }
     }
 }
