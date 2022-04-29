@@ -19,7 +19,15 @@
                     <Image Source="{Binding Url_cover}" WidthRequest="180"/>
                 </StackLayout>
                 <StackLayout Grid.Column="1" Padding="20, -5, 0, 0">
-                    <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                        <Label Text="set as finished" HorizontalOptions="Start" FontAttributes="Italic" TextColor="Green">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TappedCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
                     <Label Text="{Binding Author}" FontSize="Medium" TextColor="DarkGray">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding AuthorTappedCommand}" />
