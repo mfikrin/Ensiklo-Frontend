@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ENSIKLO.Views.LibraryDetailPage">
-
     <ScrollView Orientation="Vertical">
         <StackLayout Spacing="20" Padding="15" Margin="20">
             <Grid>
@@ -41,16 +40,22 @@
 
                     <Label Text="{Binding Category}" FontSize="Medium" TextColor="DarkGray"/>
 
-                <Grid Margin="0, 30, 0, 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Text="Delete from Library" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="0" CornerRadius="15" BackgroundColor="#B91515" Command="{Binding RemoveFromLibraryCommand}"></Button>
-                    <Button Text="Start reading" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" CornerRadius="15" Command="{Binding ReadBookCommand}"></Button>
-                </Grid>
-            </StackLayout>
+                    <Grid Margin="0, 30, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Delete from Library" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="0" CornerRadius="15" BackgroundColor="#B91515" Command="{Binding RemoveFromLibraryCommand}"></Button>
+                        <Button Text="Start reading" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" CornerRadius="15" Command="{Binding ReadBookCommand}"></Button>
+                    </Grid>
+                </StackLayout>
+
             </Grid>
+            <StackLayout>
+                <Label Text="Description" FontSize="Medium"  Margin="75, 15, 0, 0" FontAttributes="Bold"/>
+                <Label Text="{Binding Description_book}" FontSize="Small"  Margin="75, 0, 75, 0" />
+                <Label Text="{Binding Keywords}" FontAttributes="Italic" FontSize="Micro" TextColor="Gray"  Margin="75, 0, 0, 0" />
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

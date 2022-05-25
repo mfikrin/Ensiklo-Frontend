@@ -14,6 +14,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+
                 <StackLayout Grid.Column="0" Margin="75, 0, 0, 0">
                     <Image Source="{Binding Url_cover}" WidthRequest="180"/>
                 </StackLayout>
@@ -26,6 +27,7 @@
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
+
                     <Label Text="{Binding Author}" FontSize="Medium" TextColor="DarkGray">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding AuthorTappedCommand}" />
@@ -48,16 +50,22 @@
 
                     <Label Text="{Binding Category}" FontSize="Medium" TextColor="DarkGray"/>
 
-                <Grid Margin="0, 30, 0, 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Text="Delete from Library" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="0" CornerRadius="15" BackgroundColor="#B91515" Command="{Binding RemoveFromLibraryCommand}"></Button>
-                    <Button Text="Continue reading" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" CornerRadius="15" BackgroundColor="#6CBC5E" Command="{Binding ReadBookCommand}"></Button>
-                </Grid>
-            </StackLayout>
+                    <Grid Margin="0, 30, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Delete from Library" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="0" CornerRadius="15" BackgroundColor="#B91515" Command="{Binding RemoveFromLibraryCommand}"></Button>
+                        <Button Text="Continue reading" HeightRequest="38" HorizontalOptions="CenterAndExpand" Grid.Column="1" CornerRadius="15" BackgroundColor="#6CBC5E"  Command="{Binding ReadBookCommand}"></Button>
+                    </Grid>
+                </StackLayout>
+
             </Grid>
+            <StackLayout>
+                <Label Text="Description" FontSize="Medium"  Margin="75, 15, 0, 0" FontAttributes="Bold"/>
+                <Label Text="{Binding Description_book}" FontSize="Small"  Margin="75, 0, 75, 0" />
+                <Label Text="{Binding Keywords}" FontAttributes="Italic" FontSize="Micro" TextColor="Gray"  Margin="75, 0, 0, 0" />
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

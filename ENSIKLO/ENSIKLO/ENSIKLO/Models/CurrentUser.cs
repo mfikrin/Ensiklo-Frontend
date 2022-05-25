@@ -10,5 +10,6 @@ namespace ENSIKLO.Models
         public static Int64 Id { get; set; }
         public static string Email { get; set; }
         public static string Username { get; set; }
+
     }
 }
