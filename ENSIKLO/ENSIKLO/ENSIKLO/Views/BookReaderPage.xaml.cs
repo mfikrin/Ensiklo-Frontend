@@ -84,8 +84,8 @@ namespace ENSIKLO.Views
         public async void Button_Clicked(object sender, EventArgs e)
         {
             HttpClient httpClient = new HttpClient();
-            Debug.WriteLine($"http://localhost:5223/api/LibraryUser/update/{CurrentUser.Id}/{book_id}/{current_page}");
-            var response = await httpClient.PostAsync($"http://localhost:5223/api/LibraryUser/update/{CurrentUser.Id}/{book_id}/{current_page}", new StringContent(JsonSerializer.Serialize(""), Encoding.UTF8, "application/json"));
+            Debug.WriteLine($"http://localhost:49067/api/LibraryUser/update/{CurrentUser.Id}/{book_id}/{current_page}");
+            var response = await httpClient.PostAsync($"http://localhost:49067/api/LibraryUser/update/{CurrentUser.Id}/{book_id}/{current_page}", new StringContent(JsonSerializer.Serialize(""), Encoding.UTF8, "application/json"));
 
             response.EnsureSuccessStatusCode();
 

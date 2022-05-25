@@ -101,5 +101,13 @@ namespace ENSIKLO.ViewModels
                && !String.IsNullOrWhiteSpace(password)
                ;
         }
+
+        public void OnAppearing()
+        {
+            Email = "";
+            Password = "";
+        }
+
+
     }
 }
