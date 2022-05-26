@@ -80,14 +80,14 @@ namespace ENSIKLO.ViewModels
                     await _userService.UpdateUserAsync(user);
 
                     Debug.WriteLine("DI BAWAH UPDATE USER ASYNC");
-                    User gotuser = await _userService.GetCurrentUser();
+                    //User gotuser = await _userService.GetCurrentUser();
 
                     Debug.WriteLine("DI BAWAH GET CURRENT USER");
 
 
-                    CurrentUser.Id = gotuser.Id;
-                    CurrentUser.Email = gotuser.Email;
-                    CurrentUser.Username = gotuser.Username;
+                    //CurrentUser.Id = gotuser.Id;
+                    //CurrentUser.Email = gotuser.Email;
+                    CurrentUser.Username = user.Username;
                     //CurrentUser.Role = gotuser.Role;
 
                     Debug.WriteLine("Finished updating profile");
