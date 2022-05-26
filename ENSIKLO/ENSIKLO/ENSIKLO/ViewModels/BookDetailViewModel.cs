@@ -203,7 +203,7 @@ namespace ENSIKLO.ViewModels
                         Category = book.Category,
                         Keywords = book.Keywords,
                         Added_time = book.Added_time,
-                        At_page = 0,
+                        At_page = 1,
                         Last_readtime = DateTime.Now,
                         Added_time_to_library = DateTime.Now
                         // Finish_reading =0
