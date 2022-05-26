@@ -70,16 +70,16 @@ namespace ENSIKLO.ViewModels
         }
         public async void GetData()
         {
-            var user = await _userService.GetCurrentUser();
+            //var user = await _userService.GetCurrentUser();
             //var user = new User
             //{
             //    Username = "tes nama",
             //    Email = "tes email",
             //    Id = 1,
             //};
-            email = user.Email;
-            userName = user.Username;
-            id = user.Id;
+            email = CurrentUser.Email;
+            userName = CurrentUser.Username;
+            id = CurrentUser.Id;
             Debug.WriteLine(email);
             Debug.WriteLine(userName);
             Email = email;
