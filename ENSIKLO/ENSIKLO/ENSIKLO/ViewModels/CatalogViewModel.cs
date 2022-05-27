@@ -58,9 +58,9 @@ namespace ENSIKLO.ViewModels
                 BooksTop.Clear();
                 BooksBottom.Clear();
 
-                User curr_user = await _userService.GetCurrentUser();
+                //User curr_user = await _userService.GetCurrentUser();
 
-                var id = curr_user.Id;
+                var id = CurrentUser.Id;
      
                 var booksTopTemp = await _bookService.GetUserTopGenreBook(id,12);
 

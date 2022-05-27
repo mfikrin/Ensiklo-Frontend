@@ -53,9 +53,9 @@ namespace ENSIKLO.ViewModels
             {
                 Username = String.Empty;
 
-                User curr_user = await _userService.GetCurrentUser();
+                //User curr_user = await _userService.GetCurrentUser();
 
-                username = curr_user.Username;
+                username = CurrentUser.Username;
 
                 Username = username;
             }
