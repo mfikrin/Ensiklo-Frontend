@@ -1,4 +1,4 @@
-﻿using ENSIKLO.Models;
+using ENSIKLO.Models;
 using ENSIKLO.Services;
 using ENSIKLO.Views;
 using System;
@@ -12,7 +12,7 @@ namespace ENSIKLO
 
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjI0Nzk1QDMyMzAyZTMxMmUzMExmOEhYdTVPSmZYZXdublVxRzBnTVBWbWpSMnhPS05zb2loeENleHJRdlU9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjQ2MjIxQDMyMzAyZTMxMmUzMGV2ejJ3Y2ozNElyS2FCOUsxVWFQbFNtYjgyanZtZENxUlgvOTIxMlpKemc9");
 
             InitializeComponent();
 
