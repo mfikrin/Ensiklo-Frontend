@@ -127,8 +127,8 @@ namespace ENSIKLO.ViewModels
             {
                 BooksBottom.Clear();
 
-                var user = await _userService.GetCurrentUser();
-                id = user.Id;
+                //var user = await _userService.GetCurrentUser();
+                id = CurrentUser.Id;
 
                 var booksBottomTemp = await _libraryService.GetFinishedBooks(id);
                 foreach (var book in booksBottomTemp)
